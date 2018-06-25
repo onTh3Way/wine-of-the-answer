@@ -6,7 +6,3 @@ new Vue({
 	el: '#root',
 	render: h => h(App)
 })
-
-import('page1')
-
-Route.get('')
