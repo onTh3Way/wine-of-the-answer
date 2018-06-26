@@ -1,0 +1,8 @@
+.idea
+.DS_Store
+.git
+.cache-loader
+config
+mock
+src
+node_modules

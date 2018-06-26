@@ -65,11 +65,12 @@
 	"dependencies": {
 		"axios": "^0.18.0",
 		"lodash": "^4.17.10",
+		"underscore": "^1.9.1",
 		"vue": "^2.5.16"
 	},
 	"scripts": {
 		"clean": "rm -rf ./dist",
-		"dev": "cross-env NODE_ENV=development webpack-dev-server --open --config ./config/webpack.dev.js --colo  r",
+		"dev": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.dev.js --color --port 3000 --host 0.0.0.0",
 		"build": "yarn run clean && cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
 		"start": "node ./mock/static"
 	},
