@@ -1,3 +1,4 @@
 FROM node:10.4.0
+COPY .
 WORKDIR /app
 EXPOSE 3000
