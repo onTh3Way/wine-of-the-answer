@@ -1,5 +1,5 @@
 {
-	"name": "gen-pro",
+	"name": "wota",
 	"version": "1.0.0",
 	"main": "index.js",
 	"license": "MIT",
@@ -15,11 +15,16 @@
 		"@types/lodash": "^4.14.110",
 		"autoprefixer": "^8.6.3",
 		"babel-eslint": "8.2.5",
+		"babel-helper-vue-jsx-merge-props": "^2.0.3",
 		"babel-loader": "8.0.0-beta.3",
 		"babel-plugin-lodash": "^3.3.4",
+		"babel-plugin-syntax-jsx": "^6.18.0",
 		"babel-plugin-transform-class-properties": "^6.24.1",
+		"babel-plugin-transform-jsx": "^2.0.0",
 		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-plugin-transform-vue-jsx": "^3.7.0",
 		"cache-loader": "^1.2.2",
+		"compression": "^1.7.2",
 		"cross-env": "^5.2.0",
 		"css-loader": "^0.28.11",
 		"eslint": "^5.0.0",
@@ -33,6 +38,7 @@
 		"eslint-plugin-standard": "^3.1.0",
 		"eslint-plugin-vue": "^4.5.0",
 		"express": "^4.16.3",
+		"file-loader": "^1.1.11",
 		"html-loader": "^0.5.5",
 		"html-webpack-plugin": "^3.2.0",
 		"inline-manifest-webpack-plugin": "^4.0.0",
@@ -68,10 +74,13 @@
 		"vue": "^2.5.16"
 	},
 	"scripts": {
-		"clean": "rm -rf ./dist",
+		"predev": "cp src/assets/vue.dev.js dist/vue.js && cp src/assets/axios.dev.js dist/axios.js",
 		"dev": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.dev.js --color --port 3000 --host 0.0.0.0",
-		"build": "yarn run clean && cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
-		"start": "node ./mock/static"
+		"prebuild": "rm -rf ./dist",
+		"build": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
+		"postbuild": "cp src/assets/vue.prod.js dist/vue.js && cp src/assets/axios.prod.js dist/axios.js",
+		"start:mock": "node ./server/mockServer",
+		"start": "node ./server/staticServer"
 	},
 	"peerDependencies": {}
 }

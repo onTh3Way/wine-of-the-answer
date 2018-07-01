@@ -5,9 +5,15 @@ const proxy = require('./proxy')
 module.exports = merge(baseConfig, {
 	output: {
 		filename: '[name].bundle.js',
-		chunkFilename: '[name].js'
+		chunkFilename: '[name].js',
 	},
 	mode: 'development',
 	devtool: 'cheap-source-map',
-	devServer: {proxy}
+	devServer: {
+		proxy,
+		watchOptions: {
+			poll: true,
+		},
+		contentBase: baseConfig.output.path,
+	},
 })

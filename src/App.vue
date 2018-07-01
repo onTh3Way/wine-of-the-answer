@@ -1,6 +1,6 @@
 <template>
 	<div>
-		阿斯达sss撒的asd
+		welcome to wota project
 	</div>
 </template>
 

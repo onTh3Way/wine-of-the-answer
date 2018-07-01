@@ -2,7 +2,7 @@ import App from './App'
 
 Vue.prototype.$http = axios
 
-console.log('测试状态')
+if (process.env.NODE_ENV === 'development') Vue.config.performance = true
 
 new Vue({
 	el: '#root',

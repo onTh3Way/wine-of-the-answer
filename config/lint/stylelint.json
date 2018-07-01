@@ -5,6 +5,7 @@
 	],
 	"rules": {
 		"indentation": "tab",
+		"max-nesting-depth": 3,
 		"rule-empty-line-before": "always",
 		"string-quotes": "single",
 		"at-rule-empty-line-before": "always",
