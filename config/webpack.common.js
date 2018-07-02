@@ -18,7 +18,7 @@ module.exports = {
 	// 输出路径
 	output: {
 		path: distPath,
-		publicPath: '/',
+		publicPath: '/'
 	},
 	resolve: {
 		// 后缀自动补全
@@ -26,14 +26,19 @@ module.exports = {
 		// 文件夹别名
 		alias: {
 			'@': '.',
-			components: './components',
 			assets: './assets',
+			components: './components',
+			containers: './containers',
+			less: './less',
+			router: './router',
+			service: './service',
+			utils: './utils'
 		},
 		// 模块寻找路径
 		modules: [
 			path.resolve(rootPath, 'src'),
-			path.resolve(rootPath, 'node_modules'),
-		],
+			path.resolve(rootPath, 'node_modules')
+		]
 	},
 	module: {
 		// 解析器
@@ -47,10 +52,10 @@ module.exports = {
 					loader: 'vue-loader',
 					options: {
 						compilerOptions: {
-							preserveWhitespace: false,
-						},
-					},
-				}],
+							preserveWhitespace: false
+						}
+					}
+				}]
 			},
 			// 文件解析
 			{
@@ -61,9 +66,9 @@ module.exports = {
 					'cache-loader',
 					{
 						loader: 'url-loader',
-						options: {limit: 4092},
-					},
-				],
+						options: {limit: 4092}
+					}
+				]
 			},
 			// css解析
 			{
@@ -78,8 +83,8 @@ module.exports = {
 						options: {
 							importLoaders: 2,
 							modules: true,
-							sourceMap: true,
-						},
+							sourceMap: true
+						}
 					},
 					{
 						loader: 'postcss-loader',
@@ -91,24 +96,24 @@ module.exports = {
 								}
 								return plugins
 							},
-							sourceMap: true,
-						},
+							sourceMap: true
+						}
 					},
 					{
 						loader: 'less-loader',
 						options: {
-							sourceMap: true,
-						},
+							sourceMap: true
+						}
 					},
 					{
 						loader: 'style-resources-loader',
 						options: {
 							patterns: [
-								path.join(process.cwd(), './src/less/index.less'),
+								path.join(process.cwd(), './src/less/index.less')
 							],
-							sourceMap: true,
-						},
-					}],
+							sourceMap: true
+						}
+					}]
 			},
 			// eslint检查
 			{
@@ -122,10 +127,10 @@ module.exports = {
 						loader: 'eslint-loader',
 						options: {
 							fix: true,
-							configFile: path.join(__dirname, 'lint/eslint.json'),
-						},
-					},
-				],
+							configFile: path.join(__dirname, 'lint/eslint.json')
+						}
+					}
+				]
 			},
 			// babel转换
 			{
@@ -139,23 +144,23 @@ module.exports = {
 						options: {
 							presets: [['@babel/preset-env', {
 								loose: true,
-								modules: false,
+								modules: false
 							}]],
 							plugins: [
 								'lodash',
 								['@babel/plugin-proposal-decorators', {legacy: true}],
 								['@babel/plugin-proposal-class-properties', {loose: true}],
 								'@babel/plugin-syntax-dynamic-import',
-								'transform-vue-jsx',
+								'transform-vue-jsx'
 							],
 							comments: devMode,
 							compact: !devMode,
-							babelrc: false,
-						},
-					},
-				],
-			},
-		],
+							babelrc: false
+						}
+					}
+				]
+			}
+		]
 	},
 	plugins: [
 		// vue-loader所需插件,主要通过此插件来解析vue中不同的语言块
@@ -166,11 +171,11 @@ module.exports = {
 			configFile: path.join(__dirname, 'lint/stylelint.json'),
 			context: path.join(process.cwd(), 'src'),
 			files: '**/*.(less|vue)',
-			fix: true,
+			fix: true
 		}),
 		// 进度条美化插件
 		new ProgressBarPlugin({
-			format: `构建中 [:bar] 已完成百分之${chalk.green.bold(':percent')} (:elapsed)秒`,
+			format: `构建中 [:bar] 已完成百分之${chalk.green.bold(':percent')} (:elapsed)秒`
 		}),
 		// 自动生成html,
 		new HtmlPlugin({
@@ -180,6 +185,6 @@ module.exports = {
 			minify: !devMode,
 			cache: devMode,
 			title: 'Web App'
-		}),
-	],
+		})
+	]
 }
