@@ -1,6 +1,6 @@
 <template>
 	<div>
-		welcome to wota project
+		welcome to wota project For nope
 	</div>
 </template>
 
