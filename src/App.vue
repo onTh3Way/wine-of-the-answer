@@ -1,7 +1,8 @@
 <template>
-	<div>
-		welcome to wota project For nope
-	</div>
+	<pre>
+		project name: wota
+		current branch: master
+	</pre>
 </template>
 
 <script>

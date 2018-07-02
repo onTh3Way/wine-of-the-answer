@@ -1,4 +1,7 @@
 import App from './App'
+import T from '@/App'
+
+console.log(T)
 
 Vue.prototype.$http = axios
 
