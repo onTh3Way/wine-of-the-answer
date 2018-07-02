@@ -1,7 +1,6 @@
 <template>
 	<pre>
-		project name: wota
-		current branch: master
+		welcome to wota project
 	</pre>
 </template>
 
