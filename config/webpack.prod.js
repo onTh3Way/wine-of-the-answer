@@ -42,6 +42,11 @@ module.exports = merge(baseConfig, {
 		],
 		splitChunks: {
 			cacheGroups: {
+				style: {
+					test: /\.less$/,
+					chunks: 'all',
+					name: 'styles'
+				},
 				vendor: {
 					test: /node_modules/,
 					chunks: 'all',
