@@ -17,7 +17,7 @@ git merge origin/yourBranch // 合并代码
 git add .
 git commit -m '更新信息'
 git push origin yourBranch
-````
+```
 
 ## next todo
 使用node command简化同步与更新流程
