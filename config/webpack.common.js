@@ -60,10 +60,8 @@ module.exports = {
 			// 文件解析
 			{
 				test: /\.(png|jpg|jpeg|gif|ico|svg)$/,
-				include: path.join(process.cwd(), 'src'),
 				exclude: /node_modules/,
 				use: [
-					'cache-loader',
 					{
 						loader: 'url-loader',
 						options: {limit: 4092}
