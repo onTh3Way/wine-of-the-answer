@@ -40,6 +40,7 @@
 		"eslint-plugin-vue": "^4.5.0",
 		"express": "^4.16.3",
 		"file-loader": "^1.1.11",
+		"fsevents": "^1.2.4",
 		"html-loader": "^0.5.5",
 		"html-webpack-plugin": "^3.2.0",
 		"inline-manifest-webpack-plugin": "^4.0.0",
@@ -77,7 +78,7 @@
 	},
 	"scripts": {
 		"predev": "cp src/assets/vue.dev.js dist/vue.js && cp src/assets/axios.dev.js dist/axios.js",
-		"dev": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.dev.js --color --port 3000 --host 0.0.0.0",
+		"dev": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.dev.js --color --port 3000",
 		"prebuild": "rm -rf ./dist",
 		"build": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
 		"postbuild": "cp src/assets/vue.prod.js dist/vue.js && cp src/assets/axios.prod.js dist/axios.js",
