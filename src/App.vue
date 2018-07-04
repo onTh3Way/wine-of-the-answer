@@ -1,7 +1,5 @@
 <template>
-  <pre>
-	  welcome to wota project
-  </pre>
+	<group-view />
 </template>
 
 
