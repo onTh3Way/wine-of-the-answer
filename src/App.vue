@@ -4,10 +4,14 @@
   </pre>
 </template>
 
+
 <script>
-  export default {
-    name: 'app'
-  }
+	import {GroupView, BBSView} from '@/router'
+
+	export default {
+		name: 'app',
+		components: {GroupView, BBSView}
+	}
 </script>
 
 <style lang="less" module>
