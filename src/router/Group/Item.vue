@@ -1,40 +1,47 @@
 <template>
-	<div :class="[$style.link, $style[mode]]">
-		<slot />
-	</div>
+  <div :class="[$style.link, $style[mode]]">
+    <slot />
+  </div>
 </template>
 
 <script>
-	export default {
-		name: 'item',
-		props: {
-			mode: {
-				type: String,
-				default: 'pink'
-			}
-		}
-	}
+  let pixRatio = 1 / (window.devicePixelRatio)
+  let html = document.documentElement
+  document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=' + pixRatio + ',minimum-scale=' + pixRatio + ',maximum-scale=' + pixRatio + '">')
+  html.style.fontSize = html.clientWidth / 25 + '/@rem'
+  export default {
+    name: 'item',
+    props: {
+      mode: {
+        type: String,
+        default: 'pink'
+      }
+    }
+  }
 </script>
 
 <style lang="less" module>
-		.link {
-			width: 100%;
-			height: 40px;
-			margin-bottom: 10px;
-			line-height: 40px;
-			text-align: center;
-			border-radius: 4px;
-			box-sizing: border-box;
+  @rem: 30rem;
 
-			&.pink {
-				color: black;
-				background-color: pink;
-			}
+  .link {
+    width: 100%;
+    height: 150/@rem;
+    margin-bottom: 55/@rem;
+    font-size: 60/@rem;
+    line-height: 150/@rem;
+    text-align: center;
+    border-radius: 20/@rem;
+    box-sizing: border-box;
 
-			&.black {
-				border: 2px solid pink;
-				color: pink;
-				background-color: black;
-			}
-		}
+    &.pink {
+      color: black;
+      background-color: rgb(249, 186, 197);
+    }
+
+    &.black {
+      border: 8/@rem solid rgb(249, 186, 197);
+      color: rgb(249, 186, 197);
+      background-color: black;
+    }
+  }
 </style>

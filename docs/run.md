@@ -1,4 +1,4 @@
-# 环境搭建与运行
+git# 环境搭建与运行
 ## 环境搭建
 1. 安装docker
 2. 打开终端(windows: powerShell, mac: Terminal or iTerm)

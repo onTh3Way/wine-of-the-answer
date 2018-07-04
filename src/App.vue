@@ -1,27 +1,12 @@
 <template>
-	<group-view />
+  <group-view />
 </template>
 
-
 <script>
-	import {GroupView, BBSView} from '@/router'
+  import { BBSView, GroupView } from '@/router'
 
-	export default {
-		name: 'app',
-		components: {GroupView, BBSView}
-	}
-</script>
-
-<style lang="less" module>
-  .test {
-    width: 200px;
-    
-    .a {
-      width: 1px;
-    }
-    
-    .b {
-      width: 2px;
-    }
+  export default {
+    name: 'app',
+    components: {GroupView, BBSView}
   }
-</style>
+</script>
