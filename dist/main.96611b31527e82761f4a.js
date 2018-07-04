@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1],[,function(n,e,t){},function(n,e){var t,i,o,d,a;t=document,i=window,o=t.documentElement,d="orientationchange"in window?"orientationchange":"resize",a=function(){var n=o.clientWidth;n&&(o.style.fontSize=n/320*20+"px")},t.addEventListener&&(i.addEventListener(d,a,!1),t.addEventListener("DOMContentLoaded",a,!1))},function(n,e,t){"use strict";t.r(e);t(2),t(1);Vue.prototype.$http=axios}],[[3,0]]]);
-//# sourceMappingURL=main.96611b31527e82761f4a.js.map

@@ -1,6 +1,17 @@
 /* axios v0.18.0 | (c) 2018 by Matt Zabriskie */
 (function webpackUniversalModuleDefinition (root, factory) {
+<<<<<<< HEAD
 	if (typeof exports === 'object' && typeof module === 'object') { module.exports = factory() } else if (typeof define === 'function' && define.amd) { define([], factory) } else if (typeof exports === 'object') { exports['axios'] = factory() } else { root['axios'] = factory() }
+=======
+	if (typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory()
+	else if (typeof define === 'function' && define.amd)
+		define([], factory)
+	else if (typeof exports === 'object')
+		exports['axios'] = factory()
+	else
+		root['axios'] = factory()
+>>>>>>> origin/master
 })(this, function () {
 	return /******/ (function (modules) { // webpackBootstrap
 		/******/ 	// The module cache
@@ -14,15 +25,26 @@
 			/******/ 		// Check if module is in cache
 			/******/
 			if (installedModules[moduleId])
+<<<<<<< HEAD
 			/******/ { return installedModules[moduleId].exports }
+=======
+			/******/      return installedModules[moduleId].exports
+>>>>>>> origin/master
 			/******/
 			/******/ 		// Create a new module (and put it into the cache)
 			/******/
 			var module = installedModules[moduleId] = {
+<<<<<<< HEAD
 				/******/ exports: {},
 				/******/ id: moduleId,
 				/******/ loaded: false
 			/******/
+=======
+				/******/      exports: {},
+				/******/      id: moduleId,
+				/******/      loaded: false
+				/******/
+>>>>>>> origin/master
 			}
 			/******/
 			/******/ 		// Execute the module function
@@ -61,6 +83,7 @@
 	/************************************************************************/
 	/******/([
 		/* 0 */
+<<<<<<< HEAD
 		/***/ function (module, exports, __webpack_require__) {
 			module.exports = __webpack_require__(1)
 
@@ -68,6 +91,17 @@
 		},
 		/* 1 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		/***/ (function (module, exports, __webpack_require__) {
+
+			module.exports = __webpack_require__(1)
+
+			/***/
+		}),
+		/* 1 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -122,15 +156,26 @@
 			module.exports.default = axios
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 2 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		}),
+		/* 2 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var bind = __webpack_require__(3)
 			var isBuffer = __webpack_require__(4)
 
+<<<<<<< HEAD
 			/* global toString:true */
+=======
+			/*global toString:true*/
+>>>>>>> origin/master
 
 			// utils is a library of generic helper functions non-specific to axios
 
@@ -335,7 +380,11 @@
 
 				// Force an array if not already something iterable
 				if (typeof obj !== 'object') {
+<<<<<<< HEAD
 					/* eslint no-param-reassign:0 */
+=======
+					/*eslint no-param-reassign:0*/
+>>>>>>> origin/master
 					obj = [obj]
 				}
 
@@ -431,9 +480,16 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 3 */
 		/***/ function (module, exports) {
+=======
+		}),
+		/* 3 */
+		/***/ (function (module, exports) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			module.exports = function bind (fn, thisArg) {
@@ -447,9 +503,16 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 4 */
 		/***/ function (module, exports) {
+=======
+		}),
+		/* 4 */
+		/***/ (function (module, exports) {
+
+>>>>>>> origin/master
 			/*!
 			 * Determine if an object is a Buffer
 			 *
@@ -473,9 +536,16 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 5 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		}),
+		/* 5 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var defaults = __webpack_require__(6)
@@ -502,7 +572,11 @@
 			 * @param {Object} config The config specific for this request (merged with this.defaults)
 			 */
 			Axios.prototype.request = function request (config) {
+<<<<<<< HEAD
 				/* eslint no-param-reassign:0 */
+=======
+				/*eslint no-param-reassign:0*/
+>>>>>>> origin/master
 				// Allow for axios('example/url'[, config]) a la fetch API
 				if (typeof config === 'string') {
 					config = utils.merge({
@@ -534,7 +608,11 @@
 
 			// Provide aliases for supported request methods
 			utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData (method) {
+<<<<<<< HEAD
 				/* eslint func-names:0 */
+=======
+				/*eslint func-names:0*/
+>>>>>>> origin/master
 				Axios.prototype[method] = function (url, config) {
 					return this.request(utils.merge(config || {}, {
 						method: method,
@@ -544,7 +622,11 @@
 			})
 
 			utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData (method) {
+<<<<<<< HEAD
 				/* eslint func-names:0 */
+=======
+				/*eslint func-names:0*/
+>>>>>>> origin/master
 				Axios.prototype[method] = function (url, data, config) {
 					return this.request(utils.merge(config || {}, {
 						method: method,
@@ -557,9 +639,16 @@
 			module.exports = Axios
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 6 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		}),
+		/* 6 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -616,7 +705,11 @@
 				}],
 
 				transformResponse: [function transformResponse (data) {
+<<<<<<< HEAD
 					/* eslint no-param-reassign:0 */
+=======
+					/*eslint no-param-reassign:0*/
+>>>>>>> origin/master
 					if (typeof data === 'string') {
 						try {
 							data = JSON.parse(data)
@@ -658,9 +751,16 @@
 			module.exports = defaults
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 7 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		}),
+		/* 7 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -675,9 +775,16 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 8 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		}),
+		/* 8 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -786,9 +893,15 @@
 						var cookies = __webpack_require__(16)
 
 						// Add xsrf header
+<<<<<<< HEAD
 						var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName
 							? cookies.read(config.xsrfCookieName)
 							: undefined
+=======
+						var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
+							cookies.read(config.xsrfCookieName) :
+							undefined
+>>>>>>> origin/master
 
 						if (xsrfValue) {
 							requestHeaders[config.xsrfHeaderName] = xsrfValue
@@ -860,9 +973,16 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 9 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		}),
+		/* 9 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var createError = __webpack_require__(10)
@@ -891,9 +1011,16 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 10 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		}),
+		/* 10 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var enhanceError = __webpack_require__(11)
@@ -914,9 +1041,16 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 11 */
 		/***/ function (module, exports) {
+=======
+		}),
+		/* 11 */
+		/***/ (function (module, exports) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			/**
@@ -940,9 +1074,16 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 12 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		}),
+		/* 12 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -959,7 +1100,11 @@
 			 * @returns {string} The formatted url
 			 */
 			module.exports = function buildURL (url, params, paramsSerializer) {
+<<<<<<< HEAD
 				/* eslint no-param-reassign:0 */
+=======
+				/*eslint no-param-reassign:0*/
+>>>>>>> origin/master
 				if (!params) {
 					return url
 				}
@@ -1004,9 +1149,16 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 13 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		}),
+		/* 13 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -1062,19 +1214,34 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 14 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		}),
+		/* 14 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var utils = __webpack_require__(2)
 
 			module.exports = (
+<<<<<<< HEAD
 				utils.isStandardBrowserEnv()
 
 					// Standard browser envs have full support of the APIs needed to test
 					// whether the request URL is of the same origin as current location.
 					? (function standardBrowserEnv () {
+=======
+				utils.isStandardBrowserEnv() ?
+
+					// Standard browser envs have full support of the APIs needed to test
+					// whether the request URL is of the same origin as current location.
+					(function standardBrowserEnv () {
+>>>>>>> origin/master
 						var msie = /(msie|trident)/i.test(navigator.userAgent)
 						var urlParsingNode = document.createElement('a')
 						var originURL
@@ -1105,9 +1272,15 @@
 								hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
 								hostname: urlParsingNode.hostname,
 								port: urlParsingNode.port,
+<<<<<<< HEAD
 								pathname: (urlParsingNode.pathname.charAt(0) === '/')
 									? urlParsingNode.pathname
 									: '/' + urlParsingNode.pathname
+=======
+								pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
+									urlParsingNode.pathname :
+									'/' + urlParsingNode.pathname
+>>>>>>> origin/master
 							}
 						}
 
@@ -1124,10 +1297,17 @@
 							return (parsed.protocol === originURL.protocol &&
 								parsed.host === originURL.host)
 						}
+<<<<<<< HEAD
 					})()
 
 					// Non standard browser envs (web workers, react-native) lack needed support.
 					: (function nonStandardBrowserEnv () {
+=======
+					})() :
+
+					// Non standard browser envs (web workers, react-native) lack needed support.
+					(function nonStandardBrowserEnv () {
+>>>>>>> origin/master
 						return function isURLSameOrigin () {
 							return true
 						}
@@ -1135,9 +1315,16 @@
 			)
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 15 */
 		/***/ function (module, exports) {
+=======
+		}),
+		/* 15 */
+		/***/ (function (module, exports) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
@@ -1148,7 +1335,11 @@
 				this.message = 'String contains an invalid character'
 			}
 
+<<<<<<< HEAD
 			E.prototype = new Error()
+=======
+			E.prototype = new Error
+>>>>>>> origin/master
 			E.prototype.code = 5
 			E.prototype.name = 'InvalidCharacterError'
 
@@ -1177,18 +1368,32 @@
 			module.exports = btoa
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 16 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		}),
+		/* 16 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var utils = __webpack_require__(2)
 
 			module.exports = (
+<<<<<<< HEAD
 				utils.isStandardBrowserEnv()
 
 					// Standard browser envs support document.cookie
 					? (function standardBrowserEnv () {
+=======
+				utils.isStandardBrowserEnv() ?
+
+					// Standard browser envs support document.cookie
+					(function standardBrowserEnv () {
+>>>>>>> origin/master
 						return {
 							write: function write (name, value, expires, path, domain, secure) {
 								var cookie = []
@@ -1222,10 +1427,17 @@
 								this.write(name, '', Date.now() - 86400000)
 							}
 						}
+<<<<<<< HEAD
 					})()
 
 					// Non standard browser env (web workers, react-native) lack needed support.
 					: (function nonStandardBrowserEnv () {
+=======
+					})() :
+
+					// Non standard browser env (web workers, react-native) lack needed support.
+					(function nonStandardBrowserEnv () {
+>>>>>>> origin/master
 						return {
 							write: function write () {},
 							read: function read () { return null },
@@ -1235,9 +1447,16 @@
 			)
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 17 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		}),
+		/* 17 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -1292,9 +1511,16 @@
 			module.exports = InterceptorManager
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 18 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		}),
+		/* 18 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -1383,9 +1609,16 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 19 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		}),
+		/* 19 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -1399,7 +1632,11 @@
 			 * @returns {*} The resulting transformed data
 			 */
 			module.exports = function transformData (data, headers, fns) {
+<<<<<<< HEAD
 				/* eslint no-param-reassign:0 */
+=======
+				/*eslint no-param-reassign:0*/
+>>>>>>> origin/master
 				utils.forEach(fns, function transform (fn) {
 					data = fn(data, headers)
 				})
@@ -1408,9 +1645,16 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 20 */
 		/***/ function (module, exports) {
+=======
+		}),
+		/* 20 */
+		/***/ (function (module, exports) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			module.exports = function isCancel (value) {
@@ -1418,9 +1662,16 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 21 */
 		/***/ function (module, exports) {
+=======
+		}),
+		/* 21 */
+		/***/ (function (module, exports) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			/**
@@ -1437,9 +1688,16 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 22 */
 		/***/ function (module, exports) {
+=======
+		}),
+		/* 22 */
+		/***/ (function (module, exports) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			/**
@@ -1456,9 +1714,16 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 23 */
 		/***/ function (module, exports) {
+=======
+		}),
+		/* 23 */
+		/***/ (function (module, exports) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			/**
@@ -1480,9 +1745,16 @@
 			module.exports = Cancel
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 24 */
 		/***/ function (module, exports, __webpack_require__) {
+=======
+		}),
+		/* 24 */
+		/***/ (function (module, exports, __webpack_require__) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			var Cancel = __webpack_require__(23)
@@ -1542,9 +1814,16 @@
 			module.exports = CancelToken
 
 			/***/
+<<<<<<< HEAD
 		},
 		/* 25 */
 		/***/ function (module, exports) {
+=======
+		}),
+		/* 25 */
+		/***/ (function (module, exports) {
+
+>>>>>>> origin/master
 			'use strict'
 
 			/**
@@ -1574,8 +1853,16 @@
 			}
 
 			/***/
+<<<<<<< HEAD
 		}
 		/******/])
 })
 
 // # sourceMappingURL=axios.map
+=======
+		})
+		/******/])
+})
+
+//# sourceMappingURL=axios.map
+>>>>>>> origin/master

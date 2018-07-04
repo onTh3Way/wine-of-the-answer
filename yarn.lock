@@ -3297,6 +3297,7 @@ fsevents@^1.2.2:
     nan "^2.9.2"
     node-pre-gyp "^0.10.0"
 
+<<<<<<< HEAD
 fsevents@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-1.2.4.tgz#f41dcb1af2582af3692da36fc55cbd8e1041c426"
@@ -3304,6 +3305,8 @@ fsevents@^1.2.4:
     nan "^2.9.2"
     node-pre-gyp "^0.10.0"
 
+=======
+>>>>>>> origin/master
 function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
