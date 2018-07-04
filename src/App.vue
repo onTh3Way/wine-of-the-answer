@@ -1,12 +1,12 @@
 <template>
-	<pre>
-		welcome to wota project
-		branch: sunburst
-	</pre>
+	<group-view />
 </template>
 
 <script>
+	import {GroupView, BBSView} from '@/router'
+
 	export default {
-		name: 'app'
+		name: 'app',
+		components: {GroupView, BBSView}
 	}
 </script>
