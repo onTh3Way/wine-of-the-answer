@@ -1,6 +1,6 @@
 <template>
   <pre>
-		welcome to wota project
+	  welcome to wota project
   </pre>
 </template>
 
@@ -13,11 +13,11 @@
 <style lang="less" module>
   .test {
     width: 200px;
-		
+    
     .a {
       width: 1px;
     }
-
+    
     .b {
       width: 2px;
     }
