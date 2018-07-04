@@ -44,12 +44,12 @@ module.exports = merge(baseConfig, {
 			cacheGroups: {
 				style: {
 					test: /\.less$/,
-					chunks: 'all',
+					chunks: 'initial',
 					name: 'styles'
 				},
 				vendor: {
 					test: /node_modules/,
-					chunks: 'all',
+					chunks: 'initial',
 					name: 'vendor'
 				}
 			}

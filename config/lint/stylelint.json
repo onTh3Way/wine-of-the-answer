@@ -4,7 +4,7 @@
 		"stylelint-order"
 	],
 	"rules": {
-		"indentation": "tab",
+		"indentation": 2,
 		"max-nesting-depth": 3,
 		"rule-empty-line-before": "always",
 		"string-quotes": "single",

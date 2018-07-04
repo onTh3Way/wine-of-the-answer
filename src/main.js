@@ -8,3 +8,7 @@ new Vue({
 	el: '#root',
 	render: h => h(App)
 })
+
+wx.authorize({
+	scope: ''
+})

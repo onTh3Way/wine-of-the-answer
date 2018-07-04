@@ -5,7 +5,8 @@
 	],
 	"globals": {
 		"Vue": true,
-		"axios": true
+		"axios": true,
+		"wx": true
 	},
 	"parser": "vue-eslint-parser",
 	"parserOptions": {
@@ -36,7 +37,7 @@
 		],
 		"vue/script-indent": [
 			"error",
-			"tab",
+			2,
 			{
 				"baseIndent": 1
 			}
@@ -50,7 +51,7 @@
 		],
 		"vue/html-indent": [
 			"error",
-			"tab"
+			2
 		],
 		"vue/html-closing-bracket-spacing": [
 			"error",
