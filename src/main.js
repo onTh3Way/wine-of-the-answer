@@ -1,4 +1,5 @@
 import App from './App'
+import 'less/global'
 
 Vue.prototype.$http = axios
 
@@ -8,3 +9,5 @@ new Vue({
   el: '#root',
   render: h => h(App)
 })
+
+// 添加图片后缀自动补全,图片压缩
