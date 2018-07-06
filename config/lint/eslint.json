@@ -5,12 +5,8 @@
 	],
 	"globals": {
 		"Vue": true,
-<<<<<<< HEAD
-		"axios": true
-=======
 		"axios": true,
 		"wx": true
->>>>>>> origin/master
 	},
 	"parser": "vue-eslint-parser",
 	"parserOptions": {
@@ -41,11 +37,7 @@
 		],
 		"vue/script-indent": [
 			"error",
-<<<<<<< HEAD
-			"tab",
-=======
 			2,
->>>>>>> origin/master
 			{
 				"baseIndent": 1
 			}
@@ -59,11 +51,7 @@
 		],
 		"vue/html-indent": [
 			"error",
-<<<<<<< HEAD
-			"tab"
-=======
 			2
->>>>>>> origin/master
 		],
 		"vue/html-closing-bracket-spacing": [
 			"error",

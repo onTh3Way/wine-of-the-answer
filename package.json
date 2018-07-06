@@ -71,10 +71,6 @@
 	},
 	"dependencies": {
 		"axios": "^0.18.0",
-<<<<<<< HEAD
-		"fsevents": "^1.2.4",
-=======
->>>>>>> origin/master
 		"lodash": "^4.17.10",
 		"vue": "^2.5.16",
 		"vue-router": "^3.0.1"

@@ -8,11 +8,7 @@
 至此,环境搭建完毕
 
 ## 进入docker容器
-<<<<<<< HEAD
-- 容器未启动: `docker run --rm -it -v 你的项目目录(绝对路径):/app onth3way/wota bash`
-=======
 - 容器未启动: `docker run --rm -it -p 3000:3000 -v 你的项目目录(绝对路径):/app onth3way/wota bash`
->>>>>>> origin/master
 - 容器启动在后台: `docker ps`查找id,`docker attach id`
 
 ## 重启docker容器

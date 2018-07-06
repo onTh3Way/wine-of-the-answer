@@ -1,36 +1,11 @@
 <template>
-<<<<<<< HEAD
-	<div />
+  <protocol /> 
 </template>
 
 <script>
-	export default {
-		name: 'app'
-	}
-</script>
-=======
-  <pre>
-	  welcome to wota project
-  </pre>
-</template>
-
-<script>
+  import {Protocol} from 'router'
   export default {
-    name: 'app'
+    name: 'app',
+    components: {Protocol}
   }
-</script>
-
-<style lang="less" module>
-  .test {
-    width: 200px;
-    
-    .a {
-      width: 1px;
-    }
-    
-    .b {
-      width: 2px;
-    }
-  }
-</style>
->>>>>>> origin/master
+</script> 

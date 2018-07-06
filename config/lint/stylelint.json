@@ -4,11 +4,7 @@
 		"stylelint-order"
 	],
 	"rules": {
-<<<<<<< HEAD
-		"indentation": "tab",
-=======
 		"indentation": 2,
->>>>>>> origin/master
 		"max-nesting-depth": 3,
 		"rule-empty-line-before": "always",
 		"string-quotes": "single",

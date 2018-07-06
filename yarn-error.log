@@ -1,32 +1,4 @@
 Arguments: 
-<<<<<<< HEAD
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add fsevent
-
-PATH: 
-  C:\Users\Meoga\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Meoga\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Docker\Docker\Resources\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-10.0.1\bin;C:\Program Files\Java\jdk-10.0.1\jre\bin;C:\Program Files (x86)\Yarn\bin;C:\Users\Meoga\AppData\Local\Microsoft\WindowsApps;C:\Users\Meoga\AppData\Roaming\npm;C:\Program Files\Git\mingw64\libexec\git-core;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Program Files\MongoDB\Server\3.6\bin;C:\Program Files (x86)\apache-tomcat-9.0.10-src\bin;C:\Users\Meoga\AppData\Local\Yarn\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
-
-Yarn version: 
-  1.7.0
-
-Node version: 
-  8.11.3
-
-Platform: 
-  win32 x64
-
-Trace: 
-  Error: https://registry.yarnpkg.com/fsevent: Not found
-      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:65656:18)
-      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:134675:22)
-      at emitTwo (events.js:126:13)
-      at Request.emit (events.js:214:7)
-      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:135658:10)
-      at emitOne (events.js:116:13)
-      at Request.emit (events.js:211:7)
-      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:135578:12)
-      at Object.onceWrapper (events.js:313:30)
-      at emitNone (events.js:111:20)
-=======
   /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1/libexec/bin/yarn.js build
 
 PATH: 
@@ -40,7 +12,6 @@ Node version:
 
 Platform: 
   darwin x64
->>>>>>> origin/master
 
 npm manifest: 
   {
@@ -69,11 +40,6 @@ npm manifest:
   		"babel-plugin-transform-object-rest-spread": "^6.26.0",
   		"babel-plugin-transform-vue-jsx": "^3.7.0",
   		"cache-loader": "^1.2.2",
-<<<<<<< HEAD
-  		"commander": "^2.16.0",
-  		"compression": "^1.7.2",
-=======
->>>>>>> origin/master
   		"cross-env": "^5.2.0",
   		"css-loader": "^0.28.11",
   		"eslint": "^5.0.0",
