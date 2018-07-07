@@ -26,18 +26,18 @@ module.exports = {
     // 文件夹别名
     alias: {
       '@': '.',
-      assets: './assets',
-      components: './components',
-      containers: './containers',
-      less: './less',
-      router: './router',
-      service: './service',
-      utils: './utils'
+      assets: path.resolve(srcPath, 'assets'),
+      components: path.resolve(srcPath, 'components'),
+      containers: path.resolve(srcPath, 'containers'),
+      less: path.resolve(srcPath, 'less'),
+      router: path.resolve(srcPath, 'router'),
+      service: path.resolve(srcPath, 'service'),
+      utils: path.resolve('utils')
     },
     // 模块寻找路径
     modules: [
-      path.resolve(rootPath, 'src'),
-      path.resolve(rootPath, 'node_modules')
+      './',
+      'node_modules'
     ]
   },
   module: {
@@ -168,6 +168,7 @@ module.exports = {
                 ['@babel/plugin-proposal-class-properties', {loose: true}],
                 '@babel/plugin-syntax-dynamic-import',
                 'transform-vue-jsx'
+                // 'babel-plugin-webpack-alias', {'config': 'webpack.common.js'}
               ],
               comments: devMode,
               compact: !devMode,
