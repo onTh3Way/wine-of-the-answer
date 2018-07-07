@@ -1,6 +1,6 @@
 <template>
-  <div>
-    wota project
+  <div id="app">
+    welcome to wota project
   </div>
 </template>
 
