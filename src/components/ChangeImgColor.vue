@@ -39,6 +39,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    border-right: 20px solid transparent;
+    margin-left: 1px;
+    border-right: 1px solid transparent;
   }
 </style>
