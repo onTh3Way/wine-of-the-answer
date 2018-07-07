@@ -23,7 +23,7 @@ module.exports = merge(baseConfig, {
     new ManifestPlugin('manifest'),
     new PrerenderSPAPlugin({
       staticDir: distPath,
-      routes: ['/', '/about']
+      routes: ['/', '/protocol']
     })
   ],
   optimization: {
