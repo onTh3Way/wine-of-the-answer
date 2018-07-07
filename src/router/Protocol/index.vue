@@ -1,8 +1,10 @@
 <template>
   <div :class="$style.protocolSection">
-    <div :class="$style.top">
-      <img src="~assets/logo-title.svg">
-    </div>
+    <change-img-color
+      :class="$style.top"
+      :img-url="require('assets/logo-title.svg')"
+      color="white"
+    />
     <div :class="$style.bottom">
       <div :class="$style.topWrap">
         <b>?</b>
@@ -25,6 +27,15 @@
     </div>
   </div>
 </template>
+
+<script>
+  import { ChangeImgColor } from 'components'
+
+  export default {
+    name: 'protocol',
+    components: {ChangeImgColor}
+  }
+</script>
 
 <style lang="less" module>
   .protocolSection {
