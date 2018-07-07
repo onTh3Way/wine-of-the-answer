@@ -15,7 +15,7 @@ module.exports = merge(baseConfig, {
   plugins: [
     new OptimizeCssAssetsPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].css'
+      filename: '[name].[chunkhash].css'
     }),
     new ManifestPlugin('manifest')
   ],

@@ -25,14 +25,14 @@ module.exports = {
     extensions: ['.vue', '.js', '.less', '.png', '.jpg', 'gif', 'jpeg', '.json', '.html'],
     // 文件夹别名
     alias: {
-      '@': '.',
+      '@': path.resolve(srcPath),
       assets: path.resolve(srcPath, 'assets'),
       components: path.resolve(srcPath, 'components'),
       containers: path.resolve(srcPath, 'containers'),
       less: path.resolve(srcPath, 'less'),
       router: path.resolve(srcPath, 'router'),
       service: path.resolve(srcPath, 'service'),
-      utils: path.resolve('utils')
+      utils: path.resolve(srcPath, 'utils')
     },
     // 模块寻找路径
     modules: [
@@ -195,7 +195,6 @@ module.exports = {
     }),
     // 自动生成html,
     new HtmlPlugin({
-      filename: path.join(distPath, './index.html'),
       template: path.join(srcPath, 'index.html'),
       favicon: path.join(srcPath, './assets/favicon.ico'),
       minify: !devMode,
