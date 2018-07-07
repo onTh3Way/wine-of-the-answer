@@ -1,8 +1,8 @@
 <html>
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
@@ -11,71 +11,70 @@
       text-align: center;
       background-color: rgb(249, 186, 197);
     }
-
+    
     .bottombg {
       position: fixed;
       transform: translateY(200%);
       width: 100%;
       transition: transform 1s ease;
     }
-
-    .bottombg>img {
+    
+    .bottombg > img {
       width: 70%;
       height: 54.5%;
     }
-
+    
     .top {
       position: absolute;
       transform: translateY(-100%);
       transition: transform 1s ease;
     }
-
-    .top>h1 {
+    
+    .top > h1 {
       padding-top: 0.85rem;
       color: black;
     }
-
+    
     .bg {
       width: 100%;
       margin-top: -0.4rem;
     }
-
+    
     .bg img {
       width: 100%;
     }
-
-    .text>h6 {
+    
+    .text > h6 {
       padding: 0.1rem 0;
     }
   </style>
 </head>
-
 <body>
-  <div id="root">
-    <div class="section">
-      <div class="top" id="home-top-bg">
-        <h1>Welcome</h1>
-        <div class="bg">
-          <img src="<%= require('./assets/black-title.png') %>">
-        </div>
-        <div class="text">
-          <h6>点击瓶子</h6>
-          <h6>把你的烦恼</h6>
-          <h6>匿名告诉全世界</h6>
-        </div>
+<div id="root">
+  <div class="section">
+    <div class="top" id="home-top-bg">
+      <h1>Welcome</h1>
+      <div class="bg">
+        <img src="<%= require('./assets/black-title.png') %>">
       </div>
-      <div class="bottombg" id="home-bottom-bg">
-        <img src="<%= require('./assets/bottle.png') %>">
+      <div class="text">
+        <h6>点击瓶子</h6>
+        <h6>把你的烦恼</h6>
+        <h6>匿名告诉全世界</h6>
       </div>
     </div>
+    <div class="bottombg" id="home-bottom-bg">
+      <img src="<%= require('./assets/bottle.png') %>">
+    </div>
   </div>
-  <script> 
-    // window.onload = function () {
-    //     document.getElementById('home-top-bg').style.transform = 'translateY(46px)'
-    //     document.getElementById('home-bottom-bg').style.transform = 'translateY(100%)'
-    // }
-  </script>
-  <script src="axios.js"></script>
-  <script src="vue.js"></script>
+</div>
+<script>
+  // window.onload = function () {
+  //     document.getElementById('home-top-bg').style.transform = 'translateY(46px)'
+  //     document.getElementById('home-bottom-bg').style.transform = 'translateY(100%)'
+  // }
+</script>
+<script src="axios.js"></script>
+<script src="vue.js"></script>
 </body>
 </html>
