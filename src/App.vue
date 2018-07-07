@@ -1,12 +1,14 @@
 <template>
-  <protocol />
+  <div id="app">
+    <home />
+  </div>
 </template>
 
 <script>
-  import { Protocol } from 'router'
+  import { Home, Protocol } from 'router'
 
   export default {
     name: 'app',
-    components: {Protocol}
+    components: {Home, Protocol}
   }
 </script>

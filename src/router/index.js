@@ -1,1 +1,2 @@
-export {default as Protocol} from './Protocol'
+export { default as Home } from './Home'
+export { default as Protocol } from './Protocol'

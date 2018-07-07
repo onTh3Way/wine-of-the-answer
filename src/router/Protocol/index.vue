@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.protocolSection">
     <div :class="$style.top">
-      <img src="~assets/logo.png">
+      <img src="~assets/logo-title.svg">
     </div>
     <div :class="$style.bottom">
       <div :class="$style.topWrap">

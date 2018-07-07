@@ -59,7 +59,7 @@ module.exports = {
       },
       // 文件解析
       {
-        test: /\.(png|jpe?g|gif|ico|svg)$/,
+        test: /\.(png|jpe?g|gif|ico|svg)$/i,
         exclude: /node_modules/,
         use: [
           {

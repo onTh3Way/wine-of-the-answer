@@ -27,7 +27,7 @@
     mounted () {
       // 等待css样式挂载完毕
       setTimeout(() => {
-        this.$el.style.filter = `drop-shadow(${this.color} ${this.$el.clientWidth}px 0)`
+        this.$el.style.filter = `drop-shadow(${this.color} ${this.$el.offsetWidth}px 0)`
       })
     }
   }

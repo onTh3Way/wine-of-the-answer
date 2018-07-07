@@ -26,7 +26,7 @@
   .test {
     width: 100%;
     height: 50%;
-    background: url('../assets/logo.png') no-repeat center / cover;
+    background: url('../assets/logo-title.png') no-repeat center / cover;
     .change-img-color(pink, 1000px);
   }
 </style>

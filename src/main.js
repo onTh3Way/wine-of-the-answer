@@ -6,6 +6,6 @@ Vue.prototype.$http = axios
 if (process.env.NODE_ENV === 'development') Vue.config.performance = true
 
 new Vue({
-  el: '#root',
+  el: '#app',
   render: h => <App />
 })
