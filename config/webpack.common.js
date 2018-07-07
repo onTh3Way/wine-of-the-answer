@@ -168,7 +168,6 @@ module.exports = {
                 ['@babel/plugin-proposal-class-properties', {loose: true}],
                 '@babel/plugin-syntax-dynamic-import',
                 'transform-vue-jsx'
-                // 'babel-plugin-webpack-alias', {'config': 'webpack.common.js'}
               ],
               comments: devMode,
               compact: !devMode,
