@@ -25,7 +25,7 @@ module.exports = {
     extensions: ['.vue', '.js', '.less', '.png', '.jpg', 'gif', 'jpeg', '.json', '.html'],
     // 文件夹别名
     alias: {
-      '@': '.',
+      '@': path.resolve(srcPath),
       assets: path.resolve(srcPath, 'assets'),
       components: path.resolve(srcPath, 'components'),
       containers: path.resolve(srcPath, 'containers'),

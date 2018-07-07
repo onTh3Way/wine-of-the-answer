@@ -2,6 +2,5 @@
 .idea
 .cache-loader
 yarn-error.log
-dist
 node_modules
 dist
