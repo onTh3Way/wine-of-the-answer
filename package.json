@@ -42,6 +42,7 @@
 		"file-loader": "^1.1.11",
 		"html-loader": "^0.5.5",
 		"html-webpack-plugin": "^3.2.0",
+		"image-webpack-loader": "^4.3.1",
 		"inline-manifest-webpack-plugin": "^4.0.0",
 		"less": "^3.0.4",
 		"less-loader": "^4.1.0",
@@ -76,7 +77,7 @@
 		"vue-router": "^3.0.1"
 	},
 	"scripts": {
-		"predev": "cp src/assets/vue.dev.js dist/vue.js && cp src/assets/axios.dev.js dist/axios.js",
+		"predev": "mkdir -p dist && cp src/assets/vue.dev.js dist/vue.js && cp src/assets/axios.dev.js dist/axios.js",
 		"dev": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.dev.js --color --port 3000",
 		"prebuild": "rm -rf ./dist",
 		"build": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
