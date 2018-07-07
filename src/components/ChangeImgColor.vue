@@ -1,5 +1,7 @@
 <!--
 改变透明图片不透明部分的颜色
+原理: 使用drop-shadow投影不透明部分,然后修改投影颜色达成目的
+注意: 当被投影的目标本身不可见时,投影也会不可见
 @property {string} color 要应用的颜色
 @property {string} imgUrl 图片地址,如果图片加载不进来,请使用 :imgUrl="require('./img.png')" 形式
 -->
