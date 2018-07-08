@@ -6,17 +6,16 @@
 
 #### URL
 
-> POST /api/users/{userId}
+> DELETE /api/users/{userId}?timestamp=121212121
 
-#### 请求参数(JSON)
+#### 请求参数
 
 |参数|必选|类型|默认值|说明|
 |:----- |:-------|:------|:-----|----- |
-|userId |true |string| | 用户id|
-|time|true|timestamp(毫秒)|| 冻结截止时间|
+|time|false|timestamp(毫秒)|currentTimestamp + 7天总毫秒| 冻结截止时间|
 
 #### 响应：
-##### 成功：200
+##### 成功：204
 ##### 权限不足: 401
 ##### 用户不存在: 404
 
