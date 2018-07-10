@@ -35,11 +35,12 @@ JSON
 		       userId: 'uId',
 		       nickname: 'phantom',
 		       avatar: 'blbla.png',
-		       date: 123213123123,
+		       createDate: 123213123123,
 		       content: 'test content',
-		       agreeNum: 100,
-		       disagreeNum: 100,
-		       commentNum: 200
+		       agreeCount: 100,
+		       disagreeCount: 100,
+		       commentCount: 200,
+		       anonymous: true
          }
         ],
         total: 4000

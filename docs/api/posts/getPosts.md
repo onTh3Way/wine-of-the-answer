@@ -21,7 +21,7 @@
 
 |返回字段|字段类型|说明 |
 |:----- |:------|:----------------------------- |
-| dataList | Array\<post> | 帖子列表 |
+| posts | Array\<post> | 帖子列表 |
 | total | int | 帖子总数 |
 
 #### 响应
@@ -29,15 +29,9 @@
 JSON
 ```
     {
-        dataList: [{
-               postId: 'pid',
-               userId: 'uid',
-               nickname: 'phantom',
-               avatar: 'blbla.png',
-               date: 123213123123,
-               content: 'test content',
-               likeCount: 100,
-               commentCount: 200
+        posts: [{
+          postId: 'pid',
+          // 其它同getPost数据
         }],
         total: 5000
     }

@@ -12,12 +12,11 @@
 
 |返回字段|字段类型|说明 |
 |:----- |:------|:----------------------------- |
-|userId | string | 发帖者id |
-|nickname | string | 用户名 |
-|avatar | string | 用户头像链接 |
-|date | timestamp | 发布日期 |
+|author | object | 发帖者信息,如果匿名则只返回id |
+|createDate | timestamp | 发布日期 |
 |content | string | 帖子内容 |
-|likeCount | int | 点赞次数 |
+|agreeCount | int | 点赞次数 |
+|disagreeCount | int | 踩次数 |
 |commentCount | int | 评论次数 |
 
 #### 响应：
@@ -25,12 +24,20 @@
 响应格式：JSON
 ```
     {
-       userId: 'uid',
-       nickname: 'phantom',
-       avatar: 'blbla.png',
-       date: 123213123123,
+       // 如果匿名
+       author: {
+        userId: 22,
+       },
+       // 不匿名
+       author: {
+        userId: 22,
+        nickname: 'blab',
+        avatar: 'fake.png'
+       },
+       createDate: 123213123123,
        content: 'test content',
-       likeCount: 100,
+       agreeCount: 100,
+       disagreeCount: 200,
        commentCount: 200
     }
 ```
