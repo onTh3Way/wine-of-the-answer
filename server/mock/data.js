@@ -16,16 +16,22 @@ global.createPost = function ({
                                 content = faker.random.words(),
                                 anonymous = faker.random.boolean()
                               }) {
+  const user = findUser(userId)
   return {
-    userId,
+    author: anonymous ? {
+      userId
+    } : {
+      userId,
+      nickname: user.nickname,
+      avatar: user.avatar
+    },
     part,
     postId: faker.random.uuid(),
     content,
     createDate: new Date(faker.date.past()).getTime(),
     agreeCount: faker.random.number(),
     disagreeCount: faker.random.number(),
-    commentCount: faker.random.number(),
-    anonymous
+    commentCount: faker.random.number()
   }
 }
 
@@ -34,18 +40,37 @@ global.createComment = function ({
                                    postId,
                                    anonymous = faker.random.boolean()
                                  }) {
+  const user = findUser(userId)
   return {
-    userId,
+    author: anonymous ? {
+      userId
+    } : {
+      userId,
+      nickname: user.nickname,
+      avatar: user.avatar
+    },
     postId,
     commentId: faker.random.uuid(),
     content: faker.random.words(),
     createDate: new Date(faker.date.past()).getTime(),
     agreeCount: faker.random.number(),
     disagreeCount: faker.random.number(),
-    commentCount: faker.random.number(),
-    anonymous
+    commentCount: faker.random.number()
   }
 }
+
+global.findUser = function (userId) {
+  return db.users.find(user => user.userId === userId)
+}
+
+global.findPost = function (postId) {
+  return db.posts.find(post => post.postId === postId)
+}
+
+global.findComment = function (commentId) {
+  return db.comments.find(comment => comment.commentId === commentId)
+}
+
 global.parts = [
   'married', 'work',
   'money', 'study',
@@ -53,7 +78,7 @@ global.parts = [
   'others'
 ]
 
-const data = {
+global.db = {
   users: [],
   posts: [],
   comments: [],
@@ -67,16 +92,14 @@ function randomNum (min, max) {
 Array(100)
   .fill(null)
   .forEach((_, i) => {
-    data.users.push(createUser())
+    db.users.push(createUser())
 
-    data.posts.push(createPost({
-      userId: data.users[i].userId
+    db.posts.push(createPost({
+      userId: db.users[i].userId
     }))
 
-    data.comments.push(createComment({
-      userId: data.users[i].userId,
-      postId: data.posts[i].postId
+    db.comments.push(createComment({
+      userId: db.users[i].userId,
+      postId: db.posts[i].postId
     }))
   })
-
-global.db = data

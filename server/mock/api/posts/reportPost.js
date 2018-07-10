@@ -12,11 +12,13 @@ module.exports = function (app, path) {
     // 通过
     else res.statusCode = 204
 
-    db.postReports.push({
-      userId,
-      postId,
-      reason
-    })
+    if (res.statusCode === 204) {
+      db.postReports.push({
+        userId,
+        postId,
+        reason
+      })
+    }
 
     res.end()
     next()

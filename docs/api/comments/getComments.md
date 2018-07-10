@@ -12,7 +12,7 @@
 
 |参数|必选|类型|默认值|说明|
 |:----- |:-------|:-----|:-----|----- |
-|postId| true | string | | 帖子id|
+|postId| false | string | | 帖子id|
 |sort |false |string|hot|排序方式, 'date' 日期排序, 'hot'热门排序|
 |offset| false| int| 0 | 从第几个开始获取|
 |limit| false| int| 5 | 获取数量|
@@ -21,7 +21,7 @@
 
 |返回字段|字段类型|说明 |
 |:----- |:------|:----------------------------- |
-|dataList | Array\<comment> | 评论信息 |
+|comments | Array\<comment> | 评论信息 |
 |total | int | 评论总数量 |
 
 #### 响应
@@ -29,23 +29,12 @@
 JSON
 ```
     {
-        dataList: [
-         {
-		       commentId: 'cid',
-		       userId: 'uId',
-		       nickname: 'phantom',
-		       avatar: 'blbla.png',
-		       createDate: 123213123123,
-		       content: 'test content',
-		       agreeCount: 100,
-		       disagreeCount: 100,
-		       commentCount: 200,
-		       anonymous: true
-         }
-        ],
+        dataList: [{
+          commentId: 'cid',
+          // 其他数据同getComment
+        }],
         total: 4000
     }
 ```
 ##### 参数不正确: 400
 ##### 发帖者被冻结且权限不足: 401
-##### 帖子不存在: 404

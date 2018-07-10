@@ -12,7 +12,7 @@
 
 |返回字段|字段类型|说明 |
 |:----- |:------|:----------------------------- |
-|author | object | 发帖者信息,如果匿名则只返回id |
+|author | object | 发帖者信息 |
 |createDate | timestamp | 发布日期 |
 |content | string | 帖子内容 |
 |agreeCount | int | 点赞次数 |

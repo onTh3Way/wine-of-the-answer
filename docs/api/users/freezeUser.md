@@ -6,7 +6,7 @@
 
 #### URL
 
-> DELETE /api/users/{userId}?timestamp=121212121
+> DELETE /api/users/{userId}?freezeTime=121212121
 
 #### 请求参数
 

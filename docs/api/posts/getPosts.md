@@ -13,7 +13,7 @@
 |参数|必选|类型|默认值|说明|
 |:----- |:-------|:-----|:-----|----- |
 |sort |false |string|hot|排序方式, 'date' 日期排序, 'hot'热门排序|
-|part| true | string | | 所在分区|
+|part| false | string | | 所在分区|
 |offset| false| int| 0| 从第几个开始获取|
 |limit| false| int| 10| 获取数量|
 
