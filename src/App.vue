@@ -1,5 +1,7 @@
 <template>
-  <group-view />
+  <div id="app">
+    <group-view />
+  </div>
 </template>
 
 <script>

@@ -16,3 +16,16 @@
   top: 50%;
   left: 50%;
 }
+
+/**
+改变png透明图片图标的颜色
+使用此属性前请为background设置透明图片
+@param {string} color: 要应用的颜色
+@param {string} width: 当前物体宽度
+ */
+.change-img-color(@color; @width) {
+  position: relative;
+  left: -100%;
+  filter: drop-shadow(@color @width 0);
+  border-right: 20px solid transparent;
+}
