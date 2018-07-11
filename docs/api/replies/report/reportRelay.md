@@ -2,22 +2,21 @@
 
 #### 功能
 
-> 发布帖子
+> 举报指定回复
 
-#### 接口
+#### URL
 
-> POST  /api/v1/{partId}/posts
+> POST api/v1/replies/{replyId}/report
 
 #### 请求参数(JSON)
 
-|参数|必选 |类型|默认值|说明|
-|:----- |:-------|:-----|:----- |:----- |
-|userId |true |string||用户id|
-|content |true |string||帖子内容|
-|anonymous |false |boolean|false|是否匿名|
+|参数|必选|类型|说明|
+|:----- |:-------|:-----|----- |
+|userId |true |string| 举报者id|
+|reason |true |string| 举报原因|
 
-#### 响应：
-##### 发布成功：201
+#### 响应
+##### 举报成功: 204
 ##### 参数不合法: 400
 ##### 未登录: 401
 ##### 禁止: 403
@@ -35,4 +34,5 @@ JSON
     msg: 'no permission'
 	}
 ```
+##### 帖子不存在: 404
 

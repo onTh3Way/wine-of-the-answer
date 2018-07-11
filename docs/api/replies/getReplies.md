@@ -2,11 +2,11 @@
 
 #### 功能
 
-> 获取帖子列表
+> 获取回复列表
 
 #### URL
 
-> GET /api/v1/{partId}/posts?sort=date&offset=0&limit=10
+> GET /api/v1/comments/{commentId}/replies?sort=date&offset=0&limit=10
 
 #### 请求参数
 
@@ -20,8 +20,8 @@
 
 |返回字段|字段类型|说明 |
 |:----- |:------|:----------------------------- |
-| data | Array\<post> | 帖子列表 |
-| total | int | 帖子总数 |
+| data | Array\<reply> | 数据列表 |
+| total | int | 总数 |
 
 #### 响应
 ##### 获取成功: 200
@@ -29,8 +29,8 @@ JSON
 ```
     {
         data: [{
-          postId: 'pid',
-          // 其它同getPost数据
+          replyId: 'rid',
+          // 其它同getReply数据
         }],
         total: 5000
     }

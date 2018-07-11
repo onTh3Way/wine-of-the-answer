@@ -6,7 +6,7 @@
 
 #### URL
 
-> POST /api/comments/{commentId}
+> POST /api/v1/comments/{commentId}/report
 
 #### 请求参数(JSON)
 
@@ -18,7 +18,20 @@
 #### 响应
 ##### 举报成功: 204
 ##### 参数不合法: 400
-##### 用户未登录或token验证不通过: 401
+##### 未登录: 401
+##### 禁止: 403
+JSON
+```js
+	{
+		// 未同意授权
+		code: 0
+    msg: 'no agree protocol'
+    // 账户被冻结
+    code: 1
+    msg: 'user is frozen'
+    // 权限不足
+    code: 2
+    msg: 'no permission'
+	}
+```
 ##### 评论不存在: 404
-##### 举报者未同意协议: 460
-##### 举报者被冻结: 461

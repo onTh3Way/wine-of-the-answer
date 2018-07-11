@@ -6,7 +6,7 @@
 
 #### URL
 
-> GET /api/posts/{postId}
+> GET /api/v1/posts/{postId}
 
 #### 返回字段
 
@@ -24,15 +24,10 @@
 响应格式：JSON
 ```
     {
-       // 如果匿名
        author: {
         userId: 22,
-       },
-       // 不匿名
-       author: {
-        userId: 22,
-        nickname: 'blab',
-        avatar: 'fake.png'
+        nickname: 'blab', // 如果匿名,此项固定填写 匿名用户
+        avatar: 'fake.png' // 如果匿名,此项固定为匿名图片
        },
        createDate: 123213123123,
        content: 'test content',
@@ -41,7 +36,7 @@
        commentCount: 200
     }
 ```
-##### 用户被冻结且权限不足: 401
+##### 发帖者被冻结且权限不足: 403
 ##### 帖子不存在: 404
 
 

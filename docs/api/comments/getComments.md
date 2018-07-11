@@ -2,17 +2,16 @@
 
 #### 功能
 
-> 获取评论列表
+> 获取指定帖子评论列表
 
 #### URL
 
-> GET /api/comments?postId=id&sort=date&offset=0&limit=5
+> GET /api/v1/posts/{postId}/comments?sort=date&offset=0&limit=5
 
 #### 请求参数
 
 |参数|必选|类型|默认值|说明|
 |:----- |:-------|:-----|:-----|----- |
-|postId| false | string | | 帖子id|
 |sort |false |string|hot|排序方式, 'date' 日期排序, 'hot'热门排序|
 |offset| false| int| 0 | 从第几个开始获取|
 |limit| false| int| 5 | 获取数量|
@@ -21,15 +20,15 @@
 
 |返回字段|字段类型|说明 |
 |:----- |:------|:----------------------------- |
-|comments | Array\<comment> | 评论信息 |
-|total | int | 评论总数量 |
+|data | Array\<comment> | 数据列表 |
+|total | int | 总数量 |
 
 #### 响应
 ##### 获取成功: 200
 JSON
 ```
     {
-        dataList: [{
+        data: [{
           commentId: 'cid',
           // 其他数据同getComment
         }],
@@ -37,4 +36,3 @@ JSON
     }
 ```
 ##### 参数不正确: 400
-##### 发帖者被冻结且权限不足: 401

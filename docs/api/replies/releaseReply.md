@@ -2,18 +2,19 @@
 
 #### 功能
 
-> 发布帖子
+> 回复评论
 
 #### 接口
 
-> POST  /api/v1/{partId}/posts
+> POST  /api/v1/comments/{commentId}/replies
 
 #### 请求参数(JSON)
 
 |参数|必选 |类型|默认值|说明|
 |:----- |:-------|:-----|:----- |:----- |
-|userId |true |string||用户id|
-|content |true |string||帖子内容|
+|senderId |true |string||回复者Id|
+|receiverId |false |string||接受者Id|
+|content |true |string||内容|
 |anonymous |false |boolean|false|是否匿名|
 
 #### 响应：
