@@ -12,13 +12,12 @@
 
 |参数|必选|类型|说明|
 |:----- |:-------|:-----|----- |
-|userId |true |string|用户id|
 |content |true |string|内容|
 |anonymous |true |boolean|是否匿名|
 
 #### 响应：
 ##### 创建成功: 201
-##### 参数不合法(如userId为空等): 400
+##### 参数不合法: 400
 ##### 未登录: 401
 ##### 禁止: 403
 JSON
@@ -30,10 +29,14 @@ JSON
     // 账户被冻结
     code: 1
     msg: 'user is frozen'
-    // 权限不足
+    // 无效的token
     code: 2
+    msg: 'invalid token'
+    // 权限不足
+    code: 3
     msg: 'no permission'
 	}
 ```
+##### 帖子不存在: 404
 
 

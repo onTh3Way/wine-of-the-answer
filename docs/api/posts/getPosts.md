@@ -6,7 +6,7 @@
 
 #### URL
 
-> GET /api/v1/{partId}/posts?sort=date&offset=0&limit=10
+> GET /api/v1/{part}/posts?sort=date&offset=0&limit=10
 
 #### 请求参数
 
@@ -36,3 +36,4 @@ JSON
     }
 ```
 ##### 参数不合法: 400
+##### 分区不存在: 404

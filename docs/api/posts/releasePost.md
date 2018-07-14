@@ -6,13 +6,12 @@
 
 #### 接口
 
-> POST  /api/v1/{partId}/posts
+> POST  /api/v1/{part}/posts
 
 #### 请求参数(JSON)
 
 |参数|必选 |类型|默认值|说明|
 |:----- |:-------|:-----|:----- |:----- |
-|userId |true |string||用户id|
 |content |true |string||帖子内容|
 |anonymous |false |boolean|false|是否匿名|
 
@@ -30,9 +29,13 @@ JSON
     // 账户被冻结
     code: 1
     msg: 'user is frozen'
-    // 权限不足
+    // 无效的token
     code: 2
+    msg: 'invalid token'
+    // 权限不足
+    code: 3
     msg: 'no permission'
 	}
 ```
+##### 分区不存在: 404
 

@@ -20,10 +20,13 @@ JSON
     // 账户被冻结
     code: 1
     msg: 'user is frozen'
-    // 权限不足
+    // 无效的token
     code: 2
+    msg: 'invalid token'
+    // 权限不足
+    code: 3
     msg: 'no permission'
 	}
 ```
-##### 帖子不存在: 404
+##### 回复不存在: 404
 

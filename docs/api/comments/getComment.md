@@ -17,7 +17,7 @@
 |content | string | 内容 |
 |agreeCount | int | 点赞次数 |
 |disagreeCount| int | 踩次数 |
-|commentCount | int | 评论次数 |
+|reliesCount | int | 回复次数 |
 
 #### 响应：
 ##### 获取成功: 200
@@ -33,7 +33,7 @@ JSON
        content: 'test content',
        agreeCount: 100,
        disagreeCount: 100,
-       commentCount: 200
+       reliesCount: 200
     }
 ```
 ##### 评论者被冻结且权限不足: 403

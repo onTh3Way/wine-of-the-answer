@@ -12,8 +12,7 @@
 
 |参数|必选 |类型|默认值|说明|
 |:----- |:-------|:-----|:----- |:----- |
-|senderId |true |string||回复者Id|
-|receiverId |false |string||接受者Id|
+|receiverId |false |string|| 要回复的回复id |
 |content |true |string||内容|
 |anonymous |false |boolean|false|是否匿名|
 
@@ -21,7 +20,6 @@
 ##### 发布成功：201
 ##### 参数不合法: 400
 ##### 未登录: 401
-##### 禁止: 403
 JSON
 ```js
 	{
@@ -31,9 +29,12 @@ JSON
     // 账户被冻结
     code: 1
     msg: 'user is frozen'
-    // 权限不足
+    // 无效的token
     code: 2
+    msg: 'invalid token'
+    // 权限不足
+    code: 3
     msg: 'no permission'
 	}
 ```
-
+##### 评论不存在: 404

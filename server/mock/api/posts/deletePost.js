@@ -1,10 +1,15 @@
-module.exports = function (app, path) {
-  app.delete(`${path}/:postId`, (req, res, next) => {
-    const postId = req.params.postId
-    const index = db.posts.findIndex((v) => v.postId === postId)
-    
-    res.statusCode = index === -1 ? 404 : 204
-    if (index !== -1) db.posts.splice(index, 1)
+module.exports = function (app) {
+  app.delete(`/posts/:postId`, (req, res, next) => {
+    const {postId} = req.params
+
+    if (index === -1) {
+      res.statusCode = 404
+    } else if (!req.isAdmin) {
+      res.statusCode = 403
+    } else {
+      res.statusCode = 204
+      dbUtils.remove(postId)
+    }
 
     res.end()
     next()

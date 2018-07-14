@@ -1,37 +1,23 @@
-function validate (body) {
-  const {userId, content, part} = body
+module.exports = function (app) {
+  app.post('/:part/posts', (req, res, next) => {
+    const {part} = req.params
+    const {content, anonymous} = req.body
 
-  return !(!userId || !content || !part || !parts.includes(part))
-}
-
-module.exports = function (app, path) {
-  app.post(path, (req, res, next) => {
-    const {userId, content, part, anonymous} = req.body
-
-    if (!validate(req.body)) {
+    if (!content) {
       res.statusCode = 400
-      res.end()
-      return
-    }
-
-    const user = db.users.find(user => user.userId === userId)
-
-    res.statusCode = !user
-      ? 401
-      : !user.agreeProtocol
-        ? 460
-        : user.freezeTime > Date.now()
-          ? 461
-          : 204
-
-    if (res.statusCode === 204) {
-      db.posts.push(createPost({
-        userId: user.userId,
+    } else if (!db.parts.includes(part)) {
+      res.statusCode = 404
+    } else {
+      res.statusCode = 201
+      dbUtils.insertPost({
+        userId: req.user.id,
         content,
         part,
-        anonymous
-      }))
+        anonymous,
+      })
     }
+
+    res.setHeader('Location', `${part}/posts/${db.posts.length - 1}`)
 
     res.end()
     next()

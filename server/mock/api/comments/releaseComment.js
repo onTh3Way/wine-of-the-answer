@@ -22,7 +22,7 @@ module.exports = function (app, path) {
         : 204
       : 460
 
-    if (res.statusCode === 204) db.comments.push(createComment({userId, postId, anonymous}))
+    if (res.statusCode === 204) db.comments.push(dbUtils.insertComment({userId, postId, anonymous}))
     else if (res.statusCode === 460) res.statusMessage = 'user disagree protocol'
     else res.statusMessage = 'user is frozen'
 

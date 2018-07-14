@@ -12,7 +12,7 @@
 
 |参数|必选|类型|默认值|说明|
 |:----- |:-------|:------|:-----|----- |
-|freezeTime|false|timestamp(毫秒)|currentTimestamp + 7天总毫秒| 冻结截止时间|
+|freezeTime|false|timestamp(毫秒)| 1000 * 60 * 60 * 24 * 7| 冻结时间|
 
 #### 响应：
 ##### 成功：204
