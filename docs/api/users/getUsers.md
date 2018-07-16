@@ -26,13 +26,13 @@
 响应格式：JSON
 ```
 {
-	"data": [
-		{
-			"id": "user-id"
-			// 其他数据同getUser的数据
-		}
-	],
-	"total": 400
+  "data": [
+    {
+      "id": "user-id"
+      // 其他数据同getUser的数据
+    }
+  ],
+  "total": 400
 }
 ```
 ##### 未登录: 401

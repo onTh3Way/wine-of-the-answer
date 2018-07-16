@@ -1,5 +1,9 @@
 {
-	"nickname": "phantom",
-	"avatar": "blbla.png",
-	"freezeTime": 1111111
+  "data": [
+    {
+      "id": "user-id"
+      // 其他数据同getUser的数据
+    }
+  ],
+  "total": 400
 }

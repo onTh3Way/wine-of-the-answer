@@ -20,9 +20,9 @@
 响应格式：JSON
 ```
 {
-	"nickname": "phantom",
-	"avatar": "blbla.png",
-	"freezeTime": 1111111
+  "nickname": "phantom",
+  "avatar": "blbla.png",
+  "freezeTime": 1111111
 }
 ```
 ##### 未登录: 401
