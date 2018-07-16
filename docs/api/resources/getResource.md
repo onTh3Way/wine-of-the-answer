@@ -27,10 +27,8 @@
 {
   "author": {
     "id": 22,
-    "nickname": "blab",
-    // 如果匿名,此项固定填写 匿名用户
-    "avatar": "fake.png"
-    // 如果匿名,此项固定为匿名图片
+    "nickname": "blab", // 如果匿名,此项固定填写 匿名用户
+    "avatar": "fake.png" // 如果匿名,此项固定为匿名图片
   },
   "replyToAuthor": {}, // 如果为replies的话,加上此项
   "createDate": 123213123123,
