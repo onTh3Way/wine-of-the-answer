@@ -6,9 +6,12 @@
 
 #### URL
 
-> GET /api/v1/{posts || comments || replies}?sort=date&offset=0&limit=10
+> GET /api/v1/{posts || comments || replies}
+> GET /api/v1/{part}/posts
+> GET /api/v1/posts/{id}/comments
+> GET /api/v1/comments/{id}/replies
 
-#### 请求参数
+#### 请求参数(queryString 查询字符串)
 
 |参数|必选|类型|默认值|说明|
 |:----- |:-------|:-----|:-----|----- |
@@ -27,22 +30,14 @@
 ##### 获取成功: 200
 JSON
 ```
+{
+  "data": [
     {
-        data: [{
-         id: 1,
-	       author: {
-	        id: 22,
-	        nickname: 'blab', // 如果匿名,此项固定填写 匿名用户
-	        avatar: 'fake.png' // 如果匿名,此项固定为匿名图片
-	       },
-	       replyToAuthor: {}, // 如果为replies的话,加上此项
-	       createDate: 123213123123,
-	       content: 'test content',
-	       agreeCount: 100,
-	       disagreeCount: 200,
-	       commentCount: 200
-        }],
-        total: 5000
+      "id": 1,
+      // 其他数据同getResource
     }
+  ],
+  "total": 5000
+}
 ```
 ##### 参数不合法: 400

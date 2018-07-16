@@ -24,19 +24,21 @@
 ##### 获取成功：200
 响应格式：JSON
 ```
-    {
-       author: {
-        id: 22,
-        nickname: 'blab', // 如果匿名,此项固定填写 匿名用户
-        avatar: 'fake.png' // 如果匿名,此项固定为匿名图片
-       },
-       replyToAuthor: {}, // 如果资源为reply, 加上此项
-       createDate: 123213123123,
-       content: 'test content',
-       agreeCount: 100,
-       disagreeCount: 200,
-       commentCount: 200
-    }
+{
+  "author": {
+    "id": 22,
+    "nickname": "blab",
+    // 如果匿名,此项固定填写 匿名用户
+    "avatar": "fake.png"
+    // 如果匿名,此项固定为匿名图片
+  },
+  "replyToAuthor": {}, // 如果为replies的话,加上此项
+  "createDate": 123213123123,
+  "content": "test content",
+  "agreeCount": 100,
+  "disagreeCount": 200,
+  "commentCount": 200
+}
 ```
 ##### 发布者被冻结且权限不足: 403
 ##### 资源不存在: 404
