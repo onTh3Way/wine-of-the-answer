@@ -31,7 +31,7 @@ JSON
         data: [{
          id: 1,
 	       author: {
-	        userId: 22,
+	        id: 22,
 	        nickname: 'blab', // 如果匿名,此项固定填写 匿名用户
 	        avatar: 'fake.png' // 如果匿名,此项固定为匿名图片
 	       },

@@ -6,7 +6,7 @@
 
 #### URL
 
-> PUT /api/v1/users/{userId}/protocol
+> PUT /api/v1/users/{id}/protocol
 
 #### 响应：
 ##### 成功：204

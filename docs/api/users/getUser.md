@@ -6,7 +6,7 @@
 
 #### URL
 
-> GET /api/v1/users/{userId}
+> GET /api/v1/users/{id}
 
 #### 返回字段
 |返回字段|字段类型|说明 |
@@ -19,11 +19,11 @@
 ##### 成功：200
 响应格式：JSON
 ```
-    {
-       nickname: 'phantom',
-       avatar: 'blbla.png',
-       freezeTime: 1111111
-    }
+{
+	"nickname": "phantom",
+	"avatar": "blbla.png",
+	"freezeTime": 1111111
+}
 ```
 ##### 未登录: 401
 ##### 权限不足(不是管理员无法获取别人信息): 403
