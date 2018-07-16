@@ -30,7 +30,7 @@
     "nickname": "blab", // 如果匿名,此项固定填写 匿名用户
     "avatar": "fake.png" // 如果匿名,此项固定为匿名图片
   },
-  "replyToAuthor": {}, // 如果为replies的话,加上此项
+  "replyToAuthor": {}, // 如果为replies的话,加上此项,数据同上
   "createDate": 123213123123,
   "content": "test content",
   "agreeCount": 100,
