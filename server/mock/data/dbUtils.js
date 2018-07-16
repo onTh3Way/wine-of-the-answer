@@ -21,6 +21,9 @@ function bubble (arr, sortFn = (a, b) => a > b) {
   return arr
 }
 
+const fakerName = '匿名用户'
+const fakerAvatar = faker.internet.avatar()
+
 const dbUtils = {
   insertUser ({
                 nickname = faker.name.findName(),
@@ -53,82 +56,88 @@ const dbUtils = {
     })
   },
   insertPost ({
-                anonymous = faker.random.boolean(),
+                anonymous,
                 userId = db.users[faker.random.number(db.users.length - 1)].id,
                 part = db.parts[faker.random.number(6)],
-                content = faker.random.words()
+                content = faker.random.words(),
+                createDate = new Date(faker.date.past()).getTime(),
+                agreeCount = 0,
+                disagreeCount = 0,
+                commentCount = 0
               } = {}) {
     const user = dbUtils.findUser(userId)
     db.posts.push({
-      id: db.posts.length,
-      author: anonymous ? {
+      id: db.posts.length + 1,
+      author: {
         id: userId,
-        nickname: '匿名用户',
-        avatar: faker.internet.avatar()
-      } : {
-        id: userId,
-        nickname: user.nickname,
-        avatar: user.avatar
+        nickname: anonymous ? fakerName : user.nickname,
+        avatar: anonymous ? fakerAvatar : user.avatar
       },
       part,
       content,
-      createDate: new Date(faker.date.past()).getTime(),
-      agreeCount: 0,
-      disagreeCount: 0,
-      commentCount: 0
+      createDate,
+      agreeCount,
+      disagreeCount,
+      commentCount
     })
   },
   insertComment ({
                    userId = db.users[faker.random.number(db.users.length - 1)].id,
                    postId = db.posts[faker.random.number(db.posts.length - 1)].id,
-                   anonymous = faker.random.boolean()
+                   content = faker.random.words(),
+                   anonymous,
+                   createDate = new Date(faker.date.past()).getTime(),
+                   agreeCount = 0,
+                   disagreeCount = 0,
+                   commentCount = 0
                  } = {}) {
     const user = dbUtils.findUser(userId)
     if (user) {
       db.comments.push({
-        id: db.comments.length,
-        author: anonymous ? {
+        id: db.comments.length + 1,
+        author: {
           id: userId,
-          nickname: '匿名用户',
-          avatar: faker.internet.avatar()
-        } : {
-          id: userId,
-          nickname: user.nickname,
-          avatar: user.avatar
+          nickname: anonymous ? fakerName : user.nickname,
+          avatar: anonymous ? fakerAvatar : user.avatar
         },
         postId,
-        content: faker.random.words(),
-        createDate: new Date(faker.date.past()).getTime(),
-        agreeCount: 0,
-        disagreeCount: 0,
-        commentCount: 0
+        content,
+        createDate,
+        agreeCount,
+        disagreeCount,
+        commentCount
       })
     }
   },
   insertReply ({
-                 anonymous = faker.random.boolean(),
+                 anonymous,
+                 commentId = faker.random.number(db.comments.length),
                  senderId = db.users[faker.random.number(db.users.length - 1)].id,
                  receiverId,
-                 content = faker.random.words()
+                 content = faker.random.words(),
+                 createDate = new Date(faker.date.past()).getTime(),
+                 agreeCount = 0,
+                 disagreeCount = 0
                } = {}) {
     const sender = dbUtils.findUser(senderId)
-    const receiver = receiverId ? dbUtils.findUser(receiverId) : null
+    const receiver = receiverId ? dbUtils.findReply(receiverId) : undefined
     db.replies.push({
+      id: db.replies.length + 1,
       author: {
         id: senderId,
-        nickname: anonymous ? '匿名用户' : sender.nickname,
-        avatar: anonymous ? faker.internet.avatar() : sender.avatar
+        nickname: anonymous ? fakerName : sender.nickname,
+        avatar: anonymous ? fakerAvatar : sender.avatar
       },
       replyToAuthor: receiver && {
-        id: receiver.id,
-        nickname: anonymous ? '匿名用户' : receiver.nickname,
-        avatar: anonymous ? faker.internet.avatar() : receiver.avatar
+        id: receiver.author.id,
+        nickname: receiver.anonymous ? fakerName : receiver.author.nickname,
+        avatar: receiver.anonymous ? fakerAvatar : receiver.author.avatar
       },
-      id: db.replies.length,
+      commentId,
       content,
-      createDate: Date.now(),
-      agreeCount: 0,
-      disagreeCount: 0
+      createDate,
+      agreeCount,
+      disagreeCount
     })
   },
   findUser (id) {},

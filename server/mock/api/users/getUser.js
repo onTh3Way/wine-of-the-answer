@@ -3,6 +3,7 @@ module.exports = function (router) {
     const {userId} = req.params
     const user = dbUtils.findUser(userId)
     if (user) {
+      res.statusCode = 200
       res.end(JSON.stringify(user))
     } else {
       res.statusCode = 404

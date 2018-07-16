@@ -11,7 +11,7 @@ module.exports = function (router) {
       hash.digest('hex'),
       {
         domain: 'localhost',
-        maxAge: 1000 * 10,
+        maxAge: 1000 * 60 * 60 * 24 * 1000,
         path: '/'
       }
     )

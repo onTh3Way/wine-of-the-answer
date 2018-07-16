@@ -18,7 +18,7 @@
 |content | string | 帖子内容 |
 |agreeCount | int | 点赞次数 |
 |disagreeCount | int | 踩次数 |
-|commentCount | int | 评论次数 |
+|commentCount | int | 评论次数,reply资源无此项 |
 
 #### 响应：
 ##### 获取成功：200
@@ -35,7 +35,7 @@
   "content": "test content",
   "agreeCount": 100,
   "disagreeCount": 200,
-  "commentCount": 200
+  "commentCount": 200 // 如果为reply资源,无此项
 }
 ```
 ##### 发布者被冻结且权限不足: 403

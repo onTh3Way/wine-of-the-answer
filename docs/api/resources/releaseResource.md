@@ -13,13 +13,27 @@
 
 |参数|必选 |类型|默认值|说明|
 |:----- |:-------|:-----|:----- |:----- |
-|receiverId |false |string|| 要回复的回复id,只有资源为replies时,才有此项|
+|receiverReplyId |false |string|| 要回复的回复id,只有资源为replies时,才有此项|
 |content |true |string||内容|
 |anonymous |false |boolean|false|是否匿名|
 
 #### 响应：
 ##### 发布成功：201
 ##### 参数不合法: 400
+JSON
+```js
+{
+  // content不能为空
+  "code": 0,
+  "msg": "no null content",
+  // 接收者不存在
+  "code": 1,
+  "msg": "receiver is not exist",
+  // 不能自己回复自己
+  "code": 2,
+  "msg": "cannot reply self",
+}
+```
 ##### 未登录: 401
 JSON
 ```js

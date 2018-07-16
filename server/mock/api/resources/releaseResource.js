@@ -11,6 +11,7 @@ module.exports = function (router) {
       res.statusCode = 201
       dbUtils.insertPost({
         userId: req.user.id,
+        part,
         content,
         anonymous
       })
@@ -26,23 +27,44 @@ module.exports = function (router) {
 
     if (resourceList.resources.includes(partResources) && resourceList.resources.includes(resources)) {
       const partResource = db[partResources].find(v => v.id === id)
-      const {receiverId, content, anonymous} = req.body
+      const {receiverReplyId, content, anonymous} = req.body
+      let err
 
       if (!content) {
         res.statusCode = 400
+        err = {
+          code: 0,
+          msg: 'no null content'
+        }
+      } else if (resources === 'replies' && receiverReplyId && !dbUtils.findReply(receiverReplyId)) {
+        res.statusCode = 400
+        err = {
+          code: 1,
+          msg: 'receiver is not exist'
+        }
+      } else if (resources === 'replies' && receiverReplyId && dbUtils.findReply(receiverReplyId).author.id === req.user.id) {
+        res.statusCode = 400
+        err = {
+          code: 2,
+          msg: 'cannot reply self'
+        }
       } else if (!partResource) {
         res.statusCode = 404
       } else {
         res.statusCode = 201
+
         dbUtils['insert' + resourceList.firstUppercase(resourceList.conversionResourceWord(resources))]({
-          senderId: req.user.id,
-          receiverId,
+          userId: req.user.id,
+          postId: id,
           content,
-          anonymous
+          anonymous,
+          senderId: req.user.id,
+          receiverId: receiverReplyId,
+          commentId: id
         })
       }
 
-      res.end()
+      res.end(JSON.stringify(err))
       next()
     } else {
       next()
