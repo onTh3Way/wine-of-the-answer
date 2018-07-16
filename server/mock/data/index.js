@@ -1,55 +1,49 @@
 const crypto = require('crypto')
+const path = require('path')
+const fs = require('fs')
+const dbUtils = require('./dbUtils')
+const resourceList = require('./resourceList')
 
-global.dbUtils = require('./dbUtils')
+const dbPath = path.join(__dirname, 'db.json')
+
+global.resourceList = resourceList
+global.dbUtils = dbUtils
+// 属性自动补全
 global.db = {
-  parts: [],
-  users: {},
-  admins: {},
-  posts: {},
-  comments: {},
-  replies: {},
-  postReports: {},
-  commentReports: {},
-  replyReports: {},
+  parts: ['married', 'work', 'money', 'study', 'family', 'healthy', 'other'],
+  users: [],
+  admins: [],
+  posts: [],
+  comments: [],
+  replies: [],
+  postReports: [],
+  commentReports: [],
+  replyReports: [],
   perRecord: {
     posts: {
-      agree: {},
-      disagree: {}
+      agree: [],
+      disagree: []
     },
     comments: {
-      agree: {},
-      disagree: {}
+      agree: [],
+      disagree: []
     },
     replies: {
-      agree: {},
-      disagree: {}
+      agree: [],
+      disagree: []
     }
   }
 }
-db = dbUtils.read()
 
-function firstUppercase (str) {
-  return str[0].toUpperCase() + str.slice(1)
-}
+if (!fs.existsSync(dbPath)) fs.writeFileSync(dbPath, JSON.stringify(db))
 
-const resource = ['user', 'admin', 'post', 'comment', 'reply']
-const resources = ['users', 'admins', 'posts', 'comments', 'replies']
+db = dbUtils.read() || db
 
-global.resourceList = {
-  resource,
-  Resource: resource.map(v => firstUppercase(v)),
-  resources,
-  Resources: resources.map(v => firstUppercase(v)),
-  conversionResourceWord (word) {
-    const temp = word.toLowerCase()
-    if (temp === 'reply' || temp === 'replies') {
-      return temp === 'reply' ? word.slice(0, 1) + 'eplies' : word.slice(0, 1) + 'eply'
-    } else {
-      return temp[temp.length - 1] === 's' ? word.slice(0, word.length - 1) : word + 's'
-    }
-  },
-  firstUppercase
-}
+Array(5)
+  .fill(null)
+  .forEach((_, i) => {
+    if (!db[resourceList.resources[i]].length) Array(100).fill(null).forEach(() => dbUtils['insert' + resourceList.Resource[i]]())
+  })
 
 global.tokenMap = {}
 

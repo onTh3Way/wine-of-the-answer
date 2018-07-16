@@ -4,10 +4,31 @@ const fs = require('fs')
 const jsonServer = require('json-server')
 const helpsMiddlewares = require('./middlewares')
 const config = require('./config')
+const express = require('express')
 const app = jsonServer.create()
 const middlewares = jsonServer.defaults({
   bodyParser: true
 })
+const wotaRouter = express.Router()
+const wxRouter = express.Router()
+
+function requireAll (path, ...args) {
+  const stat = fs.statSync(path)
+  if (stat.isDirectory()) {
+    fs
+      .readdirSync(path)
+      .forEach(targetPath => {
+        requireAll(pathUtil.join(path, targetPath), ...args)
+      })
+  } else if (pathUtil.extname(path) === '.js') {
+    const target = require(path)
+    if (Object.prototype.toString.call(target) === '[object Function]') target.apply(null, args)
+  }
+}
+
+requireAll(pathUtil.join(__dirname, 'api/wx'), wxRouter)
+requireAll(pathUtil.join(__dirname, 'api/resources'), wotaRouter)
+requireAll(pathUtil.join(__dirname, 'api/users'), wotaRouter)
 
 app
   .use(jsonServer.rewriter({
@@ -15,24 +36,9 @@ app
     '/api/*': '/$1'
   }))
   .use(middlewares)
+  .use(wxRouter)
   .use(helpsMiddlewares)
-
-function requireAll (path) {
-  const stat = fs.statSync(path)
-  if (stat.isDirectory()) {
-    fs
-      .readdirSync(path)
-      .forEach(targetPath => {
-        requireAll(pathUtil.join(path, targetPath))
-      })
-  } else if (pathUtil.extname(path) === '.js') {
-    require(path)(app)
-  }
-}
-
-requireAll(pathUtil.join(__dirname, 'api'))
-
-app
+  .use(wotaRouter)
   .use((req, res, next) => {
     if (!res.finished) res.end()
     next()
@@ -40,7 +46,6 @@ app
   .use(() => {
     dbUtils.save()
   })
-
-app.listen(config.port, config.host)
+  .listen(config.port, config.host)
 
 console.log(`mock server is listen in ${config.host}: ${config.port}`)

@@ -1,5 +1,5 @@
-module.exports = function (app) {
-  app.delete(`/users/:userId`, (req, res, next) => {
+module.exports = function (router) {
+  router.delete(`/users/:userId`, (req, res, next) => {
     const {freezeTime} = req.query
     if (req.user) {
       req.user.freezeTime += freezeTime

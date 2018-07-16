@@ -26,7 +26,10 @@
 响应格式：JSON
 ```
 	{
-		data: [{// 数据同getUser的数据}],
+		data: [{
+		id: 'user-id',
+		// 其他数据同getUser的数据
+		}],
 		total: 400
 	}
 ```

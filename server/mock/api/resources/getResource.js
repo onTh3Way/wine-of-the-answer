@@ -1,5 +1,5 @@
-module.exports = function (app) {
-  app.get('/:resources/:id', (req, res, next) => {
+module.exports = function (router) {
+  router.get('/:resources/:id', (req, res, next) => {
     const {resources} = req.params
     const id = +req.params.id
 

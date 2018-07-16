@@ -1,5 +1,5 @@
-module.exports = function (app) {
-  app.all(['/:resources/:id/agreement', '/:resources/:id/disagreement'], (req, res, next) => {
+module.exports = function (router) {
+  router.all(['/:resources/:id/agreement', '/:resources/:id/disagreement'], (req, res, next) => {
     const {
       path,
       method,

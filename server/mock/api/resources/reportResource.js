@@ -1,5 +1,5 @@
-module.exports = function (app) {
-  app.post('/:resources/:id/report', (req, res, next) => {
+module.exports = function (router) {
+  router.post('/:resources/:id/report', (req, res, next) => {
     const {resources} = req.params
     const id = +req.params.id
     const {reason} = req.body

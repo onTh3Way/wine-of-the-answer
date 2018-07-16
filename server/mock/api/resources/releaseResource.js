@@ -1,5 +1,5 @@
-module.exports = function (app) {
-  app.post('/:part/posts', (req, res, next) => {
+module.exports = function (router) {
+  router.post('/:part/posts', (req, res, next) => {
     const {part} = req.params
     const {content, anonymous} = req.body
 
@@ -20,7 +20,7 @@ module.exports = function (app) {
     next()
   })
 
-  app.post('/:partResources/:id/:resources', (req, res, next) => {
+  router.post('/:partResources/:id/:resources', (req, res, next) => {
     const {partResources, resources} = req.params
     const id = +req.params.id
 

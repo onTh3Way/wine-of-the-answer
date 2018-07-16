@@ -2,16 +2,9 @@ const path = require('path')
 const fs = require('fs')
 const faker = require('faker')
 const crypto = require('crypto')
+const resourceList = require('./resourceList')
 
 let timer
-const resources = ['User', 'Admin', 'Post', 'Comment', 'Reply']
-const parts = ['married', 'work', 'money', 'study', 'family', 'healthy', 'other']
-const tables = [
-  'parts',
-  'users', 'admins',
-  'posts', 'comments', 'replies',
-  'postReports', 'commentReports', 'replyReports'
-]
 
 function bubble (arr, sortFn = (a, b) => a > b) {
   for (let i = 0, len = arr.length - 1; i < len; i++) {
@@ -29,10 +22,6 @@ function bubble (arr, sortFn = (a, b) => a > b) {
 }
 
 const dbUtils = {
-  init () {
-    tables.forEach(table => db[table] = [])
-    parts.forEach(part => db.parts.push(part))
-  },
   insertUser ({
                 nickname = faker.name.findName(),
                 avatar = faker.internet.avatar(),
@@ -152,11 +141,11 @@ const dbUtils = {
   removePost (id) {},
   removeComment (id) {},
   removeReply (id) {},
-  searchUsers ({sort, offset, limit}) {},
-  searchAdmins ({sort, offset, limit}) {},
-  searchPosts ({sort, offset, limit}) {},
-  searchComments ({sort, offset, limit}) {},
-  searchReplies ({sort, offset, limit}) {},
+  findUsers ({sort, offset, limit}) {},
+  findAdmins ({sort, offset, limit}) {},
+  findPosts ({sort, offset, limit}) {},
+  findComments ({sort, offset, limit}) {},
+  findReplies ({sort, offset, limit}) {},
   findUserByToken (token) {
     return db.users.find(user => {
       const hash = crypto.createHash('sha256')
@@ -181,48 +170,44 @@ const dbUtils = {
   }
 }
 
-function conversionResourceWord (word) {
-  const temp = word.toLowerCase()
-  if (temp === 'reply' || temp === 'replies') {
-    return temp === 'reply' ? word.slice(0, 1) + 'eplies' : word.slice(0, 1) + 'eply'
-  } else {
-    return temp[temp.length - 1] === 's' ? word.slice(0, word.length - 1) : word + 's'
-  }
-}
+Array(5)
+  .fill(null)
+  .forEach((_, i) => {
+    const resource = resourceList.resource[i]
+    const resources = resourceList.resources[i]
+    const Resource = resourceList.Resource[i]
+    const Resources = resourceList.Resources[i]
+    const originInsertMethod = dbUtils['insert' + Resource]
 
-resources.forEach(resource => {
-  const resources = conversionResourceWord(resource)
-  const originInsertMethod = dbUtils['insert' + resource]
-  dbUtils['insert' + resource] = function () {
-    originInsertMethod.apply(this, arguments)
-    dbUtils.save()
-  }
-
-  dbUtils['find' + resource] = function (id) {
-    return db[resources.toLowerCase()].find(v => v.id === (Number.isNaN(+id) ? id : +id))
-  }
-
-  dbUtils['remove' + resource] = function (id) {
-    const index = db[resources.toLowerCase()].findIndex(v => v.id === id)
-    if (index !== -1) {
-      db[resource.toLowerCase() + 's'].splice(index, 1)
+    dbUtils['insert' + Resource] = function () {
+      originInsertMethod.apply(this, arguments)
+      dbUtils.save()
     }
-  }
 
-  dbUtils['search' + resources] = function ({
+    dbUtils['find' + Resource] = function (id) {
+      return db[resources].find(v => v.id === (Number.isNaN(+id) ? id : +id))
+    }
+
+    dbUtils['find' + Resources] = function ({
                                               sort = 'hot',
                                               offset = 0,
                                               limit = 5
                                             }) {
-    const list = db[resources.toLowerCase()].slice()
-    if (resource !== 'User' && resource !== 'Admin') {
-      sort === 'hot'
-        ? bubble(list, (a, b) => b.agreeCount > a.agreeCount)
-        : bubble(list, (a, b) => b.createDate > a.createDate)
+      const list = db[resources].slice()
+      if (resource !== 'User' && resource !== 'Admin') {
+        sort === 'hot'
+          ? bubble(list, (a, b) => b.agreeCount > a.agreeCount)
+          : bubble(list, (a, b) => b.createDate > a.createDate)
+      }
+      return limit === 0 ? list.slice(offset) : list.slice(offset, limit)
     }
-    return limit === 0 ? list.slice(offset) : list.slice(offset, limit)
-  }
 
-})
+    dbUtils['remove' + Resource] = function (id) {
+      const index = db[resources].findIndex(v => v.id === id)
+      if (index !== -1) {
+        db[resources].splice(index, 1)
+      }
+    }
+  })
 
 module.exports = dbUtils

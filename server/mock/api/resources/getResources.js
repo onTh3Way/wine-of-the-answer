@@ -1,9 +1,9 @@
-module.exports = function (app) {
-  app.get('/:resources', (req, res, next) => {
+module.exports = function (router) {
+  router.get('/:resources', (req, res, next) => {
     const {resources} = req.params
     if (resourceList.resources.includes(resources)) {
       const {sort = 'hot', offset = 0, limit = 5} = req.query
-      const data = dbUtils['search' + resources[0].toUpperCase() + resources.slice(1)]({sort, offset: 0, limit: 0})
+      const data = dbUtils['find' + resources[0].toUpperCase() + resources.slice(1)]({sort, offset: 0, limit: 0})
 
       res.statusCode = (Number.isNaN(+offset) || Number.isNaN(+limit))
         ? 400
