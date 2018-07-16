@@ -5,9 +5,9 @@
 
 #### 接口
 
-> POST /api/v1/{part}/posts
-> POST /api/v1/posts/{id}/comments
-> POST /api/v1/comments/{id}/replies
+> POST /api/v1/{part}/posts <br>
+> POST /api/v1/posts/{id}/comments <br>
+> POST /api/v1/comments/{id}/replies <br>
 
 #### 请求参数(JSON)
 

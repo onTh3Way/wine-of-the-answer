@@ -6,10 +6,10 @@
 
 #### URL
 
-> GET /api/v1/{posts || comments || replies}
-> GET /api/v1/{part}/posts
-> GET /api/v1/posts/{id}/comments
-> GET /api/v1/comments/{id}/replies
+> GET /api/v1/{posts || comments || replies} <br>
+> GET /api/v1/{part}/posts <br>
+> GET /api/v1/posts/{id}/comments <br>
+> GET /api/v1/comments/{id}/replies <br>
 
 #### 请求参数(queryString 查询字符串)
 
