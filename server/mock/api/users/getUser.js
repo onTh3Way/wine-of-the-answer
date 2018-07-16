@@ -1,5 +1,5 @@
-module.exports = function (app, path) {
-  app.get(`${path}/:userId`, (req, res, next) => {
+module.exports = function (app) {
+  app.get(`/users/:userId`, (req, res, next) => {
     const {userId} = req.params
     const user = dbUtils.findUser(userId)
     if (user) {

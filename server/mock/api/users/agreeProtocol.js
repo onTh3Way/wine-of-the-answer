@@ -1,5 +1,5 @@
-module.exports = function (app, path) {
-  app.put(`${path}/:userId/protocol`, (req, res, next) => {
+module.exports = function (app) {
+  app.put(`/users/:userId/protocol`, (req, res, next) => {
     const {userId} = req.params
     const user = dbUtils.findUser(userId)
     if (user) {

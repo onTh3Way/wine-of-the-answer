@@ -1,11 +1,11 @@
 -----------
 #### 功能
 
-> 取消踩指定评论
+> 点赞与踩,agreement为点赞,disagreement为踩
 
 #### 接口
 
-> DELETE /api/v1/comments/{commentId}/disagreement
+> PUT, DELETE /api/v1/{posts || comments || replies}/{id}/{agreement || disagreement}
 
 #### 响应：
 ##### 成功：204
@@ -28,5 +28,5 @@ JSON
     msg: 'no permission'
 	}
 ```
-##### 评论不存在: 404
+##### 资源不存在: 404
 

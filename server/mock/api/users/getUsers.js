@@ -1,5 +1,5 @@
-module.exports = function (app, path) {
-  app.get(path, (req, res, next) => {
+module.exports = function (app) {
+  app.get('/users', (req, res, next) => {
     const {offset = 0, limit = 5} = req.query
     if (req.isAdmin) {
       res.end(JSON.stringify({

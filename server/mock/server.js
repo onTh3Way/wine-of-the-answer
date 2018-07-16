@@ -1,5 +1,5 @@
 require('./data')
-const path = require('path')
+const pathUtil = require('path')
 const fs = require('fs')
 const jsonServer = require('json-server')
 const helpsMiddlewares = require('./middlewares')
@@ -8,23 +8,37 @@ const app = jsonServer.create()
 const middlewares = jsonServer.defaults({
   bodyParser: true
 })
-const apiPath = path.join(__dirname, './api')
 
 app
   .use(jsonServer.rewriter({
-    '/api/v1/*': '/$1'
+    '/api/v1/*': '/$1',
+    '/api/*': '/$1'
   }))
   .use(middlewares)
   .use(helpsMiddlewares)
 
-fs
-  .readdirSync(apiPath)
-  .forEach(resourcePath => {
+function requireAll (path) {
+  const stat = fs.statSync(path)
+  if (stat.isDirectory()) {
     fs
-      .readdirSync(path.join(apiPath, resourcePath))
-      .forEach(resource => {
-        require(path.join(apiPath, resourcePath, resource))(app, path.join('/' + resourcePath))
+      .readdirSync(path)
+      .forEach(targetPath => {
+        requireAll(pathUtil.join(path, targetPath))
       })
+  } else if (pathUtil.extname(path) === '.js') {
+    require(path)(app)
+  }
+}
+
+requireAll(pathUtil.join(__dirname, 'api'))
+
+app
+  .use((req, res, next) => {
+    if (!res.finished) res.end()
+    next()
+  })
+  .use(() => {
+    dbUtils.save()
   })
 
 app.listen(config.port, config.host)

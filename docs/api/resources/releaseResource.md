@@ -1,18 +1,19 @@
 -----------
-
 #### 功能
 
-> 回复评论
+> 发布资源
 
 #### 接口
 
-> POST  /api/v1/comments/{commentId}/replies
+> POST /api/v1/{part}/posts
+> POST /api/v1/posts/{id}/comments
+> POST /api/v1/comments/{id}/replies
 
 #### 请求参数(JSON)
 
 |参数|必选 |类型|默认值|说明|
 |:----- |:-------|:-----|:----- |:----- |
-|receiverId |false |string|| 要回复的回复id |
+|receiverId |false |string|| 要回复的回复id,只有资源为replies时,才有此项|
 |content |true |string||内容|
 |anonymous |false |boolean|false|是否匿名|
 
@@ -37,4 +38,4 @@ JSON
     msg: 'no permission'
 	}
 ```
-##### 评论不存在: 404
+##### 所属的资源不存在: 404

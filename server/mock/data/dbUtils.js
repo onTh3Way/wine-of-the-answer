@@ -13,6 +13,21 @@ const tables = [
   'postReports', 'commentReports', 'replyReports'
 ]
 
+function bubble (arr, sortFn = (a, b) => a > b) {
+  for (let i = 0, len = arr.length - 1; i < len; i++) {
+    for (let k = i + 1, len = arr.length; k < len; k++) {
+      const a = arr[i]
+      const b = arr[k]
+
+      if (sortFn(a, b)) {
+        [arr[i], arr[k]] = [arr[k], arr[i]]
+      }
+    }
+  }
+
+  return arr
+}
+
 const dbUtils = {
   init () {
     tables.forEach(table => db[table] = [])
@@ -29,6 +44,7 @@ const dbUtils = {
       nickname,
       avatar,
       isAgreeProtocol,
+      createDate: Date.now(),
       freezeTime
     })
   },
@@ -40,6 +56,7 @@ const dbUtils = {
                } = {}) {
     db.admins.push({
       id: faker.random.uuid(),
+      createDate: Date.now(),
       nickname,
       avatar,
       username,
@@ -102,11 +119,11 @@ const dbUtils = {
   insertReply ({
                  anonymous = faker.random.boolean(),
                  senderId = db.users[faker.random.number(db.users.length - 1)].id,
-                 commentId,
+                 receiverId,
                  content = faker.random.words()
                } = {}) {
     const sender = dbUtils.findUser(senderId)
-    const receiver = commentId ? dbUtils.findComment(commentId) : null
+    const receiver = receiverId ? dbUtils.findUser(receiverId) : null
     db.replies.push({
       author: {
         id: senderId,
@@ -115,8 +132,8 @@ const dbUtils = {
       },
       replyToAuthor: receiver && {
         id: receiver.id,
-        nickname: anonymous ? '匿名用户' : sender.nickname,
-        avatar: anonymous ? faker.internet.avatar() : sender.avatar
+        nickname: anonymous ? '匿名用户' : receiver.nickname,
+        avatar: anonymous ? faker.internet.avatar() : receiver.avatar
       },
       id: db.replies.length,
       content,
@@ -135,6 +152,11 @@ const dbUtils = {
   removePost (id) {},
   removeComment (id) {},
   removeReply (id) {},
+  searchUsers ({sort, offset, limit}) {},
+  searchAdmins ({sort, offset, limit}) {},
+  searchPosts ({sort, offset, limit}) {},
+  searchComments ({sort, offset, limit}) {},
+  searchReplies ({sort, offset, limit}) {},
   findUserByToken (token) {
     return db.users.find(user => {
       const hash = crypto.createHash('sha256')
@@ -159,7 +181,17 @@ const dbUtils = {
   }
 }
 
+function conversionResourceWord (word) {
+  const temp = word.toLowerCase()
+  if (temp === 'reply' || temp === 'replies') {
+    return temp === 'reply' ? word.slice(0, 1) + 'eplies' : word.slice(0, 1) + 'eply'
+  } else {
+    return temp[temp.length - 1] === 's' ? word.slice(0, word.length - 1) : word + 's'
+  }
+}
+
 resources.forEach(resource => {
+  const resources = conversionResourceWord(resource)
   const originInsertMethod = dbUtils['insert' + resource]
   dbUtils['insert' + resource] = function () {
     originInsertMethod.apply(this, arguments)
@@ -167,15 +199,30 @@ resources.forEach(resource => {
   }
 
   dbUtils['find' + resource] = function (id) {
-    return db[resource.toLowerCase() + 's'].find(v => v.id === (Number.isNaN(+id) ? id : +id))
+    return db[resources.toLowerCase()].find(v => v.id === (Number.isNaN(+id) ? id : +id))
   }
 
   dbUtils['remove' + resource] = function (id) {
-    const index = db[resource.toLowerCase() + 's'].findIndex(v => v.id === id)
+    const index = db[resources.toLowerCase()].findIndex(v => v.id === id)
     if (index !== -1) {
       db[resource.toLowerCase() + 's'].splice(index, 1)
     }
   }
+
+  dbUtils['search' + resources] = function ({
+                                              sort = 'hot',
+                                              offset = 0,
+                                              limit = 5
+                                            }) {
+    const list = db[resources.toLowerCase()].slice()
+    if (resource !== 'User' && resource !== 'Admin') {
+      sort === 'hot'
+        ? bubble(list, (a, b) => b.agreeCount > a.agreeCount)
+        : bubble(list, (a, b) => b.createDate > a.createDate)
+    }
+    return limit === 0 ? list.slice(offset) : list.slice(offset, limit)
+  }
+
 })
 
 module.exports = dbUtils
