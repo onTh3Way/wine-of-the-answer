@@ -19,6 +19,8 @@
 |agreeCount | int | 点赞次数 |
 |disagreeCount | int | 踩次数 |
 |commentCount | int | 评论次数,reply资源无此项 |
+|isAgree | boolean | 已经点赞过 |
+|isDisagree | boolean | 已经踩过 |
 
 #### 响应：
 ##### 获取成功：200
@@ -36,6 +38,8 @@
   "agreeCount": 100,
   "disagreeCount": 200,
   "commentCount": 200 // 如果为reply资源,无此项
+  "isAgree": false,
+  "isDisagree": true,
 }
 ```
 ##### 发布者被冻结且权限不足: 403

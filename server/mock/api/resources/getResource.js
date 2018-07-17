@@ -12,7 +12,14 @@ module.exports = function (router) {
           ? 200
           : 404
 
-      if (res.statusCode === 200) res.end(JSON.stringify(data))
+      const agreeTable = db.perRecord[resources].agree[req.user.id]
+      const disagreeTable = db.perRecord[resources].disagree[req.user.id]
+
+      if (res.statusCode === 200) res.end(JSON.stringify({
+        ...data,
+        isAgree: !!agreeTable && agreeTable.includes(id),
+        isDisagree: !!disagreeTable && disagreeTable.includes(id)
+      }))
     }
 
     next()

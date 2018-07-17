@@ -202,12 +202,14 @@ Array(5)
                                               offset = 0,
                                               limit = 5
                                             }) {
-      const list = db[resources].slice()
-      if (resource !== 'User' && resource !== 'Admin') {
+      let list = db[resources].slice()
+
+      if (resource !== 'user' && resource !== 'admin') {
         sort === 'hot'
           ? bubble(list, (a, b) => b.agreeCount > a.agreeCount)
           : bubble(list, (a, b) => b.createDate > a.createDate)
       }
+
       return limit === 0 ? list.slice(offset) : list.slice(offset, limit)
     }
 
