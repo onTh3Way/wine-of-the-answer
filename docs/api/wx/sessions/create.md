@@ -13,7 +13,7 @@
 JSON
 ```js
 {
-  "userId": "uid"
+  "id": "openId"
 }
 ```
 ##### 用户不存在: 404
