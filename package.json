@@ -80,9 +80,10 @@
     "vue-router": "^3.0.1"
   },
   "scripts": {
-    "predev": "rm -rf dist && mkdir dist && cp src/assets/vue.dev.js dist/vue.js && cp src/assets/axios.dev.js dist/axios.js",
+    "clean": "rm -rf dist && mkdir dist",
+    "predev": "npm run clean && cp src/assets/vue.dev.js dist/vue.js && cp src/assets/axios.dev.js dist/axios.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.dev.js --color --port 3000",
-    "prebuild": "rm -rf ./dist && mkdir -p dist && cp src/assets/vue.prod.js dist/vue.js && cp src/assets/axios.prod.js dist/axios.js",
+    "prebuild": "npm run clean && cp src/assets/vue.prod.js dist/vue.js && cp src/assets/axios.prod.js dist/axios.js",
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
     "start:mock": "node ./server/mock/server",
     "start": "node ./server/staticServer"
