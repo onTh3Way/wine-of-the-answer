@@ -1,8 +1,12 @@
 import 'less/global'
-import App from './App'
 import VueRouter from 'vue-router'
+import App from './App'
+import service from './service'
+import EventBus from 'middlewares/eventBus'
 
 Vue.use(VueRouter)
+Vue.use(service)
+Vue.use(EventBus)
 
 Vue.prototype.$http = axios
 
