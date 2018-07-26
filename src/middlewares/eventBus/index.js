@@ -1,12 +1,17 @@
 const eventStore = {}
 
-export default function EventBus (Vue) {
+// nextTodo: 添加autoAttach选项,允许自行选择全局挂载还是自己手动挂载到需要的组件
+export default function eventBus (Vue, options = {}) {
   const bus = new Vue()
+  const {
+    name = '$bus'
+  } = options
+
   Vue.mixin({
     beforeCreate () {
       const vm = this
       const store = eventStore[this._uid] = {}
-      this.$bus = {
+      this[name] = {
         $on (event, fn) {
           if (typeof event === 'string') event = [event]
 

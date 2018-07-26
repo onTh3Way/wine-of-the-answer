@@ -1,42 +1,85 @@
-const bus = new Vue()
+import { EventCollector } from './'
+import values from 'lodash/values'
+
 const http = axios.create({
-  timeout: 5000
+  timeout: 5000,
+  validateStatus (status) {
+    return status < 500
+  }
 })
 
 const httpStatusMap = {
   200: 'ok',
+  201: 'created',
+  202: 'accepted',
+  204: 'noContent',
   400: 'badRequest',
-  401: 'noLogin',
+  401: 'unauthorized',
   403: 'forbidden',
   404: 'notFound'
 }
 
-export default function request (config) {
-  const listeners = {}
+/**
+ * @typedef {function} httpEventListen
+ * @param {function} cb
+ * @return {httpEventCollector}
+ */
 
-  const result = {
-    noExist (cb) {
-      listeners.noExist = cb
-      return result
-    }
-  }
+/**
+ * @typedef {object} httpEventCollector
+ * @property {httpEventListen} ok
+ * @property {httpEventListen} created
+ * @property {httpEventListen} accepted
+ * @property {httpEventListen} noContent
+ * @property {httpEventListen} badRequest
+ * @property {httpEventListen} unauthorized
+ * @property {httpEventListen} forbidden
+ * @property {httpEventListen} notFound
+ */
+
+/**
+ * @typedef {function} httpUploadMethod
+ * @param {string} url
+ * @param {*} data
+ * @param {object} config
+ * @return {httpEventCollector}
+ */
+
+/**
+ * @typedef {function} httpMethod
+ * @param {string} url
+ * @param {object} config
+ * @return {httpEventCollector}
+ */
+
+/**
+ * @property {httpMethod} get
+ * @property {httpMethod} delete
+ * @property {httpMethod} head
+ * @property {httpMethod} options
+ * @property {httpUploadMethod} post
+ * @property {httpUploadMethod} put
+ * @property {httpUploadMethod} patch
+ * @param  {object} config
+ * @return {httpEventCollector}
+ */
+export default function request (config) {
+  let collector = new EventCollector()
+  collector.listen(values(httpStatusMap))
+  collector.listen('networkError')
 
   http
     .request(config)
     .then(res => {
-
+      collector.emit(httpStatusMap[res.status], res.data)
+      collector = null
     })
     .catch(err => {
-      if (err.response) {
-        switch (err.response.status) {
-
-        }
-      } else {
-
-      }
+      collector.emit('networkError', err)
+      collector = null
     })
 
-  return result
+  return collector.target
 }
 
 ['get', 'delete', 'head', 'options'].forEach(method => {

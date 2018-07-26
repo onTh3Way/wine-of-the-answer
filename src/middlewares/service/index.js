@@ -1,5 +1,11 @@
-// import request from './utils/request'
+import { request } from './utils'
+import { login } from './api'
 
-export default function service (Vue, options) {
-  Vue.prototype.$service = {}
+export default function service (Vue) {
+  Vue.prototype.$service = {
+    request,
+    login
+  }
+
+  window.service = Vue.prototype.$service
 }
