@@ -1,11 +1,10 @@
 module.exports = function (router) {
   router.delete(`/users/:userId`, (req, res, next) => {
     const {freezeTime} = req.query
-    if (req.user) {
-      req.user.freezeTime += freezeTime
+    if (req.user && req.isAdmin) {
+      req.user.freezeTime = freezeTime
       dbUtils.save()
-    }
-    else {
+    } else {
       res.statusCode = 404
     }
     res.end()

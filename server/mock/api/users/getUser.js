@@ -1,7 +1,7 @@
 module.exports = function (router) {
   router.get(`/users/:userId`, (req, res, next) => {
-    const {userId} = req.params
-    const user = dbUtils.findUser(userId)
+    const user = dbUtils.findUser(req.params.userId)
+
     if (user) {
       res.statusCode = 200
       res.end(JSON.stringify(user))

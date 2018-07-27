@@ -42,7 +42,13 @@ db = dbUtils.read() || db
 Array(5)
   .fill(null)
   .forEach((_, i) => {
-    if (!db[resourceList.resources[i]].length) Array(100).fill(null).forEach(() => dbUtils['insert' + resourceList.Resource[i]]())
+    const Resource = resourceList.AllResource[i]
+    const resources = resourceList.allResources[i]
+    if (!db[resources].length) {
+      Array(100)
+        .fill(null)
+        .forEach(() => dbUtils['insert' + Resource]())
+    }
   })
 
 global.tokenMap = {}

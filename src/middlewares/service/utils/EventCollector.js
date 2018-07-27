@@ -1,19 +1,19 @@
 export default class EventCollector {
-  target
   listeners = {}
 
-  constructor (target = {}) {
-    this.target = target
+  constructor (extend) {
+    this.collect(Object.keys(extend))
   }
 
-  listen (events) {
-    const {target, listeners} = this
+  collect (events) {
+    const {listeners} = this
     if (typeof events === 'string') events = [events]
 
     events.forEach(event => {
-      target[event] = function (fn) {
-        listeners[event] = fn
-        return target
+      if (!listeners[event]) listeners[event] = []
+      this[event] = (fn) => {
+        listeners[event].push(fn)
+        return this
       }
     })
   }
@@ -23,7 +23,7 @@ export default class EventCollector {
     if (typeof events === 'string') events = [events]
 
     events.forEach(event => {
-      listeners[event] && listeners[event](...args)
+      listeners[event] && listeners[event].forEach(fn => fn(...args))
     })
   }
 }

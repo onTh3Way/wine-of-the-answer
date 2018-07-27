@@ -1,12 +1,15 @@
-import { EventCollector } from './'
+import config from '../config'
 import values from 'lodash/values'
+import { EventCollector } from './'
 
 const http = axios.create({
   timeout: 5000,
+  baseURL: `/api/${config.apiVersion}/`,
   validateStatus (status) {
     return status < 500
   }
 })
+const CancelToken = axios.CancelToken
 
 const httpStatusMap = {
   200: 'ok',
@@ -18,68 +21,57 @@ const httpStatusMap = {
   403: 'forbidden',
   404: 'notFound'
 }
+const httpStatusCollection = ['process', 'allOk', 'redirect', 'clientError', 'serverError']
+const cancels = []
+
+http.interceptors.response.use(res => {
+  cancels.splice(res.config.cancelIndex, 1)
+  return res
+})
 
 /**
- * @typedef {function} httpEventListen
- * @param {function} cb
- * @return {httpEventCollector}
- */
-
-/**
- * @typedef {object} httpEventCollector
- * @property {httpEventListen} ok
- * @property {httpEventListen} created
- * @property {httpEventListen} accepted
- * @property {httpEventListen} noContent
- * @property {httpEventListen} badRequest
- * @property {httpEventListen} unauthorized
- * @property {httpEventListen} forbidden
- * @property {httpEventListen} notFound
- */
-
-/**
- * @typedef {function} httpUploadMethod
- * @param {string} url
- * @param {*} data
- * @param {object} config
- * @return {httpEventCollector}
- */
-
-/**
- * @typedef {function} httpMethod
- * @param {string} url
- * @param {object} config
- * @return {httpEventCollector}
- */
-
-/**
- * @property {httpMethod} get
- * @property {httpMethod} delete
- * @property {httpMethod} head
- * @property {httpMethod} options
- * @property {httpUploadMethod} post
- * @property {httpUploadMethod} put
- * @property {httpUploadMethod} patch
+ * @property {httpWithoutDataMethod} get
+ * @property {httpWithoutDataMethod} delete
+ * @property {httpWithoutDataMethod} head
+ * @property {httpWithoutDataMethod} options
+ * @property {httpWithDataMethod} post
+ * @property {httpWithDataMethod} put
+ * @property {httpWithDataMethod} patch
+ * @property {function} cancel - 取消所有请求
  * @param  {object} config
  * @return {httpEventCollector}
  */
 export default function request (config) {
-  let collector = new EventCollector()
-  collector.listen(values(httpStatusMap))
-  collector.listen('networkError')
+  const source = CancelToken.source()
+  let collector = new EventCollector({
+    cancel () {
+      source.cancel()
+    }
+  })
+
+  collector.collect(values(httpStatusMap))
+  collector.collect([
+    'networkError',
+    ...httpStatusCollection
+  ])
 
   http
-    .request(config)
-    .then(res => {
-      collector.emit(httpStatusMap[res.status], res.data)
-      collector = null
+    .request({
+      ...config,
+      cancelIndex: cancels.push(source.cancel) - 1,
+      cancelToken: source.token
+    })
+    .then(({status, data}) => {
+      collector.emit(httpStatusMap[status], data)
+      collector.emit(httpStatusCollection[Number(String(status)[0]) - 1], data)
     })
     .catch(err => {
-      collector.emit('networkError', err)
-      collector = null
+      if (!axios.isCancel(err)) {
+        collector.emit('networkError', err)
+      }
     })
 
-  return collector.target
+  return collector
 }
 
 ['get', 'delete', 'head', 'options'].forEach(method => {
@@ -102,3 +94,41 @@ export default function request (config) {
     })
   }
 })
+
+request.cancel = function () {
+  cancels.forEach(c => c())
+  cancels.splice(0, cancels.length)
+}
+
+/**
+ * @typedef {function} httpEventListen
+ * @param {function} cb
+ * @return {httpEventCollector}
+ */
+
+/**
+ * @typedef {object} httpEventCollector
+ * @property {httpEventListen} ok
+ * @property {httpEventListen} created
+ * @property {httpEventListen} accepted
+ * @property {httpEventListen} noContent
+ * @property {httpEventListen} badRequest
+ * @property {httpEventListen} unauthorized
+ * @property {httpEventListen} forbidden
+ * @property {httpEventListen} notFound
+ */
+
+/**
+ * @typedef {function} httpWithDataMethod
+ * @param {string} url
+ * @param {*} data
+ * @param {object} config
+ * @return {httpEventCollector}
+ */
+
+/**
+ * @typedef {function} httpWithoutDataMethod
+ * @param {string} url
+ * @param {object} config
+ * @return {httpEventCollector}
+ */

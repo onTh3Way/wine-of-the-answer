@@ -182,10 +182,10 @@ const dbUtils = {
 Array(5)
   .fill(null)
   .forEach((_, i) => {
-    const resource = resourceList.resource[i]
-    const resources = resourceList.resources[i]
-    const Resource = resourceList.Resource[i]
-    const Resources = resourceList.Resources[i]
+    const resource = resourceList.allResource[i]
+    const resources = resourceList.allResources[i]
+    const Resource = resourceList.AllResource[i]
+    const Resources = resourceList.AllResources[i]
     const originInsertMethod = dbUtils['insert' + Resource]
 
     dbUtils['insert' + Resource] = function () {

@@ -2,13 +2,19 @@ function firstUppercase (str) {
   return str[0].toUpperCase() + str.slice(1)
 }
 
-const resource = ['user', 'admin', 'post', 'comment', 'reply']
-const resources = ['users', 'admins', 'posts', 'comments', 'replies']
+const resource = ['post', 'comment', 'reply']
+const resources = ['posts', 'comments', 'replies']
+const allResource = [...resource, 'user', 'admin']
+const allResources = [...resources, 'users', 'admins']
 
 module.exports = {
+  allResource,
+  allResources,
+  AllResource: allResource.map(v => firstUppercase(v)),
+  AllResources: allResources.map(v => firstUppercase(v)),
   resource,
-  Resource: resource.map(v => firstUppercase(v)),
   resources,
+  Resource: resource.map(v => firstUppercase(v)),
   Resources: resources.map(v => firstUppercase(v)),
   conversionResourceWord (word) {
     const temp = word.toLowerCase()

@@ -7,8 +7,6 @@ Vue.use(VueRouter)
 Vue.use(eventBus)
 Vue.use(service)
 
-Vue.prototype.$http = axios
-
 if (process.env.NODE_ENV === 'development') Vue.config.performance = true
 
 const routes = []
@@ -22,4 +20,9 @@ new Vue({
   el: '#app',
   router,
   render: h => <App />
+})
+
+router.beforeEach((to, from, next) => {
+  Vue.prototype.$service.request.cancel()
+  next()
 })

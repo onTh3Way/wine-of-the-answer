@@ -40,7 +40,10 @@ app
   .use(helpsMiddlewares)
   .use(wotaRouter)
   .use((req, res, next) => {
-    if (!res.finished) res.end()
+    if (!res.finished) {
+      res.statusCode = 404
+      res.end()
+    }
     next()
   })
   .use(() => {
