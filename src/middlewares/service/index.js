@@ -88,6 +88,4 @@ export default function service (Vue) {
   }
 
   extendAlias(Vue.prototype.$service)
-
-  window.service = Vue.prototype.$service
 }
