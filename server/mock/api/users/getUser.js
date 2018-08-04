@@ -1,8 +1,9 @@
-module.exports = function (app, path) {
-  app.get(`${path}/:userId`, (req, res, next) => {
-    const {userId} = req.params
-    const user = db.users.find(user => user.userId === userId)
+module.exports = function (router) {
+  router.get(`/users/:userId`, (req, res, next) => {
+    const user = dbUtils.findUser(req.params.userId)
+
     if (user) {
+      res.statusCode = 200
       res.end(JSON.stringify(user))
     } else {
       res.statusCode = 404

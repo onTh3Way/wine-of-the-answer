@@ -1,11 +1,7 @@
 module.exports = {
-  '/': {
-    target: 'http://120.79.60.153',
-    bypass (req) {
-      const regex = /\.\D*$/
-      if (regex.test(req.url)) {
-        return req.url
-      }
-    }
+  '/api': {
+    target: 'http://localhost:8080',
+    cookieDomainRewrite: 'localhost',
+    debug: true
   }
 }

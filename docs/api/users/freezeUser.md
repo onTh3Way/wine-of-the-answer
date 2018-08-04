@@ -6,16 +6,17 @@
 
 #### URL
 
-> DELETE /api/users/{userId}?timestamp=121212121
+> DELETE /api/v1/users/{id}?freezeTime=121212121
 
 #### 请求参数
 
 |参数|必选|类型|默认值|说明|
 |:----- |:-------|:------|:-----|----- |
-|freezeTime|false|timestamp(毫秒)|currentTimestamp + 7天总毫秒| 冻结截止时间|
+|freezeTime|false|timestamp(毫秒)| currentTimeStamp + (1000 * 60 * 60 * 24 * 7)| 冻结时间|
 
 #### 响应：
 ##### 成功：204
-##### 权限不足: 401
+##### 未登录: 401
+##### 权限不足: 403
 ##### 用户不存在: 404
 

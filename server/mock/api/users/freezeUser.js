@@ -1,10 +1,12 @@
-module.exports = function (app, path) {
-  app.delete(`${path}/:userId`, (req, res, next) => {
-    const {userId} = req.params
+module.exports = function (router) {
+  router.delete(`/users/:userId`, (req, res, next) => {
     const {freezeTime} = req.query
-    const user = db.users.find(user => user.userId === userId)
-    res.statusCode = user ? 204 : 404
-    if (user) user.freezeTime = freezeTime
+    if (req.user && req.isAdmin) {
+      req.user.freezeTime = freezeTime
+      dbUtils.save()
+    } else {
+      res.statusCode = 404
+    }
     res.end()
     next()
   })
