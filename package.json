@@ -7,6 +7,8 @@
     "@babel/core": "^7.0.0-beta.51",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.51",
     "@babel/plugin-proposal-decorators": "^7.0.0-beta.51",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0-beta.55",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0-beta.55",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.51",
     "@babel/preset-env": "^7.0.0-beta.51",
     "@babel/preset-es2015": "^7.0.0-beta.51",
@@ -66,11 +68,13 @@
     "url-loader": "^1.0.1",
     "vue-loader": "^15.2.4",
     "vue-template-compiler": "^2.5.16",
+    "vux-loader": "^1.2.9",
     "webpack": "^4.12.1",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
-    "webpack-merge": "^4.1.3"
+    "webpack-merge": "^4.1.3",
+    "yaml-loader": "^0.5.0"
   },
   "dependencies": {
     "lodash": "^4.17.10",
@@ -85,6 +89,10 @@
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
     "start:mock": "node ./server/mock/server",
     "start": "node ./server/staticServer"
+  },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
   },
   "peerDependencies": {}
 }

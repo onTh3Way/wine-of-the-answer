@@ -1,82 +1,73 @@
 /* axios v0.18.0 | (c) 2018 by Matt Zabriskie */
 (function webpackUniversalModuleDefinition (root, factory) {
-	if (typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory()
-	else if (typeof define === 'function' && define.amd)
-		define([], factory)
-	else if (typeof exports === 'object')
-		exports['axios'] = factory()
-	else
-		root['axios'] = factory()
+  if (typeof exports === 'object' && typeof module === 'object') { module.exports = factory() } else if (typeof define === 'function' && define.amd) { define([], factory) } else if (typeof exports === 'object') { exports['axios'] = factory() } else { root['axios'] = factory() }
 })(this, function () {
-	return /******/ (function (modules) { // webpackBootstrap
-		/******/ 	// The module cache
-		/******/
-		var installedModules = {}
-		/******/
-		/******/ 	// The require function
-		/******/
-		function __webpack_require__ (moduleId) {
-			/******/
-			/******/ 		// Check if module is in cache
-			/******/
-			if (installedModules[moduleId])
-			/******/      return installedModules[moduleId].exports
-			/******/
-			/******/ 		// Create a new module (and put it into the cache)
-			/******/
-			var module = installedModules[moduleId] = {
-				/******/      exports: {},
-				/******/      id: moduleId,
-				/******/      loaded: false
-				/******/
-			}
-			/******/
-			/******/ 		// Execute the module function
-			/******/
-			modules[moduleId].call(module.exports, module, module.exports, __webpack_require__)
-			/******/
-			/******/ 		// Flag the module as loaded
-			/******/
-			module.loaded = true
-			/******/
-			/******/ 		// Return the exports of the module
-			/******/
-			return module.exports
-			/******/
-		}
+  return /******/ (function (modules) { // webpackBootstrap
+    /******/ 	// The module cache
+    /******/
+    var installedModules = {}
+    /******/
+    /******/ 	// The require function
+    /******/
+    function __webpack_require__ (moduleId) {
+      /******/
+      /******/ 		// Check if module is in cache
+      /******/
+      if (installedModules[moduleId])
+			/******/ { return installedModules[moduleId].exports }
+      /******/
+      /******/ 		// Create a new module (and put it into the cache)
+      /******/
+      var module = installedModules[moduleId] = {
+        /******/ exports: {},
+				/******/ id: moduleId,
+				/******/ loaded: false
+      /******/
+      }
+      /******/
+      /******/ 		// Execute the module function
+      /******/
+      modules[moduleId].call(module.exports, module, module.exports, __webpack_require__)
+      /******/
+      /******/ 		// Flag the module as loaded
+      /******/
+      module.loaded = true
+      /******/
+      /******/ 		// Return the exports of the module
+      /******/
+      return module.exports
+      /******/
+    }
 
-		/******/
-		/******/
-		/******/ 	// expose the modules object (__webpack_modules__)
-		/******/
-		__webpack_require__.m = modules
-		/******/
-		/******/ 	// expose the module cache
-		/******/
-		__webpack_require__.c = installedModules
-		/******/
-		/******/ 	// __webpack_public_path__
-		/******/
-		__webpack_require__.p = ''
-		/******/
-		/******/ 	// Load entry module and return exports
-		/******/
-		return __webpack_require__(0)
-		/******/
-	})
+    /******/
+    /******/
+    /******/ 	// expose the modules object (__webpack_modules__)
+    /******/
+    __webpack_require__.m = modules
+    /******/
+    /******/ 	// expose the module cache
+    /******/
+    __webpack_require__.c = installedModules
+    /******/
+    /******/ 	// __webpack_public_path__
+    /******/
+    __webpack_require__.p = ''
+    /******/
+    /******/ 	// Load entry module and return exports
+    /******/
+    return __webpack_require__(0)
+    /******/
+  })
 	/************************************************************************/
 	/******/([
 		/* 0 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			module.exports = __webpack_require__(1)
 
 			/***/
-		}),
+		},
 		/* 1 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -131,16 +122,15 @@
 			module.exports.default = axios
 
 			/***/
-		}),
+		},
 		/* 2 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var bind = __webpack_require__(3)
 			var isBuffer = __webpack_require__(4)
 
-			/*global toString:true*/
+			/* global toString:true */
 
 			// utils is a library of generic helper functions non-specific to axios
 
@@ -345,7 +335,7 @@
 
 				// Force an array if not already something iterable
 				if (typeof obj !== 'object') {
-					/*eslint no-param-reassign:0*/
+					/* eslint no-param-reassign:0 */
 					obj = [obj]
 				}
 
@@ -441,10 +431,9 @@
 			}
 
 			/***/
-		}),
+		},
 		/* 3 */
-		/***/ (function (module, exports) {
-
+		/***/ function (module, exports) {
 			'use strict'
 
 			module.exports = function bind (fn, thisArg) {
@@ -458,10 +447,9 @@
 			}
 
 			/***/
-		}),
+		},
 		/* 4 */
-		/***/ (function (module, exports) {
-
+		/***/ function (module, exports) {
 			/*!
 			 * Determine if an object is a Buffer
 			 *
@@ -485,10 +473,9 @@
 			}
 
 			/***/
-		}),
+		},
 		/* 5 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var defaults = __webpack_require__(6)
@@ -515,7 +502,7 @@
 			 * @param {Object} config The config specific for this request (merged with this.defaults)
 			 */
 			Axios.prototype.request = function request (config) {
-				/*eslint no-param-reassign:0*/
+				/* eslint no-param-reassign:0 */
 				// Allow for axios('example/url'[, config]) a la fetch API
 				if (typeof config === 'string') {
 					config = utils.merge({
@@ -547,7 +534,7 @@
 
 			// Provide aliases for supported request methods
 			utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData (method) {
-				/*eslint func-names:0*/
+				/* eslint func-names:0 */
 				Axios.prototype[method] = function (url, config) {
 					return this.request(utils.merge(config || {}, {
 						method: method,
@@ -557,7 +544,7 @@
 			})
 
 			utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData (method) {
-				/*eslint func-names:0*/
+				/* eslint func-names:0 */
 				Axios.prototype[method] = function (url, data, config) {
 					return this.request(utils.merge(config || {}, {
 						method: method,
@@ -570,10 +557,9 @@
 			module.exports = Axios
 
 			/***/
-		}),
+		},
 		/* 6 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -630,7 +616,7 @@
 				}],
 
 				transformResponse: [function transformResponse (data) {
-					/*eslint no-param-reassign:0*/
+					/* eslint no-param-reassign:0 */
 					if (typeof data === 'string') {
 						try {
 							data = JSON.parse(data)
@@ -672,10 +658,9 @@
 			module.exports = defaults
 
 			/***/
-		}),
+		},
 		/* 7 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -690,10 +675,9 @@
 			}
 
 			/***/
-		}),
+		},
 		/* 8 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -802,9 +786,9 @@
 						var cookies = __webpack_require__(16)
 
 						// Add xsrf header
-						var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
-							cookies.read(config.xsrfCookieName) :
-							undefined
+						var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName
+							? cookies.read(config.xsrfCookieName)
+							: undefined
 
 						if (xsrfValue) {
 							requestHeaders[config.xsrfHeaderName] = xsrfValue
@@ -876,10 +860,9 @@
 			}
 
 			/***/
-		}),
+		},
 		/* 9 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var createError = __webpack_require__(10)
@@ -908,10 +891,9 @@
 			}
 
 			/***/
-		}),
+		},
 		/* 10 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var enhanceError = __webpack_require__(11)
@@ -932,10 +914,9 @@
 			}
 
 			/***/
-		}),
+		},
 		/* 11 */
-		/***/ (function (module, exports) {
-
+		/***/ function (module, exports) {
 			'use strict'
 
 			/**
@@ -959,10 +940,9 @@
 			}
 
 			/***/
-		}),
+		},
 		/* 12 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -979,7 +959,7 @@
 			 * @returns {string} The formatted url
 			 */
 			module.exports = function buildURL (url, params, paramsSerializer) {
-				/*eslint no-param-reassign:0*/
+				/* eslint no-param-reassign:0 */
 				if (!params) {
 					return url
 				}
@@ -1024,10 +1004,9 @@
 			}
 
 			/***/
-		}),
+		},
 		/* 13 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -1083,20 +1062,19 @@
 			}
 
 			/***/
-		}),
+		},
 		/* 14 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var utils = __webpack_require__(2)
 
 			module.exports = (
-				utils.isStandardBrowserEnv() ?
+				utils.isStandardBrowserEnv()
 
 					// Standard browser envs have full support of the APIs needed to test
 					// whether the request URL is of the same origin as current location.
-					(function standardBrowserEnv () {
+					? (function standardBrowserEnv () {
 						var msie = /(msie|trident)/i.test(navigator.userAgent)
 						var urlParsingNode = document.createElement('a')
 						var originURL
@@ -1127,9 +1105,9 @@
 								hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
 								hostname: urlParsingNode.hostname,
 								port: urlParsingNode.port,
-								pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
-									urlParsingNode.pathname :
-									'/' + urlParsingNode.pathname
+								pathname: (urlParsingNode.pathname.charAt(0) === '/')
+									? urlParsingNode.pathname
+									: '/' + urlParsingNode.pathname
 							}
 						}
 
@@ -1146,10 +1124,10 @@
 							return (parsed.protocol === originURL.protocol &&
 								parsed.host === originURL.host)
 						}
-					})() :
+					})()
 
 					// Non standard browser envs (web workers, react-native) lack needed support.
-					(function nonStandardBrowserEnv () {
+					: (function nonStandardBrowserEnv () {
 						return function isURLSameOrigin () {
 							return true
 						}
@@ -1157,10 +1135,9 @@
 			)
 
 			/***/
-		}),
+		},
 		/* 15 */
-		/***/ (function (module, exports) {
-
+		/***/ function (module, exports) {
 			'use strict'
 
 			// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
@@ -1171,7 +1148,7 @@
 				this.message = 'String contains an invalid character'
 			}
 
-			E.prototype = new Error
+			E.prototype = new Error()
 			E.prototype.code = 5
 			E.prototype.name = 'InvalidCharacterError'
 
@@ -1200,19 +1177,18 @@
 			module.exports = btoa
 
 			/***/
-		}),
+		},
 		/* 16 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var utils = __webpack_require__(2)
 
 			module.exports = (
-				utils.isStandardBrowserEnv() ?
+				utils.isStandardBrowserEnv()
 
 					// Standard browser envs support document.cookie
-					(function standardBrowserEnv () {
+					? (function standardBrowserEnv () {
 						return {
 							write: function write (name, value, expires, path, domain, secure) {
 								var cookie = []
@@ -1246,10 +1222,10 @@
 								this.write(name, '', Date.now() - 86400000)
 							}
 						}
-					})() :
+					})()
 
 					// Non standard browser env (web workers, react-native) lack needed support.
-					(function nonStandardBrowserEnv () {
+					: (function nonStandardBrowserEnv () {
 						return {
 							write: function write () {},
 							read: function read () { return null },
@@ -1259,10 +1235,9 @@
 			)
 
 			/***/
-		}),
+		},
 		/* 17 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -1317,10 +1292,9 @@
 			module.exports = InterceptorManager
 
 			/***/
-		}),
+		},
 		/* 18 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -1409,10 +1383,9 @@
 			}
 
 			/***/
-		}),
+		},
 		/* 19 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var utils = __webpack_require__(2)
@@ -1426,7 +1399,7 @@
 			 * @returns {*} The resulting transformed data
 			 */
 			module.exports = function transformData (data, headers, fns) {
-				/*eslint no-param-reassign:0*/
+				/* eslint no-param-reassign:0 */
 				utils.forEach(fns, function transform (fn) {
 					data = fn(data, headers)
 				})
@@ -1435,10 +1408,9 @@
 			}
 
 			/***/
-		}),
+		},
 		/* 20 */
-		/***/ (function (module, exports) {
-
+		/***/ function (module, exports) {
 			'use strict'
 
 			module.exports = function isCancel (value) {
@@ -1446,10 +1418,9 @@
 			}
 
 			/***/
-		}),
+		},
 		/* 21 */
-		/***/ (function (module, exports) {
-
+		/***/ function (module, exports) {
 			'use strict'
 
 			/**
@@ -1466,10 +1437,9 @@
 			}
 
 			/***/
-		}),
+		},
 		/* 22 */
-		/***/ (function (module, exports) {
-
+		/***/ function (module, exports) {
 			'use strict'
 
 			/**
@@ -1486,10 +1456,9 @@
 			}
 
 			/***/
-		}),
+		},
 		/* 23 */
-		/***/ (function (module, exports) {
-
+		/***/ function (module, exports) {
 			'use strict'
 
 			/**
@@ -1511,10 +1480,9 @@
 			module.exports = Cancel
 
 			/***/
-		}),
+		},
 		/* 24 */
-		/***/ (function (module, exports, __webpack_require__) {
-
+		/***/ function (module, exports, __webpack_require__) {
 			'use strict'
 
 			var Cancel = __webpack_require__(23)
@@ -1574,10 +1542,9 @@
 			module.exports = CancelToken
 
 			/***/
-		}),
+		},
 		/* 25 */
-		/***/ (function (module, exports) {
-
+		/***/ function (module, exports) {
 			'use strict'
 
 			/**
@@ -1607,8 +1574,8 @@
 			}
 
 			/***/
-		})
+		}
 		/******/])
 })
 
-//# sourceMappingURL=axios.map
+// # sourceMappingURL=axios.map

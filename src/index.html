@@ -5,12 +5,26 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <script type="text/javascript">
+    (function (doc, win) {
+      var docEl = doc.documentElement
+      var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'
+      var recalc = function () {
+        var clientWidth = docEl.clientWidth
+        if (!clientWidth) return
+        docEl.style.fontSize = 20 * (clientWidth / 320) + 'px'
+      }
+      if (!doc.addEventListener) return
+      win.addEventListener(resizeEvt, recalc, false)
+      doc.addEventListener('DOMContentLoaded', recalc, false)
+    })(document, window)
+  </script>
 </head>
 <body>
 <div id="app">
 </div>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-<script src="/axios.js"></script>
-<script src="/vue.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" src="/axios.js"></script>
+<script type="text/javascript" src="/vue.js"></script>
 </body>
 </html>

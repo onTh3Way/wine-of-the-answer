@@ -9,8 +9,14 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const HtmlPlugin = require('html-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const chalk = require('chalk')
+const vuxLoader = require('vux-loader')
+const lessLoader = require('./loader/less')
 
-module.exports = {
+function resolve (dir) {
+  return path.resolve(srcPath, dir)
+}
+
+const webpackConfig = {
   // 上下文路径
   context: srcPath,
   // entry point
@@ -22,22 +28,23 @@ module.exports = {
   },
   resolve: {
     // 后缀自动补全
-    extensions: ['.vue', '.js', '.less', '.png', '.jpg', 'gif', 'jpeg', '.json', '.html'],
+    extensions: ['.vue', '.js', '.less', '.png', '.jpg', '.gif', '.jpeg', '.json', '.html'],
     // 文件夹别名
     alias: {
-      '@': path.resolve(srcPath),
-      assets: path.resolve(srcPath, 'assets'),
-      components: path.resolve(srcPath, 'components'),
-      containers: path.resolve(srcPath, 'containers'),
-      less: path.resolve(srcPath, 'less'),
-      router: path.resolve(srcPath, 'router'),
-      service: path.resolve(srcPath, 'service'),
-      utils: path.resolve(srcPath, 'utils')
+      '@': resolve('.'),
+      assets: resolve('assets'),
+      components: resolve('components'),
+      containers: resolve('containers'),
+      less: resolve('less'),
+      router: resolve('router'),
+      middlewares: resolve('middlewares'),
+      utils: resolve('utils'),
+      vux: resolve('vux')
     },
     // 模块寻找路径
     modules: [
-      './',
-      'node_modules'
+      srcPath,
+      path.join(rootPath, 'node_modules')
     ]
   },
   module: {
@@ -46,21 +53,26 @@ module.exports = {
       // vue解析
       {
         test: /\.vue$/,
-        include: path.join(process.cwd(), 'src'),
-        exclude: /node_modules/,
-        use: ['cache-loader', {
-          loader: 'vue-loader',
-          options: {
-            compilerOptions: {
-              preserveWhitespace: false
+        use: [
+          'cache-loader',
+          {
+            loader: 'vue-loader',
+            options: {
+              compilerOptions: {
+                preserveWhitespace: false
+              }
             }
           }
-        }]
+        ]
       },
-      // 文件解析
+      // 字体解析
       {
-        test: /\.(png|jpe?g|gif|ico|svg)$/,
-        exclude: /node_modules/,
+        test: /\.(woff|ttf)(\?.*)?$/,
+        use: 'file-loader'
+      },
+      // 图片解析
+      {
+        test: /\.(png|jpe?g|gif|ico|svg)(\?.*)?$/,
         use: [
           {
             loader: 'url-loader',
@@ -86,56 +98,30 @@ module.exports = {
           }
         ]
       },
-      // css解析
-      // 不能使用cache-loader,会导致构建的hash与文件hash对应不上
+      // 外部css解析
       {
-        test: /\.(less|css)$/,
-        include: path.join(process.cwd(), 'src'),
-        exclude: /node_modules/,
+        test: /\.css$/,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 3,
-              modules: true,
               sourceMap: true
             }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => {
-                const plugins = []
-                if (!devMode) {
-                  plugins.push(require('autoprefixer'))
-                }
-                return plugins
-              },
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'less-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'style-resources-loader',
-            options: {
-              patterns: [
-                path.join(process.cwd(), './src/less/index.less')
-              ],
-              sourceMap: true
-            }
-          }]
+          }
+        ]
       },
+      // less解析
+      // 不能使用cache-loader,会导致构建的hash与文件hash对应不上
+      lessLoader('vux'),
+      // less解析
+      // 不能使用cache-loader,会导致构建的hash与文件hash对应不上
+      lessLoader('vux', true),
       // eslint检查
       {
         test: /\.(js|vue)$/,
         include: path.join(process.cwd(), 'src'),
-        exclude: /node_modules/,
+        exclude: /(node_modules|vux)/,
         enforce: 'pre',
         use: [
           'cache-loader',
@@ -143,7 +129,7 @@ module.exports = {
             loader: 'eslint-loader',
             options: {
               fix: true,
-              configFile: path.join(__dirname, 'lint/eslint.json')
+              configFile: path.join(__dirname, `lint/eslint.${devMode ? 'dev' : 'prod'}.json`)
             }
           }
         ]
@@ -151,8 +137,6 @@ module.exports = {
       // babel转换
       {
         test: /\.js$/,
-        include: path.join(process.cwd(), 'src'),
-        exclude: /node_modules/,
         use: [
           'cache-loader',
           {
@@ -167,6 +151,8 @@ module.exports = {
                 ['@babel/plugin-proposal-decorators', {legacy: true}],
                 ['@babel/plugin-proposal-class-properties', {loose: true}],
                 '@babel/plugin-syntax-dynamic-import',
+                '@babel/plugin-proposal-export-namespace-from',
+                '@babel/plugin-proposal-export-default-from',
                 'transform-vue-jsx'
               ],
               comments: devMode,
@@ -186,7 +172,7 @@ module.exports = {
     new StyleLintPlugin({
       configFile: path.join(__dirname, 'lint/stylelint.json'),
       context: path.join(process.cwd(), 'src'),
-      files: '**/*.(less|vue)',
+      files: '[^vux]/*.(less|vue)',
       fix: true
     }),
     // 进度条美化插件
@@ -203,3 +189,12 @@ module.exports = {
     })
   ]
 }
+
+// module.exports = vuxLoader.merge(webpackConfig, {
+//   plugins: [
+//     'vux-ui',
+//     'js-parser'
+//   ]
+// })
+
+module.exports = webpackConfig

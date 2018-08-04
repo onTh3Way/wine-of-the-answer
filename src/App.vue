@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    welcome to wota project
+    <router-view />
   </div>
 </template>
 
