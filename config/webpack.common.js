@@ -9,14 +9,12 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const HtmlPlugin = require('html-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const chalk = require('chalk')
-const vuxLoader = require('vux-loader')
-const lessLoader = require('./loader/less')
 
 function resolve (dir) {
   return path.resolve(srcPath, dir)
 }
 
-const webpackConfig = {
+module.exports = {
   // 上下文路径
   context: srcPath,
   // entry point
@@ -111,12 +109,85 @@ const webpackConfig = {
           }
         ]
       },
+      // vux-less解析
+      {
+        test: (p) => path.extname(p) === '.less' && p.includes('vux'),
+        use: [
+          'cache-loader',
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+              sourceMap: true,
+              modules: false
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => {
+                const plugins = []
+                if (!devMode) {
+                  plugins.push(require('autoprefixer'))
+                }
+                return plugins
+              },
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      },
       // less解析
-      // 不能使用cache-loader,会导致构建的hash与文件hash对应不上
-      lessLoader('vux'),
-      // less解析
-      // 不能使用cache-loader,会导致构建的hash与文件hash对应不上
-      lessLoader('vux', true),
+      {
+        test: (p) => path.extname(p) === '.less' && !p.includes('vux'),
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 3,
+              sourceMap: true,
+              // 外部库关闭cssModule
+              modules: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => {
+                const plugins = []
+                if (!devMode) {
+                  plugins.push(require('autoprefixer'))
+                }
+                return plugins
+              },
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'style-resources-loader',
+            options: {
+              patterns: [
+                path.join(process.cwd(), './src/less/index.less')
+              ],
+              sourceMap: true
+            }
+          }
+        ]
+      },
       // eslint检查
       {
         test: /\.(js|vue)$/,
@@ -189,12 +260,3 @@ const webpackConfig = {
     })
   ]
 }
-
-// module.exports = vuxLoader.merge(webpackConfig, {
-//   plugins: [
-//     'vux-ui',
-//     'js-parser'
-//   ]
-// })
-
-module.exports = webpackConfig

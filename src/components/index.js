@@ -1,2 +1,4 @@
 export { default as ChangeImgColor } from './ChangeImgColor'
-export { Tabs, Tab, TabPanel } from './Tabs'
+export { default as BaseModal } from './BaseModal'
+export { default as BottomDialog } from './BottomDialog'
+export { default as Modal } from './Modal'
