@@ -5,7 +5,7 @@
 
 #### 接口
 
-> POST /api/v1/{part}/posts <br>
+> POST /api/v1/{category}/posts <br>
 > POST /api/v1/posts/{id}/comments <br>
 > POST /api/v1/comments/{id}/replies <br>
 

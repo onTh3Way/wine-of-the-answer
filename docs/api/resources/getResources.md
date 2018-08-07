@@ -7,7 +7,7 @@
 #### URL
 
 > GET /api/v1/{posts || comments || replies} <br>
-> GET /api/v1/{part}/posts <br>
+> GET /api/v1/{category}/posts <br>
 > GET /api/v1/posts/{id}/comments <br>
 > GET /api/v1/comments/{id}/replies <br>
 
