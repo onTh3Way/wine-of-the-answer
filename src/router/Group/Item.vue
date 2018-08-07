@@ -5,10 +5,6 @@
 </template>
 
 <script>
-  let pixRatio = 1 / (window.devicePixelRatio)
-  let html = document.documentElement
-  document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=' + pixRatio + ',minimum-scale=' + pixRatio + ',maximum-scale=' + pixRatio + '">')
-  html.style.fontSize = html.clientWidth / 25 + '/@rem'
   export default {
     name: 'item',
     props: {
@@ -25,12 +21,12 @@
 
   .link {
     width: 100%;
-    height: 150/@rem;
-    margin-bottom: 55/@rem;
-    font-size: 60/@rem;
-    line-height: 150/@rem;
+    height: 52/@rem;
+    margin-bottom: 20/@rem;
+    font-size: 20/@rem;
+    line-height: 52/@rem;
     text-align: center;
-    border-radius: 20/@rem;
+    border-radius: 12/@rem;
     box-sizing: border-box;
 
     &.pink {
@@ -39,7 +35,7 @@
     }
 
     &.black {
-      border: 8/@rem solid rgb(249, 186, 197);
+      border: 2/@rem solid rgb(249, 186, 197);
       color: rgb(249, 186, 197);
       background-color: black;
     }

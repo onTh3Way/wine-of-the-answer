@@ -90,8 +90,8 @@
   export default {
     name: 'portrait',
     components: {
-      Status,
-      icon
+      icon,
+      Status
     }
   }
 </script>

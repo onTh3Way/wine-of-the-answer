@@ -1,9 +1,9 @@
 <template>
   <div :class="$style.bg">
     <div :class="$style.title">
-      <div :class="$style.img1"><img src="./zuichun.png"></div>
+      <div :class="$style.img1"><img src="~assets/lips.png"></div>
       <div :class="$style.titleword"><b>GlobalForum<br>答案之酒烦恼<br>全球论坛</b></div>
-      <div :class="$style.titletalk">你的烦恼是什么</div>
+      <div :class="$style.titletalk">你的烦恼是什么?</div>
     </div>
     <div :class="$style.wrapper">
       <div>
@@ -21,15 +21,10 @@
 
 <script>
   import Item from './Item'
-
-  let pixRatio = 1 / (window.devicePixelRatio)
-  let html = document.documentElement
-  document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=' + pixRatio + ',minimum-scale=' + pixRatio + ',maximum-scale=' + pixRatio + '">')
-  html.style.fontSize = html.clientWidth / 25 + '/@rem'
-  console.log(pixRatio)
   export default {
     name: 'group-view',
-    components: {Item}
+    components: {Item},
+    mounted () { console.log(this.$style) }
   }
 </script>
 
@@ -52,23 +47,25 @@
       width: 50%;
       height: 100%;
       margin-top: -24%;
+      margin-left: 25/@rem;
 
       img {
         transform: rotate(270deg);
         width: 120%;
         height: 150%;
-        margin-left: 90/@rem;
+        display: inline-block;
+        left: 20/@rem;
       }
     }
 
     .titleword {
       display: inline-block;
+      margin-top:100/@rem;
       float: right;
       width: 40%;
       height: 50%;
-      margin-top: 270/@rem;
-      margin-right: 70/@rem;
-      font-size: 90/@rem;
+      margin-right: 20/@rem;
+      font-size: 30/@rem;
       text-align: center;
       color: rgb(249, 186, 197);
     }
@@ -77,8 +74,8 @@
       float: left;
       width: 100%;
       height: 40/@rem;
-      margin-top: 90/@rem;
-      font-size: 75/@rem;
+      margin-top: 20/@rem;
+      font-size: 30/@rem;
       line-height: 40/@rem;
       text-align: center;
       color: rgb(249, 186, 197);

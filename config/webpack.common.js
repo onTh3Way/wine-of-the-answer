@@ -111,12 +111,83 @@ const webpackConfig = {
           }
         ]
       },
+      // vux-less解析
+      {
+        test: p => path.extname(p) === '.less' && p.includes('vux'),
+        use: [
+          'cache-loader',
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+              sourceMap: true,
+              modules: false
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => {
+                const plugins = []
+                if (!devMode) {
+                  plugins.push(require('autoprefixer'))
+                }
+                return plugins
+              },
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+          ]
+      },
       // less解析
       // 不能使用cache-loader,会导致构建的hash与文件hash对应不上
-      lessLoader('vux'),
-      // less解析
-      // 不能使用cache-loader,会导致构建的hash与文件hash对应不上
-      lessLoader('vux', true),
+      {
+        test: p => path.extname(p) === '.less' && !p.includes('vux'),
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 3,
+              sourceMap: true,
+              modules: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => {
+                const plugins = []
+                if (!devMode) {
+                  plugins.push(require('autoprefixer'))
+                }
+                return plugins
+              },
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'style-resources-loader',
+            options: {
+              patterns: [path.join(srcPath, 'less/index.less')],
+              sourceMap: true
+            }
+          }
+          ]
+      },
       // eslint检查
       {
         test: /\.(js|vue)$/,
