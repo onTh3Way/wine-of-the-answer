@@ -45,6 +45,8 @@
     .returnBtn {
       position: fixed;
       top: 0;
+      width: 100%;
+      background: #000;
       z-index: 99998;
       height: 60/@rem;
     }
@@ -57,6 +59,7 @@
       height: 60/@rem;
       font-size: 30/@rem;
       color: @pink;
+      background: #000;
 
       .list_icon {
         float: left;

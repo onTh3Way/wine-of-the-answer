@@ -24,10 +24,10 @@
   @font: Arial;
 
   .portrait {
+    margin-top: 30/@rem;
     display: inline-block;
     width: 450/@rem;
     height: 150/@rem;
-    margin-top: -30/@rem;
     .all-center;
 
     .details {

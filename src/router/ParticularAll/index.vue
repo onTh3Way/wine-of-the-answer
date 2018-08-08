@@ -120,7 +120,6 @@
   .background {
     width: 100%;
     height: 100%;
-    font-family: '@font';
     color: #fff;
     background: black;
 
