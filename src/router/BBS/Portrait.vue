@@ -24,7 +24,7 @@
   @font: Arial;
 
   .portrait {
-    margin-top: 30/@rem;
+    margin-top: 6/@rem;
     display: inline-block;
     width: 450/@rem;
     height: 150/@rem;
