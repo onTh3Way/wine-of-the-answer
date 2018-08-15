@@ -12,7 +12,33 @@
       <div :class="$style.list_once">
         <post :class="$style.post_information" />
       </div>
+      <div :class="$style.list_once">
+        <post :class="$style.post_information" />
+      </div>
+      <div :class="$style.list_once">
+        <post :class="$style.post_information" />
+      </div>
+      <div :class="$style.list_once">
+        <post :class="$style.post_information" />
+      </div>
+      <div :class="$style.list_once">
+        <post :class="$style.post_information" />
+      </div>
+      <div :class="$style.list_once">
+        <post :class="$style.post_information" />
+      </div>
+      <div :class="$style.list_once">
+        <post :class="$style.post_information" />
+      </div>
+      <div :class="$style.list_once">
+        <post :class="$style.post_information" />
+      </div>
+      <div :class="$style.list_once">
+        <post :class="$style.post_information" />
+      </div>
     </div>
+
+    <div :class="$style.bottom">无更多内容</div>
   </div>
 </template>
 
@@ -71,11 +97,12 @@
     .list {
       float: left;
       width: 100%;
-      height: 100%;
+      height: auto;
       margin-top: 130/@rem;
       background: black;
       
       .list_once {
+        margin-top:18/@rem;
         float: left;
         width: 460/@rem;
         height: 160/@rem;
@@ -88,6 +115,16 @@
           margin-top: 0/@rem;
         }
       }
+    }
+    .bottom {
+      width: 100%;
+      height: 50/@rem;
+      font-size: 16/@rem;
+      line-height: 70/@rem;
+      color: @pink;
+      text-align: center;
+      float: left;
+      background: #000;
     }
   }
 </style>

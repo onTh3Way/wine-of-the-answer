@@ -1,11 +1,11 @@
 <template>
   <div :class="$style.status">
     <div :class="$style.dianzan">
-      <icon :class="$style.dianzan_icon" type="dianzan" />
+      <icon :class="$style.dianzan_icon" type="agreement" />
       <p :class="$style.dianzan_p">&nbsp;520</p>
     </div>
     <div :class="$style.comment">
-      <icon :class="$style.comment_icon" type="pinglun" />
+      <icon :class="$style.comment_icon" type="comment" />
       <p :class="$style.comment_p">&nbsp;7485</p>
     </div>
   </div>

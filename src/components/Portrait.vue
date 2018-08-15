@@ -1,14 +1,14 @@
 <template>
   <div :class="$style.portrait">
     <div :class="$style.details">
-      <img src="../../assets/avatar.jpg">
+      <img src="../assets/avatar.jpg">
     </div>
     <div :class="$style.information">
       <div :class="$style.username">
         <b>_Nikolaus</b>
       </div>
-      <div :class="$style.relay">
-        回复  @Schnuffel
+      <div :class="$style.time">
+        3小时前
       </div>
       <div :class="$style.subject">
         <p>如果一件事你不相信自己能做到，那你就真的做不到！因为你连希望都丢掉了，你又怎么能做到？</p>
@@ -24,10 +24,10 @@
   @font: Arial;
 
   .portrait {
+    margin-top: 6/@rem;
     display: inline-block;
     width: 450/@rem;
     height: 150/@rem;
-    margin-top: -30/@rem;
     .all-center;
 
     .details {
@@ -57,9 +57,10 @@
         font-size: 18/@rem;
         line-height: 25/@rem;
         text-align: left;
+        color: #fff;
       }
 
-      .relay {
+      .time {
         width: 200/@rem;
         height: 16/@rem;
         margin-top: 4/@rem;
@@ -87,10 +88,10 @@
   import Status from '@/router/BBS/Status'
 
   export default {
-    name: 'portraitall',
+    name: 'portrait',
     components: {
-      Status,
-      icon
+      icon,
+      Status
     }
   }
 </script>
