@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.bg">
     <div :class="$style.cover" />
-    <div :class="$style.pop">
+    <!-- <div :class="$style.pop">
       <div :class="$style.title">
         <b>发布你的烦恼</b>
       </div>
@@ -16,7 +16,7 @@
           发布
         </div>
       </div>
-    </div>"
+    </div>" -->
       
     <div :class="$style.returnBtn">
       <return-btn />
