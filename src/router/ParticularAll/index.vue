@@ -199,12 +199,6 @@
     .portrait_one {
       margin-top: 10/@rem;
     }
-    //  .segmentation {
-      
-    //    margin-top: 60/@rem;
-    //    display: block;
-    //    border: 1px solid red;
-    //  }
 
       .agreement_icon,
       .agreement_word,
