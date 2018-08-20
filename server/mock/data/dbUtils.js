@@ -22,7 +22,7 @@ function bubble (arr, sortFn = (a, b) => a > b) {
 }
 
 const fakerName = '匿名用户'
-const fakerAvatar = faker.internet.avatar()
+const fakerAvatar = faker.image.dataUri()
 
 const dbUtils = {
   insertUser ({

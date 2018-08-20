@@ -2,7 +2,7 @@
   <wrapper>
     <avatar :url="avatar" />
     <x-h1>
-      {{ username }}
+      {{ nickname }}
     </x-h1>
     <x-h6>
       {{ time }}
@@ -11,8 +11,8 @@
       {{ content }}
     </x-h3>
     <div :class="$style.bottom_area">
-      <icon type="agreement">{{ agreeNum }}</icon>
-      <icon type="comment" mode="light">{{ commentNum }}</icon>
+      <icon type="agreement">{{ agreeCount }}</icon>
+      <icon type="comment" mode="light">{{ commentCount }}</icon>
       <icon :class="$style.share" type="share" />
     </div>
   </wrapper>
@@ -33,7 +33,7 @@
         type: String,
         default: ''
       },
-      username: {
+      nickname: {
         type: String,
         default: ''
       },
@@ -45,11 +45,11 @@
         type: String,
         default: ''
       },
-      agreeNum: {
+      agreeCount: {
         type: Number,
         default: 0
       },
-      commentNum: {
+      commentCount: {
         type: Number,
         default: 0
       }

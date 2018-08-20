@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'development') Vue.config.performance = true
 
 // 配置你自己的路由
 const routes = [
-  {path: '/', component: Category}
+  {path: '/', component: BBS}
 ]
 
 const router = new VueRouter({

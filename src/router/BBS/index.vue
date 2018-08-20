@@ -4,16 +4,26 @@
       <title-bar>烦恼论坛</title-bar>
       <tab
         :class="$style.tab"
-        custom-bar-width="2rem"
-        default-color="#A48E8E"
-        active-color="pink"
+        customBarWidth="2rem"
+        defaultColor="#A48E8E"
+        activeColor="pink"
       >
         <tab-item selected>最新排序</tab-item>
         <tab-item>最热排序</tab-item>
       </tab>
     </div>
     
-    <div :class="$style.content" />
+    <div :class="$style.content">
+      <infinite-scroll>
+        <post
+          v-for="item in data"
+          :key="item.id"
+          :avatar="item.author.avatar"
+          :nickname="item.author.nickname"
+          :agreeNum="item.agreeNum"
+        />
+      </infinite-scroll>
+    </div>
     
     <!--<div :lass="$style.major">-->
     <!--<div :class="$style.release">-->
@@ -84,15 +94,30 @@
 </template>
 
 <script>
-  import { TitleBar } from 'components'
+  import { TitleBar, Post, InfiniteScroll } from 'components'
   import { Tab, TabItem } from 'vux/components/tab'
 
   export default {
     name: 'index',
     components: {
+      InfiniteScroll,
       TitleBar,
       Tab,
-      TabItem
+      TabItem,
+      Post
+    },
+    data: () => ({
+      data: [],
+      total: 0
+    }),
+    mounted () {
+      this.$service
+        .getPosts({offset: 0, limit: 5})
+        .ok(({data, total}) => {
+          console.log(data)
+          this.data = data
+          this.total = total
+        })
     }
   }
 </script>
