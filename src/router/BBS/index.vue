@@ -21,6 +21,7 @@
           :avatar="item.author.avatar"
           :nickname="item.author.nickname"
           :agreeNum="item.agreeNum"
+          :commentNum="item.commentNum"
         />
       </infinite-scroll>
     </div>
