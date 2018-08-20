@@ -1,2 +1,3 @@
-export {default as GroupView} from './Group'
-export {default as BBSView} from './BBS'
+export { default as Category } from './Category'
+export { default as BBS } from './BBS'
+export { default as MyTroubles } from './MyTroubles'

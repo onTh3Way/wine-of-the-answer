@@ -7,7 +7,7 @@
       <icon :class="$style.list_icon" type="list" />
       &nbsp;&nbsp;我的烦恼
     </div>
-
+    
     <div :class="$style.list">
       <div :class="$style.list_once">
         <post :class="$style.post_information" />
@@ -37,7 +37,7 @@
         <post :class="$style.post_information" />
       </div>
     </div>
-
+    
     <div :class="$style.bottom">无更多内容</div>
   </div>
 </template>
@@ -62,12 +62,12 @@
   @pink: #f9bac5;
   @greey: #101010;
   @font: Arial;
-
+  
   .bg {
     width: 100%;
     height: 100%;
     background: #000;
-
+    
     .returnBtn {
       position: fixed;
       top: 0;
@@ -76,7 +76,7 @@
       z-index: 99998;
       height: 60/@rem;
     }
-
+    
     .my_troubles {
       position: fixed;
       top: 60/@rem;
@@ -86,14 +86,14 @@
       font-size: 30/@rem;
       color: @pink;
       background: #000;
-
+      
       .list_icon {
         float: left;
         width: 38/@rem;
         margin-left: 30/@rem;
       }
     }
-
+    
     .list {
       float: left;
       width: 100%;
@@ -102,14 +102,14 @@
       background: black;
       
       .list_once {
-        margin-top:18/@rem;
+        margin-top: 18/@rem;
         float: left;
         width: 460/@rem;
         height: 160/@rem;
         background: @greey;
         border-radius: 10/@rem;
         .horizon-center;
-
+        
         .post_information {
           float: left;
           margin-top: 0/@rem;

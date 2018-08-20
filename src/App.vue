@@ -5,10 +5,7 @@
 </template>
 
 <script>
-  import { BBSView, GroupView, ParticularAllView } from '@/router'
-
   export default {
-    name: 'app',
-    components: { BBSView, GroupView, ParticularAllView }
+    name: 'app'
   }
 </script>

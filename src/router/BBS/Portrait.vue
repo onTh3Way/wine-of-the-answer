@@ -22,14 +22,14 @@
   @pink: #f9bac5;
   @greey: #101010;
   @font: Arial;
-
+  
   .portrait {
     margin-top: 6/@rem;
     display: inline-block;
     width: 450/@rem;
     height: 150/@rem;
     .all-center;
-
+    
     .details {
       float: left;
       width: 50/@rem;
@@ -37,19 +37,19 @@
       margin-top: 10/@rem;
       margin-left: 20/@rem;
       border-radius: 50%;
-
+      
       img {
         width: 100%;
         height: 100%;
         border-radius: 50%;
       }
     }
-
+    
     .information {
       float: right;
       width: 370/@rem;
       height: 150/@rem;
-
+      
       .username {
         width: 200/@rem;
         height: 25/@rem;
@@ -59,7 +59,7 @@
         text-align: left;
         color: #fff;
       }
-
+      
       .time {
         width: 200/@rem;
         height: 16/@rem;
@@ -69,7 +69,7 @@
         text-align: left;
         color: #736d6d;
       }
-
+      
       .subject {
         width: 360/@rem;
         height: 60/@rem;
