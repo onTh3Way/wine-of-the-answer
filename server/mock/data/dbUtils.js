@@ -22,12 +22,12 @@ function bubble (arr, sortFn = (a, b) => a > b) {
 }
 
 const fakerName = '匿名用户'
-const fakerAvatar = faker.internet.avatar()
+const fakerAvatar = faker.image.dataUri()
 
 const dbUtils = {
   insertUser ({
                 nickname = faker.name.findName(),
-                avatar = faker.internet.avatar(),
+                avatar = faker.image.dataUri(),
                 isAgreeProtocol = faker.random.boolean(),
                 freezeTime = 0
               } = {}) {
@@ -42,7 +42,7 @@ const dbUtils = {
   },
   insertAdmin ({
                  nickname = faker.name.findName(),
-                 avatar = faker.internet.avatar(),
+                 avatar = faker.image.dataUri(),
                  username = faker.internet.userName(),
                  password = faker.internet.password()
                } = {}) {
@@ -186,12 +186,6 @@ Array(5)
     const resources = resourceList.allResources[i]
     const Resource = resourceList.AllResource[i]
     const Resources = resourceList.AllResources[i]
-    const originInsertMethod = dbUtils['insert' + Resource]
-
-    dbUtils['insert' + Resource] = function () {
-      originInsertMethod.apply(this, arguments)
-      dbUtils.save()
-    }
 
     dbUtils['find' + Resource] = function (id) {
       return db[resources].find(v => v.id === (Number.isNaN(+id) ? id : +id))
