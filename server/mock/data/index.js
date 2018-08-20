@@ -47,7 +47,7 @@ Array(5)
     const Resource = resourceList.AllResource[i]
     const resources = resourceList.allResources[i]
     if (!db[resources].length) {
-      Array(1)
+      Array(20)
         .fill(null)
         .forEach(() => dbUtils['insert' + Resource]())
     }
