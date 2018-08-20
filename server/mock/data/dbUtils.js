@@ -27,7 +27,7 @@ const fakerAvatar = faker.image.dataUri()
 const dbUtils = {
   insertUser ({
                 nickname = faker.name.findName(),
-                avatar = faker.internet.avatar(),
+                avatar = faker.image.dataUri(),
                 isAgreeProtocol = faker.random.boolean(),
                 freezeTime = 0
               } = {}) {
@@ -42,7 +42,7 @@ const dbUtils = {
   },
   insertAdmin ({
                  nickname = faker.name.findName(),
-                 avatar = faker.internet.avatar(),
+                 avatar = faker.image.dataUri(),
                  username = faker.internet.userName(),
                  password = faker.internet.password()
                } = {}) {
@@ -61,9 +61,9 @@ const dbUtils = {
                 part = db.parts[faker.random.number(6)],
                 content = faker.random.words(),
                 createDate = new Date(faker.date.past()).getTime(),
-                agreeCount = 0,
-                disagreeCount = 0,
-                commentCount = 0
+                agreeNum = 0,
+                disagreeNum = 0,
+                commentNum = 0
               } = {}) {
     const user = dbUtils.findUser(userId)
     db.posts.push({
@@ -76,9 +76,9 @@ const dbUtils = {
       part,
       content,
       createDate,
-      agreeCount,
-      disagreeCount,
-      commentCount
+      agreeNum,
+      disagreeNum,
+      commentNum
     })
   },
   insertComment ({
@@ -87,9 +87,9 @@ const dbUtils = {
                    content = faker.random.words(),
                    anonymous,
                    createDate = new Date(faker.date.past()).getTime(),
-                   agreeCount = 0,
-                   disagreeCount = 0,
-                   commentCount = 0
+                   agreeNum = 0,
+                   disagreeNum = 0,
+                   commentNum = 0
                  } = {}) {
     const user = dbUtils.findUser(userId)
     if (user) {
@@ -103,9 +103,9 @@ const dbUtils = {
         postId,
         content,
         createDate,
-        agreeCount,
-        disagreeCount,
-        commentCount
+        agreeNum,
+        disagreeNum,
+        commentNum
       })
     }
   },
@@ -116,8 +116,8 @@ const dbUtils = {
                  receiverId,
                  content = faker.random.words(),
                  createDate = new Date(faker.date.past()).getTime(),
-                 agreeCount = 0,
-                 disagreeCount = 0
+                 agreeNum = 0,
+                 disagreeNum = 0
                } = {}) {
     const sender = dbUtils.findUser(senderId)
     const receiver = receiverId ? dbUtils.findReply(receiverId) : undefined
@@ -136,8 +136,8 @@ const dbUtils = {
       commentId,
       content,
       createDate,
-      agreeCount,
-      disagreeCount
+      agreeNum,
+      disagreeNum
     })
   },
   findUser (id) {},
@@ -186,12 +186,6 @@ Array(5)
     const resources = resourceList.allResources[i]
     const Resource = resourceList.AllResource[i]
     const Resources = resourceList.AllResources[i]
-    const originInsertMethod = dbUtils['insert' + Resource]
-
-    dbUtils['insert' + Resource] = function () {
-      originInsertMethod.apply(this, arguments)
-      dbUtils.save()
-    }
 
     dbUtils['find' + Resource] = function (id) {
       return db[resources].find(v => v.id === (Number.isNaN(+id) ? id : +id))
@@ -206,7 +200,7 @@ Array(5)
 
       if (resource !== 'user' && resource !== 'admin') {
         sort === 'hot'
-          ? bubble(list, (a, b) => b.agreeCount > a.agreeCount)
+          ? bubble(list, (a, b) => b.agreeNum > a.agreeNum)
           : bubble(list, (a, b) => b.createDate > a.createDate)
       }
 

@@ -2,13 +2,15 @@ const crypto = require('crypto')
 const path = require('path')
 const fs = require('fs')
 const dbUtils = require('./dbUtils')
+const faker = require('faker')
 const resourceList = require('./resourceList')
 
 const dbPath = path.join(__dirname, 'db.json')
 
 global.resourceList = resourceList
 global.dbUtils = dbUtils
-// 属性自动补全
+
+// property automatic completion
 global.db = {
   parts: ['married', 'work', 'money', 'study', 'family', 'healthy', 'other'],
   users: [],
@@ -45,11 +47,13 @@ Array(5)
     const Resource = resourceList.AllResource[i]
     const resources = resourceList.allResources[i]
     if (!db[resources].length) {
-      Array(100)
+      Array(1)
         .fill(null)
         .forEach(() => dbUtils['insert' + Resource]())
     }
   })
+
+dbUtils.save()
 
 global.tokenMap = {}
 

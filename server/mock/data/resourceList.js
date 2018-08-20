@@ -4,8 +4,8 @@ function firstUppercase (str) {
 
 const resource = ['post', 'comment', 'reply']
 const resources = ['posts', 'comments', 'replies']
-const allResource = [...resource, 'user', 'admin']
-const allResources = [...resources, 'users', 'admins']
+const allResource = ['user', 'admin', ...resource]
+const allResources = ['users', 'admins', ...resources]
 
 module.exports = {
   allResource,
