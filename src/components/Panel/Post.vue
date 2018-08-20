@@ -11,8 +11,8 @@
       {{ content }}
     </x-h3>
     <div :class="$style.bottom_area">
-      <icon type="agreement">{{ agreeCount }}</icon>
-      <icon type="comment" mode="light">{{ commentCount }}</icon>
+      <icon type="agreement">{{ agreeNum }}</icon>
+      <icon type="comment" mode="light">{{ commentNum }}</icon>
       <icon :class="$style.share" type="share" />
     </div>
   </wrapper>
@@ -45,11 +45,11 @@
         type: String,
         default: ''
       },
-      agreeCount: {
+      agreeNum: {
         type: Number,
         default: 0
       },
-      commentCount: {
+      commentNum: {
         type: Number,
         default: 0
       }
