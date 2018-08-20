@@ -1,0 +1,6 @@
+export { default as Wrapper } from './Wrapper'
+export { default as Avatar } from './Avatar'
+export { default as XH1 } from './XH1'
+export { default as XH3 } from './XH3'
+export { default as XH6 } from './XH6'
+export { default as Icon } from './Icon'
