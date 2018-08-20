@@ -16,9 +16,9 @@
 |replyToAuthor | object | 被回复者,只有reply资源才有 |
 |createDate | timestamp | 发布日期 |
 |content | string | 帖子内容 |
-|agreeCount | int | 点赞次数 |
-|disagreeCount | int | 踩次数 |
-|commentCount | int | 评论次数,reply资源无此项 |
+|agreeNum | int | 点赞次数 |
+|disagreeNum | int | 踩次数 |
+|commentNum | int | 评论次数,reply资源无此项 |
 |isAgree | boolean | 已经点赞过 |
 |isDisagree | boolean | 已经踩过 |
 
@@ -35,9 +35,9 @@
   "replyToAuthor": {}, // 如果为replies的话,加上此项,数据同上
   "createDate": 123213123123,
   "content": "test content",
-  "agreeCount": 100,
-  "disagreeCount": 200,
-  "commentCount": 200 // 如果为reply资源,无此项
+  "agreeNum": 100,
+  "disagreeNum": 200,
+  "commentNum": 200 // 如果为reply资源,无此项
   "isAgree": false,
   "isDisagree": true,
 }

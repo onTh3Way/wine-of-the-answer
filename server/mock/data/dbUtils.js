@@ -61,9 +61,9 @@ const dbUtils = {
                 part = db.parts[faker.random.number(6)],
                 content = faker.random.words(),
                 createDate = new Date(faker.date.past()).getTime(),
-                agreeCount = 0,
-                disagreeCount = 0,
-                commentCount = 0
+                agreeNum = 0,
+                disagreeNum = 0,
+                commentNum = 0
               } = {}) {
     const user = dbUtils.findUser(userId)
     db.posts.push({
@@ -76,9 +76,9 @@ const dbUtils = {
       part,
       content,
       createDate,
-      agreeCount,
-      disagreeCount,
-      commentCount
+      agreeNum,
+      disagreeNum,
+      commentNum
     })
   },
   insertComment ({
@@ -87,9 +87,9 @@ const dbUtils = {
                    content = faker.random.words(),
                    anonymous,
                    createDate = new Date(faker.date.past()).getTime(),
-                   agreeCount = 0,
-                   disagreeCount = 0,
-                   commentCount = 0
+                   agreeNum = 0,
+                   disagreeNum = 0,
+                   commentNum = 0
                  } = {}) {
     const user = dbUtils.findUser(userId)
     if (user) {
@@ -103,9 +103,9 @@ const dbUtils = {
         postId,
         content,
         createDate,
-        agreeCount,
-        disagreeCount,
-        commentCount
+        agreeNum,
+        disagreeNum,
+        commentNum
       })
     }
   },
@@ -116,8 +116,8 @@ const dbUtils = {
                  receiverId,
                  content = faker.random.words(),
                  createDate = new Date(faker.date.past()).getTime(),
-                 agreeCount = 0,
-                 disagreeCount = 0
+                 agreeNum = 0,
+                 disagreeNum = 0
                } = {}) {
     const sender = dbUtils.findUser(senderId)
     const receiver = receiverId ? dbUtils.findReply(receiverId) : undefined
@@ -136,8 +136,8 @@ const dbUtils = {
       commentId,
       content,
       createDate,
-      agreeCount,
-      disagreeCount
+      agreeNum,
+      disagreeNum
     })
   },
   findUser (id) {},
@@ -200,7 +200,7 @@ Array(5)
 
       if (resource !== 'user' && resource !== 'admin') {
         sort === 'hot'
-          ? bubble(list, (a, b) => b.agreeCount > a.agreeCount)
+          ? bubble(list, (a, b) => b.agreeNum > a.agreeNum)
           : bubble(list, (a, b) => b.createDate > a.createDate)
       }
 
