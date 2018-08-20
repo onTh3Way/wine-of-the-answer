@@ -11,10 +11,10 @@ module.exports = function (router) {
           ? 403
           : 200
 
-      if (res.statusCode === 200) {
+      if (res.statusCode === 200 && resources !== 'users') {
         data = data.map(v => {
-          const agreeTable = db.perRecord[resources].agree[req.user.id]
-          const disagreeTable = db.perRecord[resources].disagree[req.user.id]
+          const agreeTable = req.user ? db.perRecord[resources].agree[req.user.id] : null
+          const disagreeTable = req.user ? db.perRecord[resources].disagree[req.user.id] : null
 
           v.isAgree = !!agreeTable && agreeTable.includes(v.id)
           v.isDisagree = !!disagreeTable && disagreeTable.includes(v.id)
