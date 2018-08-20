@@ -2,7 +2,7 @@
   <i
     :class="$style.icon"
     :style="{
-      background: `url(${require(`./assets/${type}.svg`)}) no-repeat center / cover`
+      backgroundImage: `url(${require(`./assets/${type}.svg`)})`
     }"
   />
 </template>
@@ -22,7 +22,10 @@
 <style lang="less" module>
   .icon {
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    width: 0.8rem;
+    height: 0.8rem;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 </style>

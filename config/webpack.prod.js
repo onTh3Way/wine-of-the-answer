@@ -5,7 +5,7 @@ const UglifyPlugin = require('uglifyjs-webpack-plugin')
 const ManifestPlugin = require('inline-manifest-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const PrerenderSPAPlugin = require('prerender-spa-plugin')
+// const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const distPath = baseConfig.output.path
 
 module.exports = merge(baseConfig, {
@@ -20,11 +20,13 @@ module.exports = merge(baseConfig, {
     new MiniCssExtractPlugin({
       filename: '[name].[chunkhash].css'
     }),
-    new ManifestPlugin('manifest'),
-    new PrerenderSPAPlugin({
-      staticDir: distPath,
-      routes: ['/', '/protocol']
-    })
+    new ManifestPlugin('manifest')
+    // 预渲染
+    // 暂时不启用,最后阶段再启用
+    // new PrerenderSPAPlugin({
+    //   staticDir: distPath,
+    //   routes: ['/', '/protocol']
+    // })
   ],
   optimization: {
     runtimeChunk: {

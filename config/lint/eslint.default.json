@@ -19,7 +19,7 @@
     "no-new": 0,
     "vue/prop-name-casing": [
       "error",
-      "camelCase"
+      "kebab-case"
     ],
     "vue/name-property-casing": [
       "error",
@@ -60,6 +60,10 @@
         "endTag": "never",
         "selfClosingTag": "always"
       }
+    ],
+    "vue/attribute-hyphenation": [
+      2,
+      "never"
     ]
   }
 }

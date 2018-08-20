@@ -51,4 +51,8 @@ app
   })
   .listen(config.port, config.host)
 
+module.exports = function (port, host) {
+  app.listen(port || config.port, host || config.host)
+}
+
 console.log(`mock server is listen in ${config.host}: ${config.port}`)
