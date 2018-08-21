@@ -97,13 +97,10 @@
 <script>
   import { Icon } from 'components'
   import returnBtn from 'components/ReturnBtn'
-  import portrait from '../BBS/Portrait'
-  import treadIcon from '../BBS/TreadIcon'
-  import border from 'router/Particulars/Border'
 
   export default {
     name: 'particulars',
-    components: {Icon, returnBtn, portrait, treadIcon, border}
+    components: {Icon, returnBtn}
   }
 </script>
 

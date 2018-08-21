@@ -45,14 +45,12 @@
 <script>
   import returnBtn from 'components/ReturnBtn'
   import Icon from '@/components/Icon/index'
-  import post from '../BBS/Portrait'
 
   export default {
     name: 'index',
     components: {
       Icon,
-      returnBtn,
-      post
+      returnBtn
     }
   }
 </script>

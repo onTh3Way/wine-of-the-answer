@@ -2,12 +2,14 @@
   <div :class="$style.wrapper">
     <div>
       <slot name="left">
-        <div :class="$style.arrow">
-          <div :class="[$style.arrow, $style.arrow_cover]" />
-        </div>
+        <a :class="$style.back_text">
+          <slot name="backText">返回</slot>
+        </a>
+        <div :class="$style.arrow" />
+        <div :class="[$style.arrow, $style.cover]" />
       </slot>
     </div>
-    <div :class="$style.text">
+    <div :class="$style.title">
       <slot />
     </div>
     <div>
@@ -23,39 +25,53 @@
 </script>
 
 <style lang="less" module>
+  @back-text-size: 0.8rem;
+  @title-text-size: 0.9rem;
+  @title-text-color: pink;
+  @theme-color: pink;
+  @arrow-size: 2px;
+  @arrow-color: pink;
+  @arrow-cover-color: black;
+  @wrapper-padding: 0.5rem;
+  
   .wrapper {
     display: flex;
-    position: relative;
+    padding: @wrapper-padding;
     width: 100%;
+    color: @theme-color;
     
     > div {
       flex: 1;
     }
   }
   
+  .back_text {
+    padding-left: @title-text-size - 0.1;
+    font-size: @back-text-size;
+    font-weight: 700;
+  }
+  
   .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 0;
     height: 0;
-    border: 0.75rem solid pink;
+    border: @title-text-size / 2 solid @theme-color;
     border-top-color: transparent;
     border-bottom-color: transparent;
     border-left-color: transparent;
+    
+    &.cover {
+      left: @arrow-size;
+      border-right-color: @arrow-cover-color;
+    }
   }
   
-  .arrow_cover {
-    position: absolute;
-    top: 0;
-    left: 5px;
-    border-right-color: black;
-  }
-  
-  .text {
+  .title {
     width: 100%;
-    height: 1.5rem;
-    line-height: 1.5rem;
     text-align: center;
-    font-size: 1rem;
+    font-size: @title-text-size;
     font-weight: 900;
-    color: pink;
   }
 </style>

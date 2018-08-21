@@ -12,7 +12,7 @@
 
 <style lang="less" module>
   .text {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 900;
     color: #CCC5C6;
   }
