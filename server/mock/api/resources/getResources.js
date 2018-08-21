@@ -23,7 +23,7 @@ module.exports = function (router) {
         })
 
         res.end(JSON.stringify({
-          data: data.slice(offset, limit),
+          data: data.slice(offset, offset + limit),
           total: data.length
         }))
       }

@@ -52,7 +52,10 @@ export default function request (config) {
   collector.collect(values(httpStatusMap))
   collector.collect([
     'networkError',
-    ...httpStatusCollection
+    ...httpStatusCollection,
+    'complete',
+    'then',
+    'catch'
   ])
 
   http
@@ -64,10 +67,14 @@ export default function request (config) {
     .then(({status, data}) => {
       collector.emit(httpStatusMap[status], data)
       collector.emit(httpStatusCollection[Number(String(status)[0]) - 1], data)
+      collector.emit('then', data)
+      collector.emit('complete', data)
     })
     .catch(err => {
       if (!axios.isCancel(err)) {
         collector.emit('networkError', err)
+        collector.emit('catch', err)
+        collector.emit('complete', err)
       }
     })
 
