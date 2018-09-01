@@ -26,7 +26,8 @@
   export default {
     components: {TitleBar, Post, List},
     data: () => ({
-      data: []
+      data: [],
+      text: ''
     }),
     beforeCreate () {
       document.title = '我的烦恼'
