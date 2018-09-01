@@ -5,21 +5,16 @@ module.exports = function (router) {
 
     if (resourceList.resources.includes(resources)) {
       const data = db[resources].find(v => v.id === id)
-
+      dbUtils.attachResourcesInfo(data, req.user)
       res.statusCode = Number.isNaN(id)
         ? 400
         : data
           ? 200
           : 404
 
-      const agreeTable = db.perRecord[resources].agree[req.user.id]
-      const disagreeTable = db.perRecord[resources].disagree[req.user.id]
-
-      if (res.statusCode === 200) res.end(JSON.stringify({
-        ...data,
-        isAgree: !!agreeTable && agreeTable.includes(id),
-        isDisagree: !!disagreeTable && disagreeTable.includes(id)
-      }))
+      res.end(res.statusCode === 200
+        ? JSON.stringify(data)
+        : void 0)
     }
 
     next()

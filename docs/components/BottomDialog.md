@@ -10,27 +10,26 @@
 #### 使用方法
 ```js
 <template>
+ <div>
+  <button @click="$refs.modal.show()">显示</button>
   <bottom-dialog ref="modal">
-    <template slot="title">
-    	标题
-    </template>
-    <template slot="options">
-      <div>选项1</div>
-      <div>选项2</div>
-      <div data-role="cancel">取消</div>
-    </template>
-  </bottom-dialog>
+     <template slot="title">
+     	标题
+     </template>
+     <template slot="options">
+       <div>选项1</div>
+       <div>选项2</div>
+       <div data-role="cancel">取消</div>
+     </template>
+   </bottom-dialog>
+ </div>
 <template>
 
 <script>
   import {BottomDialog} from 'components'
 
   export default {
-    components: {BottomDialog},
-    methods: {
-      showModal() { this.$refs.modal.show() }
-      hideModal() { this.$refs.modal.hide() }
-    }
+    components: {BottomDialog}
   }
 </script>
 ```

@@ -1,45 +1,81 @@
 <template>
   <wrapper>
-    <avatar :url="avatar" />
+    <x-router-link v-if="canLinkToDetail" :to="'/posts/' + id" />
+    <avatar :url="author.avatar" />
     <x-h1>
-      {{ nickname }}
+      {{ author.nickname }}
     </x-h1>
     <x-h6>
-      {{ time }}
+      {{ $utils.formatTimestamp(createDate) }}
     </x-h6>
     <x-h3>
       {{ content }}
     </x-h3>
-    <div :class="$style.bottom_area">
-      <icon type="agreement">{{ agreeNum }}</icon>
-      <icon type="comment" mode="light">{{ commentNum }}</icon>
-      <icon :class="$style.share" type="share" />
-    </div>
+    <tools>
+      <agree :num="agreeNum" :defaultActive="isAgree" />
+      <comment>{{ commentNum }}</comment>
+      <share />
+    </tools>
+    <release
+      v-if="release"
+      v-bind="release"
+      title="您的评论"
+      placeholder="请发表您的评论"
+      text="发表您的评论... 限30字"
+    />
   </wrapper>
 </template>
 
 <script>
-  import { Wrapper, Avatar, XH1, XH3, XH6, Icon } from './components'
+  import {
+    Wrapper,
+    Avatar,
+    XH1,
+    XH3,
+    XH6,
+    Icon,
+    Agree,
+    Share,
+    Tools,
+    Comment,
+    Release,
+    XRouterLink
+  } from './components'
 
   export default {
     name: 'post',
-    components: {Wrapper, Avatar, XH1, XH3, XH6, Icon},
+    provide () {
+      return {
+        id: this.id,
+        type: 'post'
+      }
+    },
+    components: {
+      Wrapper,
+      Avatar,
+      XH1,
+      XH3,
+      XH6,
+      Icon,
+      Agree,
+      Share,
+      Tools,
+      Comment,
+      Release,
+      XRouterLink
+    },
     props: {
       id: {
         type: [Number, String],
-        default: void 0
+        required: true
       },
-      avatar: {
-        type: String,
-        default: ''
+      author: {
+        type: Object,
+        default: () => ({nickname: '获取中...', avatar: ''})
       },
-      nickname: {
-        type: String,
-        default: ''
-      },
-      time: {
-        type: String,
-        default: ''
+      createDate: {
+        type: Number,
+        default: 0
       },
       content: {
         type: String,
@@ -52,20 +88,19 @@
       commentNum: {
         type: Number,
         default: 0
+      },
+      isAgree: {
+        type: Boolean,
+        default: false
+      },
+      canLinkToDetail: {
+        type: Boolean,
+        default: true
+      },
+      release: {
+        type: Object,
+        default: void 0
       }
     }
   }
 </script>
-
-<style lang="less" module>
-  .bottom_area {
-    margin-top: 0.4rem;
-    display: flex;
-    align-items: center;
-  }
-  
-  .share {
-    position: absolute;
-    right: 0;
-  }
-</style>

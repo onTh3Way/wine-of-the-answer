@@ -2,30 +2,15 @@
 import 'less/global'
 // 使旧浏览器兼容新api
 import './polyfill'
-import VueRouter from 'vue-router'
+import './middlewares'
+import './utils'
 import App from './App'
-import { Category, BBS } from 'router'
-import { eventBus, service, transitionCssModule } from './middlewares'
+import Scroller from 'vue-scroller'
+import router from 'router'
 
-// 路由
-Vue.use(VueRouter)
-// 事件分发器,无须自己卸载事件
-Vue.use(eventBus)
-// 网络请求层
-Vue.use(service)
-Vue.use(transitionCssModule)
+Vue.use(Scroller)
 
 if (process.env.NODE_ENV === 'development') Vue.config.performance = true
-
-// 配置你自己的路由
-const routes = [
-  {path: '/', component: BBS}
-]
-
-const router = new VueRouter({
-  routes,
-  mode: 'history'
-})
 
 new Vue({
   el: '#app',

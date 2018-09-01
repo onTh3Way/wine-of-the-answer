@@ -1,6 +1,6 @@
 import { request } from './utils'
 import upperFirst from 'lodash/upperFirst'
-import * as api from './api'
+import api from './api'
 
 const resourceArr = ['post', 'comment', 'reply']
 const resourcesArr = ['posts', 'comments', 'replies']
@@ -13,26 +13,7 @@ function extendAlias (target) {
     const Resource = ResourceArr[i]
     const Resources = ResourcesArr[i]
 
-    target['get' + Resources] = (options, config) => api.getResources({
-      type: resources,
-      options,
-      config
-    })
-
-    target['get' + Resource] = (id, config) => api.getResource({
-      id,
-      type: resources,
-      config
-    })
-
-    target['release' + Resource] = (id, data, config) => api.releaseResource({
-      id,
-      data,
-      type: resources,
-      config
-    })
-
-    target['agree' + Resource] = (id, config) => api.evaluateResource({
+    target['agree' + Resource] = ({id, config}) => api.evaluateResource({
       id,
       type: resources,
       isAgree: true,
@@ -40,7 +21,7 @@ function extendAlias (target) {
       config
     })
 
-    target['cancelAgree' + Resource] = (id, config) => api.evaluateResource({
+    target['cancelAgree' + Resource] = ({id, config}) => api.evaluateResource({
       id,
       type: resources,
       isAgree: true,
@@ -48,7 +29,7 @@ function extendAlias (target) {
       config
     })
 
-    target['disagree' + Resource] = (id, config) => api.evaluateResource({
+    target['disagree' + Resource] = ({id, config}) => api.evaluateResource({
       id,
       type: resources,
       isAgree: false,
@@ -56,7 +37,7 @@ function extendAlias (target) {
       config
     })
 
-    target['cancelDisagree' + Resource] = (id, config) => api.evaluateResource({
+    target['cancelDisagree' + Resource] = ({id, config}) => api.evaluateResource({
       id,
       type: resources,
       isAgree: false,
@@ -64,14 +45,14 @@ function extendAlias (target) {
       config
     })
 
-    target['report' + Resource] = (id, reason, config) => api.reportResource({
+    target['report' + Resource] = ({id, reason, config}) => api.reportResource({
       id,
       reason,
       type: resources,
       config
     })
 
-    target['delete' + Resource] = (id, config) => api.deleteResource({
+    target['delete' + Resource] = ({id, config}) => api.deleteResource({
       id,
       type: resources,
       config

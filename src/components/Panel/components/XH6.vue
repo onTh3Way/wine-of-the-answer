@@ -2,8 +2,8 @@
   <div :class="$style.text">
     <svg width="100%" height="100%">
       <text
+        :fill="color"
         font-size="0.5rem"
-        fill="#736D6D"
         x="0"
         y="1em"
       >
@@ -15,7 +15,13 @@
 
 <script>
   export default {
-    name: 'x-h6'
+    name: 'x-h6',
+    props: {
+      color: {
+        type: String,
+        default: '#736D6D'
+      }
+    }
   }
 </script>
 

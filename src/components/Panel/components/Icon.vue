@@ -31,7 +31,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 0.5rem;
     
     &.light {
       opacity: 0.6;

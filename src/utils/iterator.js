@@ -2,7 +2,7 @@
  * @param {string|array} target
  * @return {StrArrIterator}
  */
-export function iterator (target) {
+export default function iterator (target) {
   const tag = Object.prototype.toString.call(target)
   if (tag === '[object String]' || tag === '[object Array]') return new StrArrIterator(target)
 }

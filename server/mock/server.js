@@ -1,7 +1,8 @@
-require('./data')
+require('./database')
 const pathUtil = require('path')
 const fs = require('fs')
 const jsonServer = require('json-server')
+const faker = require('faker')
 const helpsMiddlewares = require('./middlewares')
 const config = require('./config')
 const express = require('express')
@@ -11,6 +12,8 @@ const middlewares = jsonServer.defaults({
 })
 const wotaRouter = express.Router()
 const wxRouter = express.Router()
+
+faker.locale = 'zh_CN'
 
 function requireAll (path, ...args) {
   const stat = fs.statSync(path)

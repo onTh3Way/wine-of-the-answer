@@ -10,6 +10,7 @@
 > GET /api/v1/{category}/posts <br>
 > GET /api/v1/posts/{id}/comments <br>
 > GET /api/v1/comments/{id}/replies <br>
+> GET /api/v1/{userId}/{posts || comments || replies} <br>
 
 #### 请求参数(queryString 查询字符串)
 
@@ -20,7 +21,6 @@
 |limit| false| int| 10| 获取数量|
 
 #### 返回字段
-
 |返回字段|字段类型|说明 |
 |:----- |:------|:----------------------------- |
 | data | Array\<resource> | 资源列表 |

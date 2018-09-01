@@ -19,10 +19,16 @@
       }
     },
     mounted () {
-      // 等待css样式挂载完毕
-      setTimeout(() => {
+      window.addEventListener('resize', this.apply, false)
+      setTimeout(this.apply, 300)
+    },
+    beforeDestroy () {
+      window.removeEventListener('resize', this.apply, false)
+    },
+    methods: {
+      apply () {
         this.$el.style.filter = `drop-shadow(${this.color} ${this.$el.offsetWidth}px 0)`
-      })
+      }
     }
   }
 </script>
@@ -30,7 +36,7 @@
 <style lang="less" module>
   .img {
     position: relative;
-    left: -100%;
+    transform: translateX(-100%);
     width: 100%;
     height: 100%;
     margin-left: 1px;

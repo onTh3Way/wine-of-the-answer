@@ -1,0 +1,73 @@
+<template>
+  <modal ref="modal">
+    <template slot="title">{{ title }}</template>
+    <template slot="content">
+      <x-textarea
+        ref="textarea"
+        :class="$style.input"
+        :maxlength="maxlength"
+        :placeholder="placeholder"
+      />
+    </template>
+    <template slot="options">
+      <button
+        data-role="cancel"
+        @click="onReleaseClick($refs.textarea.getContent(), true)"
+      >
+        匿名发布
+      </button>
+      <button
+        :class="$style.release"
+        data-role="cancel"
+        @click="onReleaseClick($refs.textarea.getContent(), false)"
+      >
+        发布
+      </button>
+    </template>
+  </modal>
+</template>
+
+<script>
+  import { Modal, XTextarea } from 'components'
+
+  export default {
+    name: 'release-modal',
+    components: {Modal, XTextarea},
+    props: {
+      title: {
+        type: String,
+        default: '发布您的烦恼'
+      },
+      placeholder: {
+        type: String,
+        default: '你的烦恼是什么'
+      },
+      maxlength: {
+        type: String,
+        default: '50'
+      },
+      onReleaseClick: {
+        type: Function,
+        default: () => void 0
+      }
+    },
+    methods: {
+      show () {
+        this.$refs.modal.show()
+      },
+      hide () {
+        this.$refs.modal.hide()
+      }
+    }
+  }
+</script>
+
+<style lang="less" module>
+  .release {
+    color: @pink;
+  }
+  
+  .input {
+    margin: 0 1rem;
+  }
+</style>

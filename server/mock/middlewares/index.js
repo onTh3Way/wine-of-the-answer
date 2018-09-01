@@ -1,4 +1,5 @@
 module.exports = [
+  require('./preset'),
   // 解析cookie为对象
   require('./cookieParse'),
   // 如果请求方法不为GET且未登录,拦截下来
@@ -10,6 +11,5 @@ module.exports = [
   // 拦截无效token
   require('./interceptInvalideToken'),
   // 拦截非法操作
-  require('./interceptIllegal'),
-  require('./preset')
+  require('./interceptIllegal')
 ]

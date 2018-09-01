@@ -1,73 +1,88 @@
 module.exports = function (router) {
-  router.post('/:part/posts', (req, res, next) => {
-    const {part} = req.params
+  router.post('/:category/posts', (req, res, next) => {
+    const {category} = req.params
     const {content, anonymous} = req.body
 
     if (!content) {
       res.statusCode = 400
-    } else if (!db.parts.includes(part)) {
+    } else if (!db.parts.includes(category)) {
       res.statusCode = 404
     } else {
-      res.statusCode = 201
+      res.statusCode = 200
       dbUtils.insertPost({
         userId: req.user.id,
-        part,
+        category,
         content,
         anonymous
       })
+      res.end(JSON.stringify(db.posts[db.posts.length - 1]))
     }
 
-    res.end()
     next()
   })
 
-  router.post('/:partResources/:id/:resources', (req, res, next) => {
-    const {partResources, resources} = req.params
+  router.post('/posts/:id/comments', (req, res, next) => {
     const id = +req.params.id
+    const {content, anonymous = false} = req.body
 
-    if (resourceList.resources.includes(partResources) && resourceList.resources.includes(resources)) {
-      const partResource = db[partResources].find(v => v.id === id)
-      const {receiverReplyId, content, anonymous} = req.body
-      let err
-
-      if (!content) {
-        res.statusCode = 400
-        err = {
-          code: 0,
-          msg: 'no null content'
-        }
-      } else if (resources === 'replies' && receiverReplyId && !dbUtils.findReply(receiverReplyId)) {
-        res.statusCode = 400
-        err = {
-          code: 1,
-          msg: 'receiver is not exist'
-        }
-      } else if (resources === 'replies' && receiverReplyId && dbUtils.findReply(receiverReplyId).author.id === req.user.id) {
-        res.statusCode = 400
-        err = {
-          code: 2,
-          msg: 'cannot reply self'
-        }
-      } else if (!partResource) {
-        res.statusCode = 404
-      } else {
-        res.statusCode = 201
-
-        dbUtils['insert' + resourceList.firstUppercase(resourceList.conversionResourceWord(resources))]({
-          userId: req.user.id,
-          postId: id,
-          content,
-          anonymous,
-          senderId: req.user.id,
-          receiverId: receiverReplyId,
-          commentId: id
-        })
-      }
-
-      res.end(JSON.stringify(err))
-      next()
+    if (!content) {
+      res.statusCode = 400
+      res.end(JSON.stringify({
+        code: 0,
+        msg: 'no null content'
+      }))
+    } else if (!dbUtils.findPost(id)) {
+      res.statusCode = 404
     } else {
-      next()
+      res.statusCode = 200
+      dbUtils.insertComment({
+        userId: req.user.id,
+        postId: id,
+        content,
+        anonymous
+      })
+      res.end(JSON.stringify(db.comments[db.comments.length - 1]))
     }
+
+    next()
+  })
+
+  router.post('/comments/:id/replies', (req, res, next) => {
+    const id = +req.params.id
+    const {content, receiverReplyId, anonymous = false} = req.body
+
+    if (!content) {
+      res.statusCode = 400
+      res.end(JSON.stringify({
+        code: 0,
+        msg: 'no null content'
+      }))
+    } else if (!dbUtils.findComment(id)) {
+      res.statusCode = 404
+    } else if (receiverReplyId && !dbUtils.findReply(receiverReplyId)) {
+      res.statusCode = 400
+      res.end(JSON.stringify({
+        code: 1,
+        msg: 'receiver is not exist'
+      }))
+    } else if (receiverReplyId && dbUtils.findReply(receiverReplyId).author.id === req.user.id) {
+      res.statusCode = 400
+      res.end(JSON.stringify({
+        code: 2,
+        msg: 'cannot reply self'
+      }))
+    } else {
+      res.statusCode = 200
+      dbUtils.insertReply({
+        senderId: req.user.id,
+        commentId: id,
+        receiverReplyId,
+        content,
+        anonymous
+      })
+      res.end(JSON.stringify(db.replies[db.replies.length - 1]))
+    }
+
+    next()
   })
 }

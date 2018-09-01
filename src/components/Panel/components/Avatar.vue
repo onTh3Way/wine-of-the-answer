@@ -21,9 +21,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 1.7rem;
-    height: 1.7rem;
-    transform: translate(-120%, 10%);
+    width: 1.9rem;
+    height: 1.9rem;
+    transform: translate(-120%, -20%);
     
     img {
       border-radius: 50%;

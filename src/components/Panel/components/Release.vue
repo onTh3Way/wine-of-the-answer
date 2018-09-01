@@ -1,0 +1,84 @@
+<template>
+  <div>
+    <span :class="$style.text" @click="$refs.modal.show()">{{ text }}</span>
+    <release-modal
+      ref="modal"
+      :onReleaseClick="release"
+      :placeholder="placeholder"
+      maxlength="30"
+    />
+  </div>
+</template>
+
+<script>
+  import { ReleaseModal } from 'components'
+
+  export default {
+    inject: ['id', 'type'],
+    name: 'release',
+    components: {ReleaseModal},
+    props: {
+      text: {
+        type: String,
+        default: '发表您的评论'
+      },
+      receiverReplyId: {
+        type: [String, Number],
+        default: void 0
+      },
+      onBeforeRelease: {
+        type: Function,
+        default: () => true
+      },
+      onReleaseSucceed: {
+        type: Function,
+        default: () => void 0
+      },
+      onReleaseFailed: {
+        type: Function,
+        default: () => void 0
+      },
+      placeholder: {
+        type: String,
+        default: '请输入'
+      }
+    },
+    methods: {
+      release (content, anonymous) {
+        if (!this.onBeforeRelease(content, anonymous)) return
+
+        if (this.type === 'post') {
+          this
+            .$service
+            .releaseComment({
+              postId: this.id,
+              content,
+              anonymous
+            })
+            .allOk(this.onReleaseSucceed)
+            .clientError(this.onReleaseFailed)
+        } else if (this.type === 'comment') {
+          this
+            .$service
+            .releaseReply({
+              commentId: this.id,
+              receiverReplyId: this.receiverReplyId,
+              content,
+              anonymous
+            })
+            .allOk(this.onReleaseSucceed)
+            .clientError(this.onReleaseFailed)
+        }
+      }
+    }
+  }
+</script>
+
+<style lang="less" module>
+  .text {
+    transform: scale(0.9);
+    font-size: 0.5rem;
+    font-weight: 700;
+    color: #B3A8AA;
+  }
+</style>

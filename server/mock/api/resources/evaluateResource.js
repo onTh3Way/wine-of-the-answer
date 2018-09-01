@@ -21,7 +21,7 @@ module.exports = function (router) {
       if (!records[userId]) records[userId] = []
       const resource = db[resources].find(v => v.id === id)
       const record = records[userId]
-      const key = path.endsWith('/agreement') ? 'agreeCount' : 'disagreeCount'
+      const key = path.endsWith('/agreement') ? 'agreeNum' : 'disagreeNum'
 
       if (!resource) {
         res.statusCode = 404

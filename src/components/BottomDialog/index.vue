@@ -2,7 +2,7 @@
   <base-modal
     ref="modal"
     v-bind="$props"
-    :dialogClass="$style.container"
+    :dialogClass="[$style.container, dialogClass]"
     :dialogTransition="$transitionCssModule('sliding')"
   >
     <template slot="dialog">
@@ -35,15 +35,18 @@
 </script>
 
 <style lang="less" module>
-  .sliding_enter, .sliding_leave_to {
+  .sliding_enter,
+  .sliding_leave_to {
     transform: translateY(100%);
   }
   
-  .sliding_enter_active, .sliding_leave_active {
+  .sliding_enter_active,
+  .sliding_leave_active {
     transition: all 0.3s;
   }
   
-  .sliding_enter_to, .sliding_leave {
+  .sliding_enter_to,
+  .sliding_leave {
     transform: translateY(0);
   }
   

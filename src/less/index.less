@@ -1,17 +1,19 @@
-.vertical-center() {
-  position: relative;
+@import "variable";
+
+.vertical-center(@position: relative) {
+  position: @position;
   transform: translateY(-50%);
   top: 50%;
 }
 
-.horizon-center() {
-  position: relative;
+.horizon-center(@position: relative) {
+  position: @position;
   transform: translateX(-50%);
   left: 50%;
 }
 
-.all-center() {
-  position: relative;
+.all-center(@position: relative) {
+  position: @position;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;

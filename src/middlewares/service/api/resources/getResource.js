@@ -1,7 +1,13 @@
-import { request, error } from '../../utils'
+import { request } from '../../utils'
 
-export default function getResource ({id, type, config}) {
-  if (!id || !type) error('getResource: id和type不可为空')
+export function getPost ({id, config}) {
+  return request.get(`/posts/${id}`, config)
+}
 
-  return request.get(`/${type}/${id}`, config)
+export function getComment ({id, config}) {
+  return request.get(`/comments/${id}`, config)
+}
+
+export function getReply ({id, config}) {
+  return request.get(`/replies/${id}`, config)
 }

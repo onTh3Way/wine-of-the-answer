@@ -1,4 +1,4 @@
-import { request, extendCollectorEvent, EventCollector, error } from '../../utils'
+import { request, extendCollectorEvent, EventCollector } from '../../utils'
 
 /**
  * 举报资源
@@ -15,11 +15,7 @@ export default function reportResource ({
   reason,
   config
 }) {
-  if (!id || !type) error('reportResource: id和type不可为空')
-  if (!reason) error('reportResource: reason不可为空')
-
   const req = request.post(`/${type}/${id}/report`, {reason}, config)
-  const collector = new EventCollector(req)
   extendCollectorEvent(req)
-  return collector
+  return req
 }

@@ -10,7 +10,7 @@
       appear
     >
       <div
-        :class="[$style.container, dialogClass]"
+        :class="[$style.container].concat(dialogClass)"
         :style="dialogStyle"
         data-role="dialog"
       >
@@ -19,7 +19,7 @@
     </transition>
     <transition
       v-if="!isHide && showMask"
-      v-bind="maskTransition"
+      v-bind="maskTransition || $transitionCssModule('mask')"
       appear
     >
       <div
@@ -75,7 +75,7 @@
         default: ''
       },
       'dialogClass': {
-        type: String,
+        type: [String, Array],
         default: ''
       },
       'maskClass': {
@@ -101,6 +101,12 @@
     data: () => ({
       isHide: true
     }),
+    mounted () {
+      document.body.appendChild(this.$el)
+    },
+    beforeDestroy () {
+      document.body.removeChild(this.$el)
+    },
     methods: {
       show () {
         this.isHide = false
@@ -142,5 +148,20 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 9;
+  }
+  
+  .mask_enter,
+  .mask_leave_to {
+    opacity: 0;
+  }
+  
+  .mask_enter_active,
+  .mask_leave_active {
+    transition: opacity 0.3s;
+  }
+  
+  .mask_enter_to,
+  .mask_leave {
+    opacity: 1;
   }
 </style>

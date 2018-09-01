@@ -1,35 +1,47 @@
-module.exports = function (router) {
-  router.get('/:resources', (req, res, next) => {
-    const {resources} = req.params
-    if (resourceList.resources.includes(resources)) {
-      const {sort = 'hot', offset = 0, limit = 5} = req.query
-      let data = dbUtils['find' + resources[0].toUpperCase() + resources.slice(1)]({sort, offset: 0, limit: 0})
+function exec (data, req, res, next) {
+  const {sort = 'hot'} = req.query
+  const offset = +req.query.offset || 0
+  const limit = +req.query.limit || 5
 
-      res.statusCode = (Number.isNaN(+offset) || Number.isNaN(+limit))
-        ? 400
-        : (resources === 'users' && !req.isAdmin)
-          ? 403
-          : 200
+  if (Number.isNaN(+offset) || Number.isNaN(+limit)) {
+    res.statusCode = 400
+    res.end()
+  } else {
+    dbUtils.sortResources(data, sort)
+    dbUtils.attachResourcesInfo(data, req.user)
 
-      if (res.statusCode === 200 && resources !== 'users') {
-        data = data.map(v => {
-          const agreeTable = req.user ? db.perRecord[resources].agree[req.user.id] : null
-          const disagreeTable = req.user ? db.perRecord[resources].disagree[req.user.id] : null
+    res.statusCode = 200
+    res.end(JSON.stringify({
+      data: data.slice(offset, offset + limit),
+      total: data.length
+    }))
+  }
 
-          v.isAgree = !!agreeTable && agreeTable.includes(v.id)
-          v.isDisagree = !!disagreeTable && disagreeTable.includes(v.id)
-
-          return v
-        })
-
-        res.end(JSON.stringify({
-          data: data.slice(offset, offset + limit),
-          total: data.length
-        }))
-      }
-    }
-
-    next()
-  })
+  next()
 }
 
+module.exports = function (router) {
+  router.get(['/posts', '/comments', '/replies'], (req, res, next) => {
+    exec(db[req.path.slice(1)], req, res, next)
+  })
+
+  router.get(['/users/:userId/posts', '/users/:userId/comments', '/users/:userId/replies'], (req, res, next) => {
+    const type = req.path.slice(req.path.lastIndexOf('/') + 1)
+    const userId = req.params.userId
+    exec(db[type].filter(item => item.author.id === userId), req, res, next)
+  })
+
+  router.get('/:category/posts', (req, res, next) => {
+    exec(db.posts.filter(post => post.category === req.params.category), req, res, next)
+  })
+
+  router.get('/posts/:postId/comments', (req, res, next) => {
+    const postId = +req.params.postId
+    exec(db.comments.filter(comment => comment.postId === postId), req, res, next)
+  })
+
+  router.get('/comments/:commentId/replies', (req, res, next) => {
+    const commentId = +req.params.commentId
+    exec(db.replies.filter(reply => reply.commentId === commentId), req, res, next)
+  })
+}

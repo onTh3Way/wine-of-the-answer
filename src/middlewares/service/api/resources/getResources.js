@@ -1,16 +1,75 @@
 import { request } from '../../utils'
 
-export default function getResources ({
-  type,
-  options = {},
+function baseFetch ({
+  url,
+  params = {},
   config
 }) {
-  if (!type) throw new Error('getResources: type不能为空')
+  const {offset = 0, limit = 10, sort = 'hot'} = params
 
-  const {offset = 0, limit = 10, sort = 'hot'} = options
-
-  return request.get(`/${type}`, {
+  return request.get(url, {
     ...config,
     params: {offset, limit, sort}
+  })
+}
+
+function prefixUrl (url, onlySelf) {
+  const prefix = onlySelf ? `/users/${localStorage.getItem('userId')}` : ''
+  return prefix + url
+}
+
+export function getPosts ({
+  onlySelf,
+  category,
+  offset,
+  limit,
+  sort,
+  config
+}) {
+  return baseFetch({
+    url: prefixUrl(category ? `/${category}/posts` : '/posts', onlySelf),
+    params: {
+      offset,
+      limit,
+      sort
+    },
+    config
+  })
+}
+
+export function getComments ({
+  onlySelf,
+  postId,
+  offset,
+  limit,
+  sort,
+  config
+}) {
+  return baseFetch({
+    url: prefixUrl(postId ? `/posts/${postId}/comments` : '/comments', onlySelf),
+    params: {
+      offset,
+      limit,
+      sort
+    },
+    config
+  })
+}
+
+export function getReplies ({
+  commentId,
+  offset,
+  limit,
+  sort,
+  config
+}) {
+  return baseFetch({
+    url: prefixUrl(commentId ? `/comments/${commentId}/replies` : '/replies'),
+    params: {
+      offset,
+      limit,
+      sort
+    },
+    config
   })
 }

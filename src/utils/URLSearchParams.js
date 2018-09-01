@@ -1,6 +1,6 @@
-import { iterator } from './iterator'
+import iterator from './iterator'
 
-export class URLSearchParams {
+export default class URLSearchParams {
   params = {}
   isSort = false
 

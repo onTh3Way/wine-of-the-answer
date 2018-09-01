@@ -18,7 +18,11 @@
 |anonymous |false |boolean|false|是否匿名|
 
 #### 响应：
-##### 发布成功：201
+##### 发布成功：200
+JSON
+```js
+{ ...同getResource }
+```
 ##### 参数不合法: 400
 JSON
 ```js

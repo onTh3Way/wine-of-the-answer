@@ -86,10 +86,10 @@
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "predev": "npm run clean && cp src/assets/vue.dev.js dist/vue.js && cp src/assets/axios.dev.js dist/axios.js",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.dev.js --color --port 3000",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.dev.js --color --port 3000 --host 0.0.0.0",
     "prebuild": "npm run clean && cp src/assets/vue.prod.js dist/vue.js && cp src/assets/axios.prod.js dist/axios.js",
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
-    "clean:mock": "rm ./server/mock/data/db.json",
+    "clean:mock": "rm ./server/mock/database/db.json",
     "start:mock": "node ./server/mock/server",
     "start": "node ./server/staticServer"
   },

@@ -1,4 +1,4 @@
-import { EventCollector, request, error, extendCollectorEvent } from '../../utils'
+import { request, extendCollectorEvent } from '../../utils'
 
 /**
  * 对资源进行点赞或踩
@@ -16,14 +16,11 @@ export default function evaluateResource ({
   isCancel = false,
   config
 }) {
-  if (!id || !type) error('evaluateResource: id和type不可为空')
-
   const req = request({
     ...config,
     url: `/${type}/${id}/${isAgree ? '' : 'dis'}agreement`,
     method: isCancel ? 'delete' : 'put'
   })
-  const collector = new EventCollector(req)
-  extendCollectorEvent(collector)
-  return collector
+  extendCollectorEvent(req)
+  return req
 }

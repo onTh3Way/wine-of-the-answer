@@ -11,30 +11,29 @@
 #### 使用方法
 ```js
 <template>
-  <modal ref="modal">
-    <template slot="title">
-    	标题
-    </template>
-    <template slot="content">
-      这是内容
-    </template>
-    <template slot="options">
-      <div data-role="cancel">取消</div>
-      <div>匿名发布</div>
-      <div>发布</div>
-    </template>
-  </modal>
+	<div>
+		<button @click="$refs.modal.show()">显示</button>
+	  <modal ref="modal">
+      <template slot="title">
+      	标题
+      </template>
+      <template slot="content">
+        这是内容
+      </template>
+      <template slot="options">
+        <div data-role="cancel">取消</div>
+        <div>匿名发布</div>
+        <div>发布</div>
+      </template>
+    </modal>
+	</div>
 <template>
 
 <script>
   import {Modal} from 'components'
 
   export default {
-    components: {Modal},
-    methods: {
-      showModal() { this.$refs.modal.show() }
-      hideModal() { this.$refs.modal.hide() }
-    }
+    components: {Modal}
   }
 </script>
 ```
