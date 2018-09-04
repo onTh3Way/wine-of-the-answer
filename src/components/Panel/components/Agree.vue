@@ -1,6 +1,6 @@
 <template>
   <icon :type="active ? 'agree-fill' : 'agree'" @click.native="agree">
-    {{ agreeNum }}
+    <template slot="text">{{ agreeNum }}</template>
   </icon>
 </template>
 

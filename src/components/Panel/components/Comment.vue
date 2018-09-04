@@ -1,6 +1,8 @@
 <template>
   <icon :class="$style.icon" type="comment" mode="light">
-    <slot />
+    <template slot="text">
+      {{ num }}
+    </template>
   </icon>
 </template>
 
@@ -9,7 +11,13 @@
 
   export default {
     name: 'comment',
-    components: {Icon}
+    components: {Icon},
+    props: {
+      num: {
+        type: Number,
+        default: 0
+      }
+    }
   }
 </script>
 

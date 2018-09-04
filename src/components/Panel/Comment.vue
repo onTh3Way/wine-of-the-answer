@@ -10,7 +10,7 @@
     <x-h3>{{ content }}</x-h3>
     <tools>
       <agree :num="agreeNum" :defaultActive="isAgree" />
-      <comment>{{ commentNum }}</comment>
+      <comment :num="commentNum">{{ commentNum }}</comment>
       <disagree :num="disagreeNum" :defaultActive="isDisagree" :class="$style.right" />
     </tools>
     <bottom-dialog ref="bottomDialog">

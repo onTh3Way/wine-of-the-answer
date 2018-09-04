@@ -1,6 +1,8 @@
 <template>
-  <icon :class="[$style.icon, active ? $style.active : '']" :type="active ? 'disagree-fill' : 'disagree'"
-        @click.native="disagree"
+  <icon
+    :class="[$style.icon, active ? $style.active : '']"
+    :type="active ? 'disagree-fill' : 'disagree'"
+    @click.native="disagree"
   />
 </template>
 

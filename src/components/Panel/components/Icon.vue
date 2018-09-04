@@ -1,9 +1,10 @@
 <template>
   <div :class="[$style.wrapper, $style[mode]]">
     <x-icon :class="$style.icon" :type="type" />
-    <div v-if="$slots.default" :class="$style.text">
-      <slot />
+    <div v-if="$slots.text" :class="$style.text">
+      <slot name="text" />
     </div>
+    <slot />
   </div>
 </template>
 

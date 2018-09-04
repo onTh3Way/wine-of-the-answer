@@ -17,26 +17,25 @@
         <slot name="dialog" />
       </div>
     </transition>
-    <transition
+    <x-mask
       v-if="!isHide && showMask"
-      v-bind="maskTransition || $transitionCssModule('mask')"
-      appear
+      :class="maskClass"
+      :style="maskStyle"
+      :transition="maskTransition"
+      data-role="mask"
+      @click.native="maskClosable && hide()"
     >
-      <div
-        :class="[$style.mask, maskStyle]"
-        :style="maskStyle"
-        data-role="mask"
-        @click="maskClosable && hide()"
-      >
-        <slot name="mask" />
-      </div>
-    </transition>
+      <slot name="mask" />
+    </x-mask>
   </div>
 </template>
 
 <script>
+  import XMask from '../XMask'
+
   export default {
     name: 'base-modal',
+    components: {XMask},
     props: {
       // 显示回调
       'onShow': {
@@ -138,30 +137,5 @@
   .container {
     position: absolute;
     z-index: 10;
-  }
-  
-  .mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 9;
-  }
-  
-  .mask_enter,
-  .mask_leave_to {
-    opacity: 0;
-  }
-  
-  .mask_enter_active,
-  .mask_leave_active {
-    transition: opacity 0.3s;
-  }
-  
-  .mask_enter_to,
-  .mask_leave {
-    opacity: 1;
   }
 </style>

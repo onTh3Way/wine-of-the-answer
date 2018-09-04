@@ -14,7 +14,7 @@
     <tools>
       <agree :num="agreeNum" :defaultActive="isAgree" />
       <comment>{{ commentNum }}</comment>
-      <share />
+      <share :class="$style.right" />
     </tools>
     <release
       v-if="release"
@@ -104,3 +104,10 @@
     }
   }
 </script>
+
+<style lang="less" module>
+  .right {
+    position: absolute;
+    right: 0;
+  }
+</style>
