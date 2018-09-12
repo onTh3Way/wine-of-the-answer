@@ -17,7 +17,7 @@ new Vue({
   router,
   render: h => <App />
 })
-
+ 
 // 路由跳转时取消所有网络请求
 router.beforeEach((to, from, next) => {
   Vue.prototype.$service.request.cancel()

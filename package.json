@@ -56,7 +56,6 @@
     "postcss-html": "^0.30.0",
     "postcss-less": "^2.0.0",
     "postcss-loader": "^2.1.5",
-    "prerender-spa-plugin": "^3.2.1",
     "progress-bar-webpack-plugin": "^1.11.0",
     "style-loader": "^0.21.0",
     "style-resources-loader": "^1.1.0",

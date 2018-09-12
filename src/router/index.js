@@ -3,7 +3,11 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 // 配置你自己的路由
-const routes = [
+const routes = [  
+  {
+    path: '/', 
+    component: () => import('./Platform')
+  },
   {
     path: '/welcome',
     name: 'welcome',
