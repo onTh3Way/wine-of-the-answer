@@ -13,7 +13,14 @@
     </div>
     
     <div :class="$style.content">
-      <scroller ref="scroller" :onInfinite="loadData" :onRefresh="refreshData">
+      <scroller
+        ref="scroller"
+        :onInfinite="loadData"
+        :onRefresh="refreshData"
+        refreshLayerColor="pink"
+        loadingLayerColor="pink"
+        snapping
+      >
         <list :items="data" />
       </scroller>
     </div>
@@ -47,8 +54,9 @@
     }),
     watch: {
       sort () {
-        this.$refs.scroller.scrollTo(0, 0, true)
-        this.refreshData()
+        this
+          .refreshData()
+          .complete(() => this.$refs.scroller.scrollTo(0, 0, true))
       }
     },
     beforeCreate () {
@@ -70,7 +78,7 @@
       loadData () {
         if (this.isFetching) return
 
-        this
+        return this
           .fetchData()
           .ok(({data, total}) => {
             this.data.push(...data)
@@ -80,7 +88,7 @@
       refreshData () {
         if (this.isFetching) return
 
-        this
+        return this
           .fetchData(0)
           .ok(({data}) => {
             this.data = data

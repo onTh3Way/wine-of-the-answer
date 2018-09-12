@@ -2,7 +2,7 @@
   <div :class="$style.wrapper">
     <div :class="$style.main">
       <div :class="$style.status_bar">
-        <b :class="$style.category">{{ post ? $utils.mapCategory(post.category) : '获取中' }}</b>
+        <b :class="$style.category">{{ category }}</b>
         <!--<b>520关注</b>-->
         <!--<b :class="$style.attention">+关注烦恼</b>-->
       </div>
@@ -15,30 +15,33 @@
         }"
       />
     </div>
-    <list v-if="hotComments.length">
-      <template slot="tip">热门评论</template>
-      <template>
-        <comment
-          v-for="(item, index) of hotComments"
-          v-bind="item"
-          :key="index"
-        />
-      </template>
-    </list>
-    <list :onLoading="loadData">
-      <template slot="tip">最新评论</template>
-      <template>
-        <comment
-          v-for="(item, index) of latestComments"
-          v-bind="item"
-          :key="index"
-        />
-      </template>
-    </list>
+    <div :class="$style.comments">
+      <list v-if="hotComments.length">
+        <template slot="tip">热门评论</template>
+        <template>
+          <comment
+            v-for="(item, index) of hotComments"
+            v-bind="item"
+            :key="index"
+          />
+        </template>
+      </list>
+      <list :onLoading="loadData">
+        <template slot="tip">最新评论</template>
+        <template>
+          <comment
+            v-for="(item, index) of latestComments"
+            v-bind="item"
+            :key="index"
+          />
+        </template>
+      </list>
+    </div>
   </div>
 </template>
 
 <script>
+  import { mapCategory } from 'utils'
   import { Post as PostPanel, Comment, List } from 'components'
 
   export default {
@@ -46,6 +49,7 @@
     components: {PostPanel, Comment, List},
     data: () => ({
       post: void 0,
+      category: '获取中',
       hotComments: [],
       latestComments: [],
       isFetching: false,
@@ -60,6 +64,7 @@
         .getPost({id: this.$route.params.id})
         .ok(data => {
           this.post = data
+          this.category = mapCategory(data.category)
         })
 
       this
@@ -96,10 +101,16 @@
 
 <style lang="less" module>
   .wrapper {
+    display: flex;
+    flex-direction: column;
     padding-top: 0.5rem;
     width: 100%;
     min-height: 100%;
     background-color: @black;
+    
+    > div {
+      min-height: 0;
+    }
   }
   
   .main {
@@ -120,5 +131,10 @@
   .attention {
     position: absolute;
     right: 0;
+  }
+  
+  .comments {
+    flex: 1 1 auto;;
+    background-color: #101010;
   }
 </style>

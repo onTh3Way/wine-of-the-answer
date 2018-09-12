@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div :class="$style.wrapper">
     <div
       v-for="(item, index) in items"
-      :class="$style.post"
       :key="index"
+      :class="$style.post"
     >
       <post v-bind="item" />
     </div>
@@ -11,11 +11,11 @@
 </template>
 
 <script>
-  import { Post } from 'components'
+  import { List as XList, Post } from 'components'
 
   export default {
     name: 'list',
-    components: {Post},
+    components: {XList, Post},
     props: {
       items: {
         type: Array,
@@ -26,6 +26,10 @@
 </script>
 
 <style lang="less" module>
+  .wrapper {
+    background-color: @black;
+  }
+  
   .post {
     margin: 0.5rem;
     background-color: #101010;

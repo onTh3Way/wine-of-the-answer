@@ -5,10 +5,22 @@
         <slot name="tip" />
       </p>
       <slot>
-        <p :class="$style.text">暂时还没有数据</p>
+        <slot name="no-data">
+          <p :class="$style.text">暂时还没有数据</p>
+        </slot>
       </slot>
-      <p v-if="loadedAll" :class="$style.text">
-        <slot name="no-more">没有更多</slot>
+      <p v-if="isFetching" :class="$style.text">
+        <slot name="loading">
+          加载中...
+        </slot>
+      </p>
+      <p v-if="hasError" :class="$style.text">
+        <slot name="error">
+          哦豁,网络出错了
+        </slot>
+      </p>
+      <p v-if="loadedAll && $slots.default" :class="$style.text">
+        <slot name="no-more">没有更多数据了</slot>
       </p>
     </div>
   </div>
@@ -29,13 +41,20 @@
       onLoading: {
         type: Function,
         default: void 0
+      },
+      autoRetry: {
+        type: [Boolean, Object],
+        default: true
       }
     },
     data: () => ({
+      // prevent repeat request
       isFetching: false,
+      hasError: false,
       loadedAll: false
     }),
     mounted () {
+      // this component will work only have onLoading function
       if (this.onLoading) {
         window.addEventListener('scroll', this.handleScroll, false)
         this.loadData()
@@ -55,6 +74,10 @@
             this.isFetching = false
             this.loadedAll = true
             window.removeEventListener('scroll', this.handleScroll, false)
+          },
+          error: () => {
+            window.removeEventListener('scroll', this.handleScroll, false)
+            this.hasError = true
           }
         })
       },
@@ -72,7 +95,6 @@
 <style lang="less" module>
   .wrapper {
     padding-top: 0.1rem;
-    background-color: #101010;
   }
   
   .list {

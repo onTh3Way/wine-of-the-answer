@@ -5,15 +5,11 @@
     <x-h1>
       {{ author.nickname }}
     </x-h1>
-    <x-h6>
-      {{ $utils.formatTimestamp(createDate) }}
-    </x-h6>
-    <x-h3>
-      {{ content }}
-    </x-h3>
+    <x-h6>{{ date }}</x-h6>
+    <x-h3>{{ content }}</x-h3>
     <tools>
       <agree :num="agreeNum" :defaultActive="isAgree" />
-      <comment>{{ commentNum }}</comment>
+      <comment :num="commentNum" />
       <share :class="$style.right" />
     </tools>
     <release
@@ -41,6 +37,7 @@
     Release,
     XRouterLink
   } from './components'
+  import { formatTimestamp } from 'utils'
 
   export default {
     name: 'post',
@@ -100,6 +97,11 @@
       release: {
         type: Object,
         default: void 0
+      }
+    },
+    computed: {
+      date () {
+        return formatTimestamp(this.createDate)
       }
     }
   }

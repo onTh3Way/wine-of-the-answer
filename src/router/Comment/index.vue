@@ -10,19 +10,21 @@
         }"
       />
     </div>
-    <list :onLoading="loadData">
-      <template slot="tip">全部回复 {{ total }}</template>
-      <template>
-        <div>
-          <reply
-            v-for="(item, index) of replies"
-            v-bind="item"
-            :key="index"
-            :onReplySucceed="handleRelease"
-          />
-        </div>
-      </template>
-    </list>
+    <div :class="$style.replies">
+      <list :onLoading="loadData">
+        <template slot="tip">全部回复 {{ total }}</template>
+        <template>
+          <div>
+            <reply
+              v-for="(item, index) of replies"
+              v-bind="item"
+              :key="index"
+              :onReplySucceed="handleRelease"
+            />
+          </div>
+        </template>
+      </list>
+    </div>
   </div>
 </template>
 
@@ -74,13 +76,24 @@
 
 <style lang="less" module>
   .wrapper {
+    display: flex;
+    flex-direction: column;
     padding-top: 0.5rem;
     width: 100%;
     min-height: 100%;
     background-color: @black;
+    
+    > div {
+      min-height: 0;
+    }
   }
   
   .main {
     padding: 0 0.5rem;
+  }
+  
+  .replies {
+    flex: 1 1 auto;
+    background-color: #101010;
   }
 </style>

@@ -28,5 +28,6 @@ module.exports = function (data) {
       disagreeNum,
       commentNum
     })
+    dbUtils.findPost(postId).commentNum++
   }
 }

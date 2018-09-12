@@ -9,7 +9,7 @@
     <x-h3>{{ content }}</x-h3>
     <tools>
       <agree :num="agreeNum" :defaultActive="isAgree" />
-      <x-h6 :class="$style.time" color="pink">{{ $utils.formatTimestamp(createDate) }}</x-h6>
+      <x-h6 :class="$style.time" color="pink">{{ date }}</x-h6>
       <disagree :num="disagreeNum" :defaultActive="isDisagree" :class="$style.right" />
     </tools>
     <bottom-dialog ref="bottomDialog">
@@ -119,6 +119,11 @@
       onReplyFailed: {
         type: Function,
         default: () => void 0
+      }
+    },
+    computed: {
+      date () {
+        return this.$utils.formatTimestamp(this.createDate)
       }
     },
     methods: {

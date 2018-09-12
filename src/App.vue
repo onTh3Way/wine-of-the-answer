@@ -1,35 +1,31 @@
 <template>
   <div id="app" :class="$style.app">
-    <router-view v-if="loginComplete" />
+    <router-view />
   </div>
 </template>
 
 <script>
-  import { Loading } from 'components'
-  import { URLSearchParams } from 'utils'
-
   export default {
     name: 'app',
-    components: {Loading},
     data: () => ({
       loginComplete: true
     }),
     beforeCreate () {
-      if (location.href.indexOf('code=') === -1) {
-        location.href =
-          'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfc3404099806c7e5&redirect_uri=' +
-          encodeURIComponent(location.href) +
-          '&response_type=code&scope=snsapi_userinfo#wechat_redirect'
-      } else {
-        const params = new URLSearchParams(location.href)
-        this
-          .$service
-          .login(params.get('code'))
-          .allOk(({id}) => {
-            localStorage.setItem('userId', id)
-            this.loginComplete = true
-          })
-      }
+      // if (location.href.indexOf('code=') === -1) {
+      //   location.href =
+      //     'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfc3404099806c7e5&redirect_uri=' +
+      //     encodeURIComponent(location.href) +
+      //     '&response_type=code&scope=snsapi_userinfo#wechat_redirect'
+      // } else {
+      // const params = new URLSearchParams(location.href)
+      // this
+      //   .$service
+      //   .login(params.get('code'))
+      //   .allOk(({id}) => {
+      //     localStorage.setItem('userId', id)
+      //     this.loginComplete = true
+      //   })
+      // }
     }
   }
 </script>

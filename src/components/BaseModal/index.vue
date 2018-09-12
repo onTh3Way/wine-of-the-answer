@@ -94,7 +94,7 @@
       // modal的z-index值
       'zIndex': {
         type: Number,
-        default: 999
+        default: 9999
       }
     },
     data: () => ({

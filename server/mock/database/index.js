@@ -47,22 +47,13 @@ Array(5)
   .forEach((_, i) => {
     const Resource = resourceList.AllResource[i]
     const resources = resourceList.allResources[i]
+    
     if (!db[resources].length) {
       Array(config.initDataLength)
         .fill(null)
         .forEach(() => dbUtils['insert' + Resource]({
           createDate: new Date(faker.date.past()).getTime()
         }))
-
-      Array(100)
-        .fill(null)
-        .forEach(() => {
-          dbUtils.insertComment({postId: 1})
-          dbUtils.insertReply({
-            commentId: 1,
-            createDate: new Date(faker.date.past()).getTime()
-          })
-        })
     }
   })
 

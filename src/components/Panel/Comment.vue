@@ -6,11 +6,11 @@
       <span>{{ author.nickname }}</span>
       <more :class="$style.right" @click.native="$refs.bottomDialog.show()" />
     </x-h1>
-    <x-h6>{{ $utils.formatTimestamp(createDate) }}</x-h6>
+    <x-h6>{{ date }}</x-h6>
     <x-h3>{{ content }}</x-h3>
     <tools>
       <agree :num="agreeNum" :defaultActive="isAgree" />
-      <comment :num="commentNum">{{ commentNum }}</comment>
+      <comment :num="commentNum" />
       <disagree :num="disagreeNum" :defaultActive="isDisagree" :class="$style.right" />
     </tools>
     <bottom-dialog ref="bottomDialog">
@@ -120,6 +120,11 @@
       canLinkToDetail: {
         type: Boolean,
         default: true
+      }
+    },
+    computed: {
+      date () {
+        return this.$utils.formatTimestamp(this.createDate)
       }
     }
   }

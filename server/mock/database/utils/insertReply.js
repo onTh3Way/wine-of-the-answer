@@ -4,7 +4,7 @@ const anonymousAvatar = require('../assets/anonymousAvatar')
 module.exports = function (data) {
   const {
     anonymous,
-    commentId = faker.random.number(db.comments.length),
+    commentId = db.comments[faker.random.number(db.comments.length - 1)].id,
     senderId = db.users[faker.random.number(db.users.length - 1)].id,
     receiverReplyId,
     content = faker.random.words(),
@@ -14,6 +14,7 @@ module.exports = function (data) {
   } = data
   const sender = dbUtils.findUser(senderId)
   const receiver = receiverReplyId ? dbUtils.findReply(receiverReplyId) : undefined
+  dbUtils.findComment(commentId).commentNum++
 
   db.replies.push({
     id: db.replies.length + 1,

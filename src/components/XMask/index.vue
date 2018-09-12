@@ -1,6 +1,5 @@
 <template>
   <transition
-    v-if="display"
     v-bind="transition || $transitionCssModule('mask')"
     appear
   >
