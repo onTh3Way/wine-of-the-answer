@@ -3,13 +3,16 @@ import styles from './styles.less'
 class Message {
   activeEls = []
 
-  containerEl
+  config = {
+    containerEl: document.body,
+    offset: '1rem'
+  }
 
   constructor (config = {}) {
-    const {
-      containerEl = document.body
-    } = config
-    this.containerEl = containerEl
+    this.config = {
+      ...this.config,
+      ...config
+    }
   }
 
   show (msg, duration, type) {
@@ -33,8 +36,9 @@ class Message {
       <span class="${styles.text}">${msg}</span>
     `
     this.containerEl.appendChild(el)
-    this.activeEls.push(el)
     el.style.top = 0
+    console.log(this.activeEls[this.activeEls.length - 1].offsetTop)
+    this.activeEls.push(el)
     setTimeout(() => {
       el.style.opacity = 1
       el.style.top = '24px'
