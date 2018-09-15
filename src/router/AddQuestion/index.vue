@@ -21,7 +21,7 @@
 
     <div :class="$style.bottom">
       <input :class="$style.box" type="radio">
-      <label>匿名发布</label>
+      <label>点击选择匿名发布</label>
     </div>
   </div>
 </template>
