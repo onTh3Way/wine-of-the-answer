@@ -1,17 +1,24 @@
 import VueRouter from 'vue-router'
+// import { listenerCount } from 'cluster'
 
 Vue.use(VueRouter)
 
 // 配置你自己的路由
 const routes = [  
   {
-    path: '/', 
+    path: '/platform', 
+    name: 'platform',
     component: () => import('./Platform')
   },
   {
     path: '/welcome',
     name: 'welcome',
     component: () => import('./Welcome')
+  },
+  {
+    path: '/',
+    // name: 'loading',
+    component: () => import('./Loading')
   },
   {
     path: '/protocol',

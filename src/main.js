@@ -5,6 +5,7 @@ import './polyfill'
 import './middlewares'
 import './utils'
 import App from './App'
+import AddQuestion from 'router/AddQuestion'
 import Scroller from 'vue-scroller'
 import router from 'router'
 
@@ -15,6 +16,7 @@ if (process.env.NODE_ENV === 'development') Vue.config.performance = true
 new Vue({
   el: '#app',
   router,
+  components: {AddQuestion},
   render: h => <App />
 })
  

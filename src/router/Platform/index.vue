@@ -61,7 +61,8 @@
     float: left;
 
     img {
-      width: 65%;
+      width: 12rem;
+      height: 6rem;
       .horizon-center;
     }
   }

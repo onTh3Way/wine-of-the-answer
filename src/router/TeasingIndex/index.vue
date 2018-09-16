@@ -34,7 +34,6 @@
             height: 25rem;
             float: left;
             margin-top: -15rem;
-            border: 1px solid red;
             .horizon-center;
         }
 
