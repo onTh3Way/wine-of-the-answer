@@ -17,15 +17,15 @@
       //     encodeURIComponent(location.href) +
       //     '&response_type=code&scope=snsapi_userinfo#wechat_redirect'
       // } else {
-      // const params = new URLSearchParams(location.href)
-      // this
-      //   .$service
-      //   .login(params.get('code'))
-      //   .allOk(({id}) => {
-      //     localStorage.setItem('userId', id)
-      //     this.loginComplete = true
-      //   })
-      // }
+      const params = new URLSearchParams(location.href)
+      this
+        .$service
+        .login(params.get('code'))
+        .allOk(({id}) => {
+          localStorage.setItem('userId', id)
+          this.loginComplete = true
+        })
+        // }
     }
   }
 </script>

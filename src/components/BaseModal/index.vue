@@ -5,25 +5,23 @@
     :style="Object.assign({zIndex}, wrapperStyle)"
   >
     <transition
-      v-if="!isHide"
+      v-if="active"
       v-bind="dialogTransition"
       appear
     >
       <div
         :class="[$style.container].concat(dialogClass)"
         :style="dialogStyle"
-        data-role="dialog"
       >
         <slot name="dialog" />
       </div>
     </transition>
     <x-mask
-      v-if="!isHide && showMask"
       :class="maskClass"
       :style="maskStyle"
       :transition="maskTransition"
-      data-role="mask"
-      @click.native="maskClosable && hide()"
+      :closable="maskClosable"
+      v-model="active"
     >
       <slot name="mask" />
     </x-mask>
@@ -98,7 +96,7 @@
       }
     },
     data: () => ({
-      isHide: true
+      active: false
     }),
     mounted () {
       document.body.appendChild(this.$el)
@@ -108,7 +106,7 @@
     },
     methods: {
       show () {
-        this.isHide = false
+        this.active = true
         this.$nextTick(() => {
           this.$refs.el.querySelectorAll('[data-role=cancel]').forEach(el => {
             el.addEventListener('click', this.hide, false)
@@ -120,7 +118,7 @@
         this.$refs.el.querySelectorAll('[data-role=cancel]').forEach(el => {
           el.removeEventListener('click', this.hide, false)
         })
-        this.isHide = true
+        this.active = false
         this.onHide()
       }
     }

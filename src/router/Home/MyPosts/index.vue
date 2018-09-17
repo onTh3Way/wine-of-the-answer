@@ -33,6 +33,7 @@
           })
           .ok(({data, total}) => {
             this.data.push(...data)
+            this.$refs.scroller.finishInfinite(this.data.length === total)
           })
       }
     }

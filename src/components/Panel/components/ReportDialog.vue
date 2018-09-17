@@ -30,6 +30,7 @@
 
 <script>
   import { BottomDialog, CheckboxGroup, Checkbox } from 'components'
+  import { message } from 'utils'
   import upperFirst from 'lodash/upperFirst'
 
   const reportOptions = [
@@ -90,8 +91,12 @@
           .allOk(() => {
             this.onReportSucceed()
             this.hide()
+            message.success('举报成功')
           })
-          .clientError(this.onReportFailed)
+          .clientError(() => {
+            this.onReportFailed()
+            message.error('举报失败')
+          })
       }
     }
   }

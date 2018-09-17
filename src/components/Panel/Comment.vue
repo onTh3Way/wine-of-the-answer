@@ -33,6 +33,7 @@
 
 <script>
   import { BottomDialog } from 'components'
+  import { formatTimestamp } from 'utils'
   import {
     Wrapper,
     Avatar,
@@ -124,7 +125,7 @@
     },
     computed: {
       date () {
-        return this.$utils.formatTimestamp(this.createDate)
+        return formatTimestamp(this.createDate)
       }
     }
   }

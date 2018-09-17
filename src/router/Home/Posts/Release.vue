@@ -10,6 +10,7 @@
 
 <script>
   import { Icon, Modal, XTextarea, ReleaseModal } from 'components'
+  import { message } from 'utils'
 
   export default {
     components: {Icon, Modal, XTextarea, ReleaseModal},
@@ -29,8 +30,11 @@
     },
     methods: {
       release (content, anonymous) {
-        if (!content) return
-        if (!this.onBeforeRelease(content, anonymous)) return
+        if (!content) {
+          message.error('内容不能为空')
+          return
+        }
+        if (!this.onBeforeRelease(content, anonymous)) return true
 
         this
           .$service
@@ -41,6 +45,8 @@
           })
           .allOk(this.onReleaseSucceed)
           .clientError(this.onReleaseFailed)
+
+        return true
       }
     }
   }

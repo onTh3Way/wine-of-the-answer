@@ -11,7 +11,8 @@
         v-bind="post"
         :canLinkToDetail="false"
         :release="{
-          onReleaseSucceed: handleRelease
+          onReleaseSucceed: handleReleaseSucceed,
+          onReleaseFailed: handleReleaseFailed
         }"
       />
     </div>
@@ -41,7 +42,7 @@
 </template>
 
 <script>
-  import { mapCategory } from 'utils'
+  import { mapCategory, message } from 'utils'
   import { Post as PostPanel, Comment, List } from 'components'
 
   export default {
@@ -92,8 +93,12 @@
             else loaded()
           })
       },
-      handleRelease (data) {
+      handleReleaseSucceed (data) {
+        message.success('评论成功')
         this.latestComments.unshift(data)
+      },
+      handleReleaseFailed () {
+        message.error('评论失败')
       }
     }
   }

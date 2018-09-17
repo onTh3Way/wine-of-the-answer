@@ -2,7 +2,7 @@ window.requestAnimationFrame = window.requestAnimationFrame ||
   window.webkitRequestAnimationFrame ||
   window.mozRequestAnimationFrame ||
   function (cb) {
-    return window.setTimeout(cb, 1000 / 60)
+    return window.setTimeout(cb, 16.67)
   }
 
 window.cancelAnimationFrame = window.cancelAnimationFrame ||

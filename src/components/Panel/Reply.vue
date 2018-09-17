@@ -32,6 +32,7 @@
 
 <script>
   import { ReleaseModal, BottomDialog } from 'components'
+  import { message, formatTimestamp } from 'utils'
   import {
     Wrapper,
     Avatar,
@@ -123,12 +124,16 @@
     },
     computed: {
       date () {
-        return this.$utils.formatTimestamp(this.createDate)
+        return formatTimestamp(this.createDate)
       }
     },
     methods: {
       revert (content, anonymous) {
-        if (this.onBeforeReply() === false) return
+        if (!content) {
+          message.error('内容不可为空')
+          return
+        }
+        if (this.onBeforeReply() === false) return true
         this
           .$service
           .releaseReply({
@@ -137,8 +142,16 @@
             content,
             anonymous
           })
-          .ok(this.onReplySucceed)
-          .clientError(this.onReplyFailed)
+          .ok(res => {
+            this.onReplySucceed(res)
+            message.success('回复成功')
+          })
+          .clientError(err => {
+            this.onReplyFailed(err)
+            message.error('回复失败')
+          })
+
+        return true
       }
     }
   }

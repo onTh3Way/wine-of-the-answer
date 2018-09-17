@@ -1,5 +1,5 @@
 if (!Object.assign) {
-  Object.assign = function (target, ...sources) {
+  Object.assign = function assign (target, ...sources) {
     if (!target) throw new TypeError(' Cannot convert undefined or null to object')
     target = Object(target)
     sources

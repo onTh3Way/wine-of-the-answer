@@ -11,11 +11,11 @@
 </template>
 
 <script>
-  import { List as XList, Post } from 'components'
+  import { Post } from 'components'
 
   export default {
     name: 'list',
-    components: {XList, Post},
+    components: {Post},
     props: {
       items: {
         type: Array,

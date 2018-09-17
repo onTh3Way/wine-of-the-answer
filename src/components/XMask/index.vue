@@ -1,9 +1,10 @@
 <template>
   <transition
+    v-if="value"
     v-bind="transition || $transitionCssModule('mask')"
     appear
   >
-    <div :class="$style.mask">
+    <div :class="$style.mask" @click="closable && hide()">
       <slot />
     </div>
   </transition>
@@ -13,6 +14,10 @@
   export default {
     name: 'x-mask',
     props: {
+      value: {
+        type: Boolean,
+        default: false
+      },
       transition: {
         type: Object,
         default: void 0
@@ -20,20 +25,24 @@
       closable: {
         type: Boolean,
         default: true
-      },
-      defaultDisplay: {
-        type: Boolean,
-        default: false
       }
     },
-    data: () => ({
-      display: this.defaultDisplay
-    }),
     mounted () {
       document.body.appendChild(this.$el)
     },
     beforeDestroy () {
       document.body.removeChild(this.$el)
+    },
+    methods: {
+      toggle () {
+        this.$emit('input', !this.value)
+      },
+      show () {
+        this.$emit('input', true)
+      },
+      hide () {
+        this.$emit('input', false)
+      }
     }
   }
 </script>

@@ -24,7 +24,11 @@
         <list :items="data" />
       </scroller>
     </div>
-    <release :class="$style.release" :onReleaseSucceed="handleRelease" />
+    <release
+      :class="$style.release"
+      :onReleaseFailed="handleReleaseFailed"
+      :onReleaseSucceed="handleReleaseSucceed"
+    />
   </div>
 </template>
 
@@ -32,6 +36,7 @@
   import { TitleBar, Post } from 'components'
   import { Tab, TabItem } from 'vux/components/tab'
   import { ButtonTab, ButtonTabItem } from 'vux/components/button-tab'
+  import { message } from 'utils'
   import List from '../List'
   import Release from './Release'
 
@@ -95,8 +100,12 @@
             this.$refs.scroller.finishPullToRefresh()
           })
       },
-      handleRelease (data) {
+      handleReleaseFailed (e) {
+        message.error('发布失败')
+      },
+      handleReleaseSucceed (data) {
         this.data.unshift(data)
+        message.success('发布成功')
       }
     }
   }

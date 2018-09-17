@@ -11,15 +11,13 @@
     </template>
     <template slot="options">
       <button
-        data-role="cancel"
-        @click="onReleaseClick($refs.textarea.getContent(), true)"
+        @click="onReleaseClick($refs.textarea.getContent(), true) === true && hide()"
       >
         匿名发布
       </button>
       <button
         :class="$style.release"
-        data-role="cancel"
-        @click="onReleaseClick($refs.textarea.getContent(), false)"
+        @click="onReleaseClick($refs.textarea.getContent(), false) === true && hide()"
       >
         发布
       </button>
