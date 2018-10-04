@@ -258,7 +258,7 @@ export default {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   opacity: 0;
-  tap-highlight-color: rgba(0,0,0,0);
+  tap-highlight-color: rgba(0, 0, 0, 0);
   transition: opacity 400ms;
 }
 

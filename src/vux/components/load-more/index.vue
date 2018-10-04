@@ -22,20 +22,19 @@ export default {
 @import '../../styles/weui/widget/weui-loading/weui-loading.less';
 @import '../../styles/weui/widget/weui_tips/weui-loadmore.less';
 
-.vux-loadmore{
+.vux-loadmore {
 
-  &.weui-loadmore_line{
+  &.weui-loadmore_line {
     display: flex;
     border-top: 0;
 
-    &::before, &::after{
+    &::before, &::after {
       position: relative;
       top: -1px;
       border-top: 1px solid @weuiLineColorLight;
       content: '';
       flex: 1;
     }
-
   }
 }
 </style>

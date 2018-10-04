@@ -100,7 +100,7 @@ function contains (a, obj) {
 .vux-radio-icon {
   display: inline-block;
   width: 24px;
-  height:24px;
+  height: 24px;
   margin-right: 5px;
   vertical-align: middle;
 }

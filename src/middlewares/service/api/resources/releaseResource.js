@@ -44,3 +44,14 @@ export function releaseReply ({
     receiverReplyId
   }, config)
 }
+
+export function releaseTeasing ({
+  content,
+  anonymous,
+  config
+}) {
+  return baseRelease('/teasings', {
+    content,
+    anonymous
+  }, config)
+}

@@ -42,6 +42,6 @@ export default {
   font-size: 72px;
   line-height: 320px;
   text-align: center;
-  background-color:yellow;
+  background-color: yellow;
 }
 </style>

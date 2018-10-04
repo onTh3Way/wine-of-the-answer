@@ -130,15 +130,15 @@
   }
   
   .vux-header .vux-header-left a:active, .vux-header .vux-header-left button:active, .vux-header .vux-header-right a:active, .vux-header .vux-header-right button:active {
-    opacity: 0.5
+    opacity: 0.5;
   }
   
   .vux-header .vux-header-left {
-    left: 18px
+    left: 18px;
   }
   
   .vux-header .vux-header-left .vux-header-back {
-    padding-left: 16px
+    padding-left: 16px;
   }
   
   .vux-header .vux-header-left .left-arrow {
@@ -162,12 +162,12 @@
   }
   
   .vux-header .vux-header-right {
-    right: 15px
+    right: 15px;
   }
   
   .vux-header .vux-header-right a, .vux-header .vux-header-right button {
     margin-right: 0;
-    margin-left: 8px
+    margin-left: 8px;
   }
   
   .vux-header .vux-header-right .vux-header-more::after {

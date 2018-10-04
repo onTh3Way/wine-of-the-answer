@@ -35,7 +35,7 @@ export default {
   }
 
   th {
-    font-weight: 500
+    font-weight: 500;
   }
 }
 
@@ -53,7 +53,7 @@ export default {
 }
 
 .vux-table td, .vux-table th {
-  position:relative;
+  position: relative;
   border-right: 0;
   border-bottom: 0;
 }

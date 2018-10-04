@@ -168,16 +168,17 @@
     background-color: @tab-bar-active-color;
 
     &-transition-forward {
-      transition: right @effect-duration @easing-in-out,
+      transition:
+ right @effect-duration @easing-in-out,
         left @effect-duration @easing-in-out @effect-duration * 0.3;
     }
 
     &-transition-backward {
-      transition: right @effect-duration @easing-in-out @effect-duration * 0.3,
+      transition:
+ right @effect-duration @easing-in-out @effect-duration * 0.3,
         left @effect-duration @easing-in-out;
     }
   }
-
 }
 
 .vux-tab-bar-top .@{prefixClass} {

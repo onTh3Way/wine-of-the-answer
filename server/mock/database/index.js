@@ -19,6 +19,8 @@ global.db = {
   posts: [],
   comments: [],
   replies: [],
+  teasings: [],
+  reports: [],
   postReports: [],
   commentReports: [],
   replyReports: [],
@@ -34,6 +36,10 @@ global.db = {
     replies: {
       agree: [],
       disagree: []
+    },
+    teasings: {
+      agree: [],
+      disagree: []
     }
   }
 }
@@ -42,12 +48,12 @@ if (!fs.existsSync(dbPath)) fs.writeFileSync(dbPath, JSON.stringify(db))
 
 db = dbUtils.read() || db
 
-Array(5)
+Array(resourceList.allResource.length)
   .fill(null)
   .forEach((_, i) => {
     const Resource = resourceList.AllResource[i]
     const resources = resourceList.allResources[i]
-    
+
     if (!db[resources].length) {
       Array(config.initDataLength)
         .fill(null)
@@ -61,7 +67,8 @@ dbUtils.save()
 
 global.tokenMap = {}
 
-function genToken (user) {
+// 生成用户Token
+function genToken(user) {
   const hash = crypto.createHash('sha256')
   tokenMap[hash.update(user.id).digest('hex')] = user
 }

@@ -1,5 +1,5 @@
 module.exports = function (router) {
-  router.put(`/users/:userId/protocol`, (req, res, next) => {
+  router.put(['/users/:userId/protocol/BBS', '/users/:userId/protocol/teasing'], (req, res, next) => {
     const {token} = req.headers.cookies
     const user = dbUtils.findUser(req.params.userId)
 

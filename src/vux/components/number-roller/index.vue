@@ -1,5 +1,6 @@
 <template>
-  <div style="height:100px;font-size:100px;
+  <div style="height:100px;
+font-size:100px;
 "></div>
 </template>
 

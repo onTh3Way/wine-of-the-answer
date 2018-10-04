@@ -3,6 +3,7 @@
     <span :class="$style.text" @click="$refs.modal.show()">{{ text }}</span>
     <release-modal
       ref="modal"
+      :title="title"
       :onReleaseClick="release"
       :placeholder="placeholder"
       maxlength="30"
@@ -12,12 +13,17 @@
 
 <script>
   import { ReleaseModal } from 'components'
+  import { message } from 'utils'
 
   export default {
     inject: ['id', 'type'],
     name: 'release',
     components: {ReleaseModal},
     props: {
+      title: {
+        type: String,
+        default: '发布您的烦恼'
+      },
       text: {
         type: String,
         default: '发表您的评论'
@@ -45,7 +51,11 @@
     },
     methods: {
       release (content, anonymous) {
-        if (!this.onBeforeRelease(content, anonymous)) return
+        if (!content) {
+          message.error('内容不可为空')
+          return
+        }
+        if (!this.onBeforeRelease(content, anonymous)) return true
 
         if (this.type === 'post') {
           this
@@ -69,6 +79,8 @@
             .allOk(this.onReleaseSucceed)
             .clientError(this.onReleaseFailed)
         }
+
+        return true
       }
     }
   }
@@ -79,6 +91,6 @@
     transform: scale(0.9);
     font-size: 0.5rem;
     font-weight: 700;
-    color: #B3A8AA;
+    color: #b3a8aa;
   }
 </style>

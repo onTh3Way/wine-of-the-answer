@@ -1,11 +1,56 @@
 import styles from './styles.less'
 
+function createElement (msg, type) {
+  const el = document.createElement('div')
+  let symbol
+  switch (type) {
+  case 'success':
+    symbol = '✓'
+    break
+  case 'warn':
+  case 'info':
+    symbol = '!'
+    break
+  case 'error':
+    symbol = 'x'
+    break
+  }
+  el.className = styles.wrapper
+  el.innerHTML = `
+      <span class="${styles.icon} ${styles[type]}">${symbol}</span>
+      <span class="${styles.text}">${msg}</span>
+    `
+  return el
+}
+
+// function animationController (el) {
+//   const initAni = () => {
+//     el.style.opacity = 1
+//     el.style.top = '24px'
+//   }
+//
+//   const startAni = () => {
+//     el.style.opacity = 0
+//     el.style.top = initialTop + 'rem'
+//   }
+//
+//   setTimeout(() => {
+//     el.style.opacity = 1
+//     el.style.top = initialTop + offset + 'rem'
+//
+//     setTimeout(() => {
+//       el.style.opacity = 0
+//       el.style.top = initialTop + 'rem'
+//     }, 2500)
+//   })
+// }
+
 class Message {
   activeEls = []
 
   config = {
     containerEl: document.body,
-    offset: '1rem'
+    offset: 0.5
   }
 
   constructor (config = {}) {
@@ -16,37 +61,25 @@ class Message {
   }
 
   show (msg, duration, type) {
-    const el = document.createElement('div')
-    let symbol
-    switch (type) {
-      case 'success':
-        symbol = '✓'
-        break
-      case 'warn':
-      case 'info':
-        symbol = '!'
-        break
-      case 'error':
-        symbol = 'x'
-        break
-    }
-    el.className = styles.wrapper
-    el.innerHTML = `
-      <span class="${styles.icon} ${styles[type]}">${symbol}</span>
-      <span class="${styles.text}">${msg}</span>
-    `
-    this.containerEl.appendChild(el)
-    el.style.top = 0
-    console.log(this.activeEls[this.activeEls.length - 1].offsetTop)
+    const {containerEl, offset} = this.config
+    const el = createElement(msg, type)
+    const initialTop = this.activeEls.length * (1.3 + offset)
+    containerEl.appendChild(el)
+    el.style.top = initialTop + 'rem'
     this.activeEls.push(el)
     setTimeout(() => {
       el.style.opacity = 1
-      el.style.top = '24px'
+      el.style.top = initialTop + offset + 'rem'
 
-      // setTimeout(() => {
-      //   el.style.opacity = 0
-      //   el.style.top = 0
-      // }, 2500)
+      setTimeout(() => {
+        el.style.opacity = 0
+        el.style.top = initialTop + 'rem'
+
+        setTimeout(() => {
+          containerEl.removeChild(el)
+          this.activeEls.splice(this.activeEls.indexOf(el), 1)
+        }, 300)
+      }, 2500)
     })
   }
 

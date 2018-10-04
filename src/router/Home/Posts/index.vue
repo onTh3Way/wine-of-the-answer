@@ -24,7 +24,11 @@
         <list :items="data" />
       </scroller>
     </div>
-    <release :class="$style.release" :onReleaseSucceed="handleRelease" />
+    <release
+      :class="$style.release"
+      :onReleaseFailed="handleReleaseFailed"
+      :onReleaseSucceed="handleReleaseSucceed"
+    />
   </div>
 </template>
 
@@ -32,6 +36,7 @@
   import { TitleBar, Post } from 'components'
   import { Tab, TabItem } from 'vux/components/tab'
   import { ButtonTab, ButtonTabItem } from 'vux/components/button-tab'
+  import { message } from 'utils'
   import List from '../List'
   import Release from './Release'
 
@@ -95,8 +100,12 @@
             this.$refs.scroller.finishPullToRefresh()
           })
       },
-      handleRelease (data) {
+      handleReleaseFailed (e) {
+        message.error('发布失败')
+      },
+      handleReleaseSucceed (data) {
         this.data.unshift(data)
+        message.success('发布成功')
       }
     }
   }
@@ -111,7 +120,7 @@
   }
   
   .header {
-    background-color: rgb(16, 16, 16)
+    background-color: rgb(16, 16, 16);
   }
   
   .header, .footer {
@@ -119,7 +128,9 @@
   }
   
   .header_tab {
+
     :global {
+
       .vux-tab {
         background-color: transparent;
       }
@@ -132,7 +143,9 @@
   }
   
   .footer_tab {
+
     :global {
+
       .vux-button-group-current {
         color: pink !important;
         background: rgb(25, 25, 25) !important;
@@ -140,13 +153,13 @@
       
       .vux-button-tab-item {
         height: 1.5rem;
-        line-height: 1.5rem;
         font-size: 0.8rem;
-        border-radius: 0 !important;
-        color: #AC9E9E;
+        line-height: 1.5rem;
+        color: #ac9e9e;
         background: transparent;
+        border-radius: 0 !important;
         
-        &:after {
+        &::after {
           display: none;
         }
       }
@@ -164,7 +177,7 @@
   
   .release {
     position: fixed;
-    bottom: 4rem;
     right: 20px;
+    bottom: 4rem;
   }
 </style>

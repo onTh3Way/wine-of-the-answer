@@ -11,7 +11,8 @@
         v-bind="post"
         :canLinkToDetail="false"
         :release="{
-          onReleaseSucceed: handleRelease
+          onReleaseSucceed: handleReleaseSucceed,
+          onReleaseFailed: handleReleaseFailed
         }"
       />
     </div>
@@ -41,7 +42,7 @@
 </template>
 
 <script>
-  import { mapCategory } from 'utils'
+  import { mapCategory, message } from 'utils'
   import { Post as PostPanel, Comment, List } from 'components'
 
   export default {
@@ -92,8 +93,12 @@
             else loaded()
           })
       },
-      handleRelease (data) {
+      handleReleaseSucceed (data) {
+        message.success('评论成功')
         this.latestComments.unshift(data)
+      },
+      handleReleaseFailed () {
+        message.error('评论失败')
       }
     }
   }
@@ -102,11 +107,11 @@
 <style lang="less" module>
   .wrapper {
     display: flex;
-    flex-direction: column;
-    padding-top: 0.5rem;
     width: 100%;
     min-height: 100%;
+    padding-top: 0.5rem;
     background-color: @black;
+    flex-direction: column;
     
     > div {
       min-height: 0;
@@ -134,7 +139,7 @@
   }
   
   .comments {
-    flex: 1 1 auto;;
+    flex: 1 1 auto;
     background-color: #101010;
   }
 </style>

@@ -1,30 +1,31 @@
 module.exports = function (router) {
-  router.post('/:resources/:id/report', (req, res, next) => {
-    const {resources} = req.params
+  router.post('/:resources/:id/reports', (req, res, next) => {
+    const { resources } = req.params
     const id = +req.params.id
-    const {reason} = req.body
+    const { reason } = req.body
+    const Resource = resourceList.firstUppercase(resourceList.conversionResourceWord(resources))
 
-    if (resources !== 'users' && resourceList.resources.includes(resources)) {
-      const target = db[resources].find(v => v.id === id)
-      res.statusCode = target
-        ? reason
-          ? 204
-          : 400
-        : 404
+    const target = db[resources].find(v => v.id === id)
+    res.statusCode = target
+      ? reason
+        ? 204
+        : 400
+      : 404
 
-      if (res.statusCode === 204) {
-        const table = db[resourceList.conversionResourceWord(resources) + 'Reports']
-        table.push({
-          id: table.length,
-          reporter: req.user,
-          targetId: id,
-          reason
-        })
-        dbUtils.save()
+    if (res.statusCode === 204) {
+      const insertData = {
+        id: db.reports.length,
+        reporter: req.user,
+        target: dbUtils['find' + Resource](id),
+        reason,
+        createDate: Date.now()
       }
 
-      res.end()
+      db.reports.push(insertData)
+      db[resourceList.conversionResourceWord(resources) + 'Reports'].push(insertData)
     }
+
+    res.end()
 
     next()
   })

@@ -16,7 +16,7 @@ module.exports = function (data) {
   const receiver = receiverReplyId ? dbUtils.findReply(receiverReplyId) : undefined
   dbUtils.findComment(commentId).commentNum++
 
-  db.replies.push({
+  db.replies.unshift({
     id: db.replies.length + 1,
     author: {
       id: senderId,

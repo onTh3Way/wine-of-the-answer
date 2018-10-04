@@ -113,7 +113,7 @@ export default {
     }
   }
 
-  & > a  {
+  & > a {
     display: block;
     position: relative;
     width: 100%;
@@ -126,7 +126,7 @@ export default {
     color: @button-tab-default-text-color;
     background: @button-tab-default-background-color;
     flex: 1;
-    -webkit-tap-highlight-color: rgba(255,0,0,0);
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
 
     &::after {
       background-clip: padding-box;
@@ -144,8 +144,8 @@ export default {
     border-color: #cdcdcd;
     color: #aaa;
     background: #e5e5e5;
-    box-shadow: 0 1px 0 rgba(255,255,255,0.6);
-    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
   }
 }
 

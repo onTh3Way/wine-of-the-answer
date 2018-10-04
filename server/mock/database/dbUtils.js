@@ -3,7 +3,7 @@ const crypto = require('crypto')
 const resourceList = require('./resourceList')
 const utils = require('./utils')
 
-function bubble (arr, sortFn = (a, b) => a > b) {
+function bubble(arr, sortFn = (a, b) => a > b) {
   for (let i = 0, len = arr.length - 1; i < len; i++) {
     for (let k = i + 1, len = arr.length; k < len; k++) {
       const a = arr[i]
@@ -19,22 +19,25 @@ function bubble (arr, sortFn = (a, b) => a > b) {
 }
 
 const dbUtils = {
-  findUser (id) {},
-  findAdmin (id) {},
-  findPost (id) {},
-  findComment (id) {},
-  findReply (id) {},
-  removeUser (id) {},
-  removeAdmin (id) {},
-  removePost (id) {},
-  removeComment (id) {},
-  removeReply (id) {},
-  findUsers ({sort, offset, limit}) {},
-  findAdmins ({sort, offset, limit}) {},
-  findPosts ({sort, offset, limit}) {},
-  findComments ({sort, offset, limit}) {},
-  findReplies ({sort, offset, limit}) {},
-  findUserByToken (token) {
+  findUser(id) { },
+  findAdmin(id) { },
+  findPost(id) { },
+  findComment(id) { },
+  findReply(id) { },
+  findTeasing(id) { },
+  removeUser(id) { },
+  removeAdmin(id) { },
+  removePost(id) { },
+  removeComment(id) { },
+  removeReply(id) { },
+  removeTeasing(id) { },
+  findUsers({ sort, offset, limit }) { },
+  findAdmins({ sort, offset, limit }) { },
+  findPosts({ sort, offset, limit }) { },
+  findComments({ sort, offset, limit }) { },
+  findReplies({ sort, offset, limit }) { },
+  findTeasings({ sort, offset, limit }) { },
+  findUserByToken(token) {
     return db.users.find(user => {
       const hash = crypto.createHash('sha256')
       return hash.update(user.id).digest('hex') === token
@@ -46,7 +49,7 @@ const dbUtils = {
   ...utils
 }
 
-Array(5)
+Array(resourceList.allResource.length)
   .fill(null)
   .forEach((_, i) => {
     const resource = resourceList.allResource[i]
@@ -59,10 +62,10 @@ Array(5)
     }
 
     dbUtils['find' + Resources] = function ({
-                                              sort = 'hot',
-                                              offset = 0,
-                                              limit = 5
-                                            }) {
+      sort = 'hot',
+      offset = 0,
+      limit = 5
+    }) {
       let list = db[resources].slice()
 
       if (resource !== 'user' && resource !== 'admin') {

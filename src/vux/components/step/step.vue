@@ -100,8 +100,8 @@ export default {
 
 .vux-step-item-checked::before {
   transform: translateY(-4px);
-  margin: 0!important;
-  font-size: 15px!important;
+  margin: 0 !important;
+  font-size: 15px !important;
   line-height: 22px;
 }
 
@@ -126,12 +126,12 @@ export default {
   }
 }
 
-.vux-step-item-head-finish .vux-step-item-head-inner{
+.vux-step-item-head-finish .vux-step-item-head-inner {
   border: 1px solid #09bb07;
   color: #09bb07;
 }
 
-.vux-step-item-head-process .vux-step-item-head-inner{
+.vux-step-item-head-process .vux-step-item-head-inner {
   border: 1px solid #09bb07;
   color: #fff;
   background: #09bb07 none repeat scroll 0 0;

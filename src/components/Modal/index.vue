@@ -43,18 +43,22 @@
 
 <style lang="less" module>
   @keyframes ani_scale_enter {
+
     from {
       transform: translate(-50%, -50%) scale(0);
     }
+
     to {
       transform: translate(-50%, -50%) scale(1);
     }
   }
   
   @keyframes ani_scale_leave {
+
     from {
       transform: translate(-50%, -50%) scale(1);
     }
+
     to {
       transform: translate(-50%, -50%) scale(0);
     }
@@ -70,19 +74,19 @@
   
   .dialog {
     position: fixed;
+    transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 0.5rem 0;
     width: 80%;
-    border-radius: 6px;
+    padding: 0.5rem 0;
     background-color: white;
+    border-radius: 6px;
   }
   
   .title {
-    text-align: center;
     font-size: 0.8rem;
     font-weight: 900;
+    text-align: center;
     color: black;
   }
   
@@ -90,9 +94,9 @@
     margin: 20px 0;
     
     &, * {
-      font-weight: 700;
       font-size: 0.6rem;
-      color: #888888;
+      font-weight: 700;
+      color: #888;
     }
   }
   
@@ -102,11 +106,11 @@
     align-items: center;
     
     > * {
-      flex: 1;
-      text-align: center;
-      font-weight: 700;
       font-size: 0.7rem;
+      font-weight: 700;
+      text-align: center;
       color: #626262;
+      flex: 1;
     }
   }
 </style>

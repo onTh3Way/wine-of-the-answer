@@ -8,24 +8,27 @@
 > POST /api/v1/{category}/posts <br>
 > POST /api/v1/posts/{id}/comments <br>
 > POST /api/v1/comments/{id}/replies <br>
+> POST /api/v1/teasings
 
 #### 请求参数(JSON)
 
-|参数|必选 |类型|默认值|说明|
-|:----- |:-------|:-----|:----- |:----- |
-|receiverReplyId |false |string|| 要回复的回复id,只有资源为replies时,才有此项|
-|content |true |string||内容|
-|anonymous |false |boolean|false|是否匿名|
+| 参数            | 必选  | 类型    | 默认值 | 说明                                        |
+| :-------------- | :---- | :------ | :----- | :------------------------------------------ |
+| receiverReplyId | false | string  |        | 要回复的回复id,只有资源为replies时,才有此项 |
+| content         | true  | string  |        | 内容                                        |
+| anonymous       | false | boolean | false  | 是否匿名                                    |
 
 #### 响应：
 ##### 发布成功：200
-JSON
-```js
-{ ...同getResource }
+JSON (返回新创建的数据)
+```JSON
+ {
+   //同getResource
+ }
 ```
 ##### 参数不合法: 400
 JSON
-```js
+```JSON
 {
   // content不能为空
   "code": 0,
@@ -41,7 +44,7 @@ JSON
 ##### 未登录: 401
 ##### 禁止: 403
 JSON
-```js
+```JSON
 {
   // 未同意授权
   "code": 0,

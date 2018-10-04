@@ -14,7 +14,7 @@ module.exports = function (data) {
   } = data
   const user = dbUtils.findUser(userId)
   if (user) {
-    db.comments.push({
+    db.comments.unshift({
       id: db.comments.length + 1,
       author: {
         id: userId,

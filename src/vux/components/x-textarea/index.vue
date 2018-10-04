@@ -187,7 +187,7 @@ export default {
 @import '../../styles/weui/widget/weui_cell/weui_cell_global';
 @import '../../styles/weui/widget/weui_cell/weui_form/weui_form_common';
 
-.vux-x-textarea.weui-cell  {
+.vux-x-textarea.weui-cell {
   align-items: flex-start;
 }
 </style>

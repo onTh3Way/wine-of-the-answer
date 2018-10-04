@@ -14,6 +14,6 @@
   .text {
     font-size: 0.8rem;
     font-weight: 900;
-    color: #CCC5C6;
+    color: #ccc5c6;
   }
 </style>

@@ -45,40 +45,42 @@ export default {
 .@{vux-timeline} {
 
   &-item {
-    position:relative;
+    position: relative;
   }
 
   &-item-content {
-    padding:0 0 1.5rem 1.2rem;
+    padding: 0 0 1.5rem 1.2rem;
   }
 
   &-item-head, &-item-head-first {
-    position:absolute;
-    z-index:99;
-    content:'';
-    border-radius:99px;
+    position: absolute;
+    z-index: 99;
+    content: '';
+    border-radius: 99px;
   }
 
-  &-item-head {top:4px;
-    left:1px;
-    width:10px;
-    height:10px;
+  &-item-head {
+top: 4px;
+    left: 1px;
+    width: 10px;
+    height: 10px;
   }
 
-  &-item-head-first {top:5px;
-    left:-4px;
-    width:20px;
-    height:20px;
+  &-item-head-first {
+top: 5px;
+    left: -4px;
+    width: 20px;
+    height: 20px;
   }
 
   &-item-tail {
-    position:absolute;
-    top:5px;
-    left:5px;
-    width:2px;
-    height:100%;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 2px;
+    height: 100%;
     background-color: @timeline-item-bg-color;
-    content:'';
+    content: '';
   }
 
   &-item-checked {
@@ -93,7 +95,7 @@ export default {
       position: absolute;
       top: 3px;
       left: 3px;
-      margin: 0!important;
+      margin: 0 !important;
       font-size: 14px;
       color: #fff;
     }

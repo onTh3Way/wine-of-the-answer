@@ -6,7 +6,8 @@
         v-bind="comment"
         :canLinkToDetail="false"
         :release="{
-          onReleaseSucceed: handleRelease
+          onReleaseSucceed: handleReleaseSucceed,
+          onReleaseFailed: handleReleaseFailed
         }"
       />
     </div>
@@ -19,7 +20,7 @@
               v-for="(item, index) of replies"
               v-bind="item"
               :key="index"
-              :onReplySucceed="handleRelease"
+              :onReplySucceed="handleReleaseSucceed"
             />
           </div>
         </template>
@@ -30,6 +31,7 @@
 
 <script>
   import { Comment as CommentPanel, Reply, List } from 'components'
+  import { message } from 'utils'
 
   export default {
     name: 'comment',
@@ -67,8 +69,12 @@
             }
           })
       },
-      handleRelease (data) {
+      handleReleaseSucceed (data) {
+        message.success('回复成功')
         this.replies.unshift(data)
+      },
+      handleReleaseFailed () {
+        message.error('回复失败')
       }
     }
   }
@@ -77,11 +83,11 @@
 <style lang="less" module>
   .wrapper {
     display: flex;
-    flex-direction: column;
-    padding-top: 0.5rem;
     width: 100%;
     min-height: 100%;
+    padding-top: 0.5rem;
     background-color: @black;
+    flex-direction: column;
     
     > div {
       min-height: 0;

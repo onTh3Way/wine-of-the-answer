@@ -30,7 +30,9 @@
             <div class="weui-cells">
               <a class="weui-cell weui-cell_access" :href="getUrl(item.url)" v-for="item in list" @click.prevent="onItemClick(item)">
                 <div class="weui-cell__hd">
-                  <img :src="item.src" alt="" @error="onImgError(item, $event)" style="width:20px;margin-right:5px;display:block
+                  <img :src="item.src" alt="" @error="onImgError(item, $event)" style="width:20px;
+margin-right:5px;
+display:block;
 ">
                 </div>
                 <div class="weui-cell__bd">

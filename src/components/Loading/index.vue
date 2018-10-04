@@ -29,9 +29,11 @@
 
 <style lang="less" module>
   @keyframes lds_spinner {
+
     0% {
       opacity: 1;
     }
+
     100% {
       opacity: 0;
     }
@@ -41,21 +43,23 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 999;
     width: 100%;
     height: 100%;
-    z-index: 999;
   }
   
   .lds_spinner {
     .all-center;
+
+    z-index: 999;
     width: 200px;
     height: 200px;
-    z-index: 999;
   }
   
   .text {
     display: inline-block;
     .all-center(absolute);
+
     margin-top: 100px;
     font-size: 1rem;
     color: white;
@@ -63,13 +67,13 @@
   
   .lds_spinner div {
     position: absolute;
-    left: 94px;
     top: 48px;
-    -webkit-animation: lds_spinner linear 1s infinite;
-    animation: lds_spinner linear 1s infinite;
-    background: #fdfdfd;
+    left: 94px;
     width: 12px;
     height: 24px;
+    background: #fdfdfd;
+    -webkit-animation: lds_spinner linear 1s infinite;
+    animation: lds_spinner linear 1s infinite;
     border-radius: 40%;
     -webkit-transform-origin: 6px 52px;
     transform-origin: 6px 52px;

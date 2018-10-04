@@ -1,18 +1,26 @@
 -----------
+
 #### 功能
 
-> 点赞与踩,agreement为点赞,disagreement为踩
+> 举报指定资源
 
-#### 接口
+#### URL
 
-> PUT, DELETE /api/v1/{posts || comments || replies}/{id}/{agreement || disagreement}
+> POST api/v1/{posts || comments || replies || teasings}/{id}/reports
 
-#### 响应：
-##### 成功：204
+#### 请求参数(JSON)
+
+| 参数   | 必选 | 类型   | 说明     |
+| :----- | :--- | :----- | -------- |
+| reason | true | string | 举报原因 |
+
+#### 响应
+##### 举报成功: 204
+##### 参数不合法: 400
 ##### 未登录: 401
 ##### 禁止: 403
 JSON
-```js
+```JSON
 {
   // 未同意授权
   "code": 0,

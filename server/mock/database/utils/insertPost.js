@@ -13,7 +13,7 @@ module.exports = function (data) {
     commentNum = 0
   } = data
   const user = dbUtils.findUser(userId)
-  db.posts.push({
+  db.posts.unshift({
     id: db.posts.length + 1,
     author: {
       id: userId,

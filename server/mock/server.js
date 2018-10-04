@@ -15,7 +15,7 @@ const wxRouter = express.Router()
 
 faker.locale = 'zh_CN'
 
-function requireAll (path, ...args) {
+function requireAll(path, ...args) {
   const stat = fs.statSync(path)
   if (stat.isDirectory()) {
     fs
@@ -32,6 +32,8 @@ function requireAll (path, ...args) {
 requireAll(pathUtil.join(__dirname, 'api/wx'), wxRouter)
 requireAll(pathUtil.join(__dirname, 'api/resources'), wotaRouter)
 requireAll(pathUtil.join(__dirname, 'api/users'), wotaRouter)
+requireAll(pathUtil.join(__dirname, 'api/stat'), wotaRouter)
+requireAll(pathUtil.join(__dirname, 'api/admins'), wotaRouter)
 
 app
   .use(jsonServer.rewriter({
@@ -42,13 +44,6 @@ app
   .use(wxRouter)
   .use(helpsMiddlewares)
   .use(wotaRouter)
-  .use((req, res, next) => {
-    if (!res.finished) {
-      res.statusCode = 404
-      res.end()
-    }
-    next()
-  })
   .use(() => {
     dbUtils.save()
   })

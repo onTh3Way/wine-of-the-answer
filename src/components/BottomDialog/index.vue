@@ -6,10 +6,10 @@
     :dialogTransition="$transitionCssModule('sliding')"
   >
     <template slot="dialog">
-      <div :class="$style.title">
+      <div v-if="$slots.title" :class="$style.title">
         <slot name="title" />
       </div>
-      <div :class="$style.options">
+      <div v-if="$slots.options" :class="$style.options">
         <slot name="options" />
       </div>
       <slot name="dialog" />
@@ -53,10 +53,10 @@
   .container {
     position: fixed;
     bottom: 0;
-    padding: 5px 0;
-    width: 100%;
-    background-color: white;
     z-index: 10;
+    width: 100%;
+    padding: 5px 0;
+    background-color: white;
   }
   
   .title, .options > * {
@@ -66,12 +66,12 @@
   }
   
   .title {
-    font-weight: 900;
     font-size: 0.7em;
+    font-weight: 900;
   }
   
   .options > * {
-    font-weight: 700;
     font-size: 0.8em;
+    font-weight: 700;
   }
 </style>

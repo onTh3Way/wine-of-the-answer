@@ -1,12 +1,23 @@
-function exec (data, req, res, next) {
-  const {sort = 'hot'} = req.query
+function validate(req, res) {
   const offset = +req.query.offset || 0
   const limit = +req.query.limit || 5
 
   if (Number.isNaN(+offset) || Number.isNaN(+limit)) {
     res.statusCode = 400
     res.end()
-  } else {
+
+    return false
+  }
+
+  return true
+}
+
+function exec(data, req, res, next) {
+  const { sort = 'hot' } = req.query
+  const offset = +req.query.offset || 0
+  const limit = +req.query.limit || 5
+
+  if (validate(req, res)) {
     dbUtils.sortResources(data, sort)
     dbUtils.attachResourcesInfo(data, req.user)
 
@@ -16,7 +27,6 @@ function exec (data, req, res, next) {
       total: data.length
     }))
   }
-
   next()
 }
 
@@ -43,5 +53,21 @@ module.exports = function (router) {
   router.get('/comments/:commentId/replies', (req, res, next) => {
     const commentId = +req.params.commentId
     exec(db.replies.filter(reply => reply.commentId === commentId), req, res, next)
+  })
+
+  router.get('/teasings', (req, res, next) => {
+    if (validate(req, res)) {
+      const offset = +req.query.offset || 0
+      const limit = +req.query.limit || 5
+      const data = db.teasings
+
+      res.statusCode = 200
+      res.end(JSON.stringify({
+        data: data.slice(offset, offset + limit),
+        total: data.length
+      }))
+    }
+
+    next()
   })
 }

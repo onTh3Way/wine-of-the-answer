@@ -60,8 +60,8 @@ export default {
     flex: 1;
 
     &:first-child {
-      margin-top: 0!important;
-      margin-left: 0!important;
+      margin-top: 0 !important;
+      margin-left: 0 !important;
     }
   }
 }

@@ -6,7 +6,7 @@ export default function login (code, type = 'code') {
     method: type === 'openId' ? 'put' : 'post'
   })
 
-  req.ok(({id}) => localStorage.setItem('userId', id))
+  req.ok(({ id }) => localStorage.setItem('userId', id))
 
   return req
 }

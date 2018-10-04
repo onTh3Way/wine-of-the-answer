@@ -23,14 +23,14 @@
 <style lang="less" module>
   .link {
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex: 1;
+    align-items: center;
     width: 100%;
     min-height: 1.5rem;
     margin-bottom: 0.67rem;
     font-size: 0.67rem;
     font-weight: 900;
+    flex: 1;
     border-radius: 4px;
     box-sizing: border-box;
     

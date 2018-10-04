@@ -15,7 +15,7 @@
 <style lang="less" module>
   .wrapper {
     width: 100%;
-    padding: 0.5rem 0rem 0.5rem 2.5rem;
+    padding: 0.5rem 0 0.5rem 2.5rem;
     border-radius: 3px;
   }
   

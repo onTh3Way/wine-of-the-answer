@@ -33,6 +33,7 @@
 
 <script>
   import { BottomDialog } from 'components'
+  import { formatTimestamp } from 'utils'
   import {
     Wrapper,
     Avatar,
@@ -124,7 +125,7 @@
     },
     computed: {
       date () {
-        return this.$utils.formatTimestamp(this.createDate)
+        return formatTimestamp(this.createDate)
       }
     }
   }
@@ -133,8 +134,8 @@
 <style lang="less" module>
   .right {
     position: absolute;
+    transform: translateY(-50%);
     top: 50%;
     right: 0;
-    transform: translateY(-50%);
   }
 </style>

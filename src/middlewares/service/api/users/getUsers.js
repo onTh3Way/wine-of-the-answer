@@ -8,7 +8,7 @@ import { request } from '../../utils'
  * @return {httpEventCollector}
  */
 export default function getUsers (options = {}) {
-  const {offset = 0, limit = 5} = options
+  const { offset = 0, limit = 5 } = options
   if (typeof offset !== 'number' || typeof limit !== 'number') throw new TypeError('offset和limit必须为数字')
-  return request.get('/users', {params: {offset, limit}})
+  return request.get('/users', { params: { offset, limit } })
 }

@@ -45,11 +45,11 @@ export default {
 </script>
 
 <style lang="less">
-.weui-wepay-pay-wrap{
+.weui-wepay-pay-wrap {
   background-color: #fbf9fe;
 }
 
-.weui-msg{
+.weui-msg {
   position: relative;
   z-index: 1;
 }
@@ -161,7 +161,7 @@ export default {
   margin-top: 12px;
 }
 
-.weui-wepay-logo-default{
+.weui-wepay-logo-default {
   font-size: 16px;
 }
 </style>
