@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.avatar">
+  <div class="panel-com-avatar">
     <img :src="url" alt="头像">
   </div>
 </template>
@@ -16,8 +16,8 @@
   }
 </script>
 
-<style lang="less" module>
-  .avatar {
+<style lang="less" scoped>
+  .panel-com-avatar {
     position: absolute;
     transform: translate(-120%, -20%);
     top: 0;

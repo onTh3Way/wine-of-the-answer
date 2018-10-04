@@ -4,14 +4,14 @@
     <avatar :url="author.avatar" />
     <x-h1>
       <span>{{ author.nickname }}</span>
-      <more :class="$style.right" @click.native="$refs.bottomDialog.show()" />
+      <more class="panel-comment-right" @click.native="$refs.bottomDialog.show()" />
     </x-h1>
     <x-h6>{{ date }}</x-h6>
     <x-h3>{{ content }}</x-h3>
     <tools>
       <agree :num="agreeNum" :defaultActive="isAgree" />
       <comment :num="commentNum" />
-      <disagree :num="disagreeNum" :defaultActive="isDisagree" :class="$style.right" />
+      <disagree :num="disagreeNum" :defaultActive="isDisagree" class="panel-comment-right" />
     </tools>
     <bottom-dialog ref="bottomDialog">
       <template slot="title">更多操作</template>
@@ -131,8 +131,8 @@
   }
 </script>
 
-<style lang="less" module>
-  .right {
+<style lang="less" scoped>
+  .panel-comment-right {
     position: absolute;
     transform: translateY(-50%);
     top: 50%;

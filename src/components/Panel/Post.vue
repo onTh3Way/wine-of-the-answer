@@ -10,7 +10,7 @@
     <tools>
       <agree :num="agreeNum" :defaultActive="isAgree" />
       <comment :num="commentNum" />
-      <share :class="$style.right" />
+      <share class="panel-post-right" />
     </tools>
     <release
       v-if="release"
@@ -107,8 +107,8 @@
   }
 </script>
 
-<style lang="less" module>
-  .right {
+<style lang="less" scoped>
+  .panel-post-right {
     position: absolute;
     right: 0;
   }

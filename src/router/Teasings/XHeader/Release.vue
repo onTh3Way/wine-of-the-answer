@@ -1,6 +1,6 @@
 <template>
-  <div :class="$style.wrapper">
-    <router-link :class="$style.btn" to="/add-question">
+  <div class="ts-release-wrapper">
+    <router-link class="ts-release-btn" to="/add-question">
       我要吐槽
     </router-link>
     <release-modal
@@ -54,13 +54,13 @@
   }
 </script>
 
-<style lang="less" module>
-.wrapper {
+<style lang="less" scoped>
+.ts-release-wrapper {
   .vertical-center;
   display: inline-block;
 }
 
-.btn {
+.ts-release-btn {
   display: block;
   width: 3rem;
   height: 1.2rem;

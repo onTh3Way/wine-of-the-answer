@@ -1,5 +1,5 @@
 <template>
-  <router-link :class="$style.link" v-bind="$attrs" />
+  <router-link v-bind="$attrs" class="pcxr-link" />
 </template>
 
 <script>
@@ -8,8 +8,8 @@
   }
 </script>
 
-<style lang="less" module>
-  .link {
+<style lang="less" scoped>
+  .pcxr-link {
     position: absolute;
     z-index: 9999;
     width: 90%;

@@ -1,16 +1,16 @@
 <template>
-  <div :class="$style.wrapper">
-    <div :class="$style.name">
+  <div class="ts-item-wrapper">
+    <div class="ts-item-name">
       <b>{{ author.nickname }}</b> 
     </div>
-    <div :class="$style.content">
+    <div class="ts-item-content">
       {{ content }}
     </div>
-    <div :class="$style.line" />
-    <div :class="$style.bottom">
-      <div :class="[$style.lips, active ? $style.active : null]" @click="agree" />
-      <span :class="[$style.lips_name, active ? $style.active : null]">{{ nextAgreeName }}</span>
-      <!-- <span :class="$style.answer">{{ answerNum }}个回答</span> -->
+    <div class="ts-item-line" />
+    <div class="ts-item-bottom">
+      <div :class="['ts-item-lips', active ? 'active' : null]" @click="agree" />
+      <span :class="['ts-item-lips_name', active ? 'active' : null]">{{ nextAgreeName }}</span>
+      <!-- <span class=ts-item-answer">{{ answerNum }}个回答</span> -->
     </div>
   </div> 
 </template>
@@ -54,8 +54,8 @@
   }
 </script>
 
-<style lang="less" module>
-.wrapper {
+<style lang="less" scoped>
+.ts-item-wrapper {
   width: 100%;
   padding: 0.4rem;
   margin-bottom: 0.5rem;
@@ -63,18 +63,18 @@
   border-radius: 0.4rem;
 }
 
-.line {
+.ts-item-line {
   height: 2px;
   margin-top: 0.1rem;
   background: #bfbfbf;
 }
 
-.content {
+.ts-item-content {
   font-size: 0.8rem;
   color: gray;
 }
 
-.bottom {
+.ts-item-bottom {
   display: flex;
   align-items: center;
 }
@@ -91,38 +91,38 @@
   }
 }
 
-.lips.active,
-.lips_name.active {
+.ts-item-lips.active,
+.ts-item-lips_name.active {
   animation: scale 1s;
 }
 
-.lips {
+.ts-item-lips {
   display: inline-block;
   width: 1.5rem;
   height: 2rem;
-  background: url(assets/lips.png) no-repeat 0 0 / cover;
+  background: url(~assets/lips.png) no-repeat 0 0 / cover;
 }
 
-.name {
+.ts-item-name {
   max-width: 100%;
   font-size: 0.8rem;
 }
 
-.lips_name,
-.answer {
+.ts-item-lips_name,
+.ts-item-answer {
   max-width: 40%;
 }
 
-.name,
-.lips_name,
-.answer {
+.ts-item-name,
+.ts-item-lips_name,
+.ts-item-answer {
   font-size: 0.8rem;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-.answer {
+.ts-item-answer {
   position: absolute;
   right: 0;
   color: gray;

@@ -1,14 +1,14 @@
 <template>
-  <x-title-bar :class="$style.wrapper">
+  <x-title-bar class="wrapper">
     <template slot="left">
-      <div :class="$style.title">
-        <div :class="$style.line_group">
-          <div :class="$style.line" />
-          <div :class="$style.line" />
-          <div :class="$style.line" />
-          <div :class="$style.line" />
+      <div class="title">
+        <div class="line_group">
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
         </div>
-        <span :class="$style.text">我的烦恼</span>
+        <span class="text">我的烦恼</span>
       </div>
     </template>
   </x-title-bar>
@@ -23,7 +23,7 @@
   }
 </script>
 
-<style lang="less" module>
+<style lang="less" scoped>
   .wrapper {
     background-color: #101010;
   }

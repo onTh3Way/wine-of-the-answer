@@ -1,5 +1,5 @@
 <template>
-  <router-link :class="[$style.link, $style[mode]]" :to="to">
+  <router-link :class="['link', mode]" :to="to">
     <slot />
   </router-link>
 </template>
@@ -20,7 +20,7 @@
   }
 </script>
 
-<style lang="less" module>
+<style lang="less" scoped>
   .link {
     display: flex;
     justify-content: center;

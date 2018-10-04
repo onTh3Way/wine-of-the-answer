@@ -1,15 +1,15 @@
 <template>
-  <div :class="$style.wrapper">
+  <div class="wrapper">
     <div>
       <slot name="left">
-        <a :class="$style.back_text">
+        <a class="back_text">
           <slot name="backText">返回</slot>
         </a>
-        <div :class="$style.arrow" />
-        <div :class="[$style.arrow, $style.cover]" />
+        <div class="arrow" />
+        <div class="arrow cover" />
       </slot>
     </div>
-    <div :class="$style.title">
+    <div class="title">
       <slot />
     </div>
     <div>
@@ -24,7 +24,7 @@
   }
 </script>
 
-<style lang="less" module>
+<style lang="less" scoped>
   @back-text-size: 0.8rem;
   @title-text-size: 0.9rem;
   @title-text-color: pink;

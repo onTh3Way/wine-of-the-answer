@@ -1,11 +1,11 @@
 <template>
   <bottom-dialog
     ref="bottomDialog"
-    :dialogClass="$style.dialog"
+    dialogClass="pcrd-dialog"
   >
     <template slot="title">请选择违规事项</template>
     <template slot="dialog">
-      <div :class="$style.wrapper">
+      <div class="pcrd-wrapper">
         <checkbox-group ref="checkboxGroup">
           <checkbox
             v-for="(value, index) of reportOptions"
@@ -15,10 +15,10 @@
             {{ value }}
           </checkbox>
         </checkbox-group>
-        <p :class="$style.other_reason">其他原因(可选):</p>
-        <textarea ref="textarea" :class="$style.input" placeholder="请填写举报原因" />
+        <p class="pcrd-other-reason">其他原因(可选):</p>
+        <textarea ref="textarea" class="pcrd-input" placeholder="请填写举报原因" />
         <button
-          :class="[$style.btn, $style.primary]"
+          class="pcrd-btn pcrd-primary"
           @click="report"
         >
           举报
@@ -98,21 +98,21 @@
   }
 </script>
 
-<style lang="less" module>
-.dialog {
+<style lang="less" scoped>
+.pcrd-dialog {
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.wrapper {
+.pcrd-wrapper {
   padding: 0 1rem;
 }
 
-.other_reason {
+.pcrd-other-reason {
   font-size: 0.6rem;
   font-weight: 900;
 }
 
-.input {
+.pcrd-input {
   width: 100%;
   height: 3rem;
   margin: 0.2rem 0;
@@ -121,7 +121,7 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.btn {
+.pcrd-btn {
   width: 100%;
   padding: 0.2rem 0;
   font-size: 0.6rem;
@@ -129,7 +129,7 @@
   border-radius: 0.1rem;
 }
 
-.primary {
+.pcrd-primary {
   color: white;
   background-color: #0084ff;
 }

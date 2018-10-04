@@ -1,8 +1,8 @@
 <template>
-  <div :class="$style.wrapper">
-    <div :class="$style.round" />
-    <div :class="$style.round" />
-    <div :class="$style.round" />
+  <div class="pcm-wrapper">
+    <div class="pcm-round" />
+    <div class="pcm-round" />
+    <div class="pcm-round" />
   </div>
 </template>
 
@@ -12,18 +12,18 @@
   }
 </script>
 
-<style lang="less" module>
+<style lang="less" scoped>
   @round-margin: 0 0.05rem;
   @round-size: 0.2rem;
   
-  .wrapper {
+  .pcm-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0.8;
   }
   
-  .round {
+  .pcm-round {
     width: @round-size;
     height: @round-size;
     margin: @round-margin;

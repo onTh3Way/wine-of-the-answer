@@ -1,12 +1,12 @@
 <template>
-  <modal ref="modal">
+  <modal ref="modal" class="pcrm-modal">
     <template slot="title">{{ title }}</template>
     <template slot="content">
       <x-textarea
         ref="textarea"
-        :class="$style.input"
         :maxlength="maxlength"
         :placeholder="placeholder"
+        class="rm-input"
       />
     </template>
     <template slot="options">
@@ -16,7 +16,7 @@
         <slot name="left-btn">匿名发布</slot>
       </button>
       <button
-        :class="$style.release"
+        class="rm-release"
         @click="onReleaseClick($refs.textarea.getContent(), false) === true && hide()"
       >
         <slot name="right-btn">发布</slot>
@@ -60,12 +60,13 @@
   }
 </script>
 
-<style lang="less" module>
-  .release {
-    color: @pink;
-  }
-  
-  .input {
-    margin: 0 1rem;
+<style lang="less" scoped>
+  .pcrm-modal {
+    /deep/ .rm-release {
+      color: @pink;
+    }
+    /deep/ .rm-input {
+      margin: 0 1rem;
+    }
   }
 </style>

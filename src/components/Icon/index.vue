@@ -1,9 +1,9 @@
 <template>
   <i
-    :class="$style.icon"
     :style="{
       backgroundImage: `url(${require(`./assets/${type}.svg`)})`
     }"
+    class="i-icon"
   />
 </template>
 
@@ -19,8 +19,8 @@
   }
 </script>
 
-<style lang="less" module>
-  .icon {
+<style lang="less" scoped>
+  .i-icon {
     display: inline-block;
     width: 0.8rem;
     height: 0.8rem;

@@ -1,14 +1,14 @@
 import Touches from './Touches'
 
-function getBounding (el) {
-
-}
+// function getBounding (el) {
+//
+// }
 
 export default class Scroller {
   static scrollTo (el, x, y, animate) {
     // if animate is true, use default options
     if (animate === true) animate = {}
-    const {speed = 500, func = ''} = animate
+    // const {speed = 500, func = ''} = animate
 
     el.scrollTop = y
     el.scrollLeft = x

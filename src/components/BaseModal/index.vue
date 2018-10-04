@@ -1,8 +1,8 @@
 <template>
   <div
     ref="el"
-    :class="[$style.wrapper, wrapperClass]"
-    :style="Object.assign({zIndex}, wrapperStyle)"
+    :style="{zIndex}"
+    class="bm-wrapper"
   >
     <transition
       v-if="active"
@@ -10,17 +10,15 @@
       appear
     >
       <div
-        :class="[$style.container].concat(dialogClass)"
-        :style="dialogStyle"
+        data-role="dialog"
+        class="bm-container"
       >
         <slot name="dialog" />
       </div>
     </transition>
     <x-mask
+      v-if="showMask"
       ref="mask"
-      :class="maskClass"
-      :style="maskStyle"
-      :transition="maskTransition"
       @click.native="maskClosable && hide()"
     >
       <slot name="mask" />
@@ -49,35 +47,6 @@
       'dialogTransition': {
         type: Object,
         default: void 0
-      },
-      // 遮罩层过渡效果
-      'maskTransition': {
-        type: Object,
-        default: void 0
-      },
-      'wrapperStyle': {
-        type: Object,
-        default: void 0
-      },
-      'dialogStyle': {
-        type: Object,
-        default: void 0
-      },
-      'maskStyle': {
-        type: Object,
-        default: void 0
-      },
-      'wrapperClass': {
-        type: String,
-        default: ''
-      },
-      'dialogClass': {
-        type: [String, Array],
-        default: ''
-      },
-      'maskClass': {
-        type: String,
-        default: ''
       },
       // 是否显示遮罩层
       'showMask': {
@@ -127,14 +96,14 @@
   }
 </script>
 
-<style lang="less" module>
-  .wrapper {
+<style lang="less" scoped>
+  .bm-wrapper {
     position: fixed;
     top: 0;
     left: 0;
   }
   
-  .container {
+  .bm-container {
     position: absolute;
     z-index: 10;
   }

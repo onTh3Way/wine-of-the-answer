@@ -10,7 +10,8 @@ module.exports = merge(baseConfig, {
   mode: 'development',
   devtool: 'cheap-source-map',
   devServer: {
-    proxy,
+    // 暂时关闭代理,使用axios的baseUrl
+    // proxy,
     watchOptions: {
       poll: true
     },

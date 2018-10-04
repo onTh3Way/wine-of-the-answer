@@ -1,7 +1,7 @@
 <template>
   <div
-    :class="$style.img"
     :style="{background: `url(${src}) no-repeat center / cover`}"
+    class="cic-img"
   />
 </template>
 
@@ -33,8 +33,8 @@
   }
 </script>
 
-<style lang="less" module>
-  .img {
+<style lang="less" scoped>
+  .cic-img {
     position: relative;
     transform: translateX(-100%);
     width: 100%;

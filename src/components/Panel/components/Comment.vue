@@ -1,5 +1,5 @@
 <template>
-  <icon :class="$style.icon" type="comment" mode="light">
+  <icon class="pcc-icon" type="comment" mode="light">
     <template slot="text">
       {{ num }}
     </template>
@@ -21,8 +21,8 @@
   }
 </script>
 
-<style lang="less" module>
-  .icon {
+<style lang="less" scoped>
+  .pcc-icon {
     margin-left: 0.5rem;
   }
 </style>

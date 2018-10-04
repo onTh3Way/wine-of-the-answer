@@ -5,6 +5,7 @@ import { EventCollector } from './'
 const http = axios.create({
   timeout: 5000,
   baseURL: `${config.baseURL}/${config.apiVersion}/`,
+  withCredentials: true,
   validateStatus (status) {
     return status < 500
   }

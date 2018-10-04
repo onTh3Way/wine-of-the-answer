@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span :class="$style.text" @click="$refs.modal.show()">{{ text }}</span>
+    <span class="pcr-text" @click="$refs.modal.show()">{{ text }}</span>
     <release-modal
       ref="modal"
       :title="title"
@@ -86,8 +86,8 @@
   }
 </script>
 
-<style lang="less" module>
-  .text {
+<style lang="less" scoped>
+  .pcr-text {
     transform: scale(0.9);
     font-size: 0.5rem;
     font-weight: 700;

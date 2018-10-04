@@ -2,14 +2,14 @@
   <base-modal
     ref="modal"
     v-bind="$props"
-    :dialogClass="[$style.container, dialogClass]"
-    :dialogTransition="$transitionCssModule('sliding')"
+    :dialogTransition="{name: 'sliding'}"
+    class="bt-dialog"
   >
     <template slot="dialog">
-      <div v-if="$slots.title" :class="$style.title">
+      <div v-if="$slots.title" class="bt-dialog-title">
         <slot name="title" />
       </div>
-      <div v-if="$slots.options" :class="$style.options">
+      <div v-if="$slots.options" class="bt-dialog-options">
         <slot name="options" />
       </div>
       <slot name="dialog" />
@@ -34,44 +34,32 @@
   }
 </script>
 
-<style lang="less" module>
-  .sliding_enter,
-  .sliding_leave_to {
-    transform: translateY(100%);
-  }
-  
-  .sliding_enter_active,
-  .sliding_leave_active {
-    transition: all 0.3s;
-  }
-  
-  .sliding_enter_to,
-  .sliding_leave {
-    transform: translateY(0);
-  }
-  
-  .container {
-    position: fixed;
-    bottom: 0;
-    z-index: 10;
-    width: 100%;
-    padding: 5px 0;
-    background-color: white;
-  }
-  
-  .title, .options > * {
-    height: 1.5rem;
-    line-height: 1.5rem;
-    text-align: center;
-  }
-  
-  .title {
-    font-size: 0.7em;
-    font-weight: 900;
-  }
-  
-  .options > * {
-    font-size: 0.8em;
-    font-weight: 700;
+<style lang="less" scoped>
+  .bt-dialog {
+    /deep/ [data-role="dialog"] {
+      position: fixed;
+      bottom: 0;
+      z-index: 10;
+      width: 100%;
+      padding: 5px 0;
+      background-color: white;
+    }
+    
+    /deep/ .bt-dialog-title,
+    /deep/ .bt-dialog-options > * {
+      height: 1.5rem;
+      line-height: 1.5rem;
+      text-align: center;
+    }
+    
+    /deep/ .bt-dialog-title {
+      font-size: 0.7em;
+      font-weight: 900;
+    }
+    
+    /deep/ .bt-dialog-options > * {
+      font-size: 0.8em;
+      font-weight: 700;
+    }
   }
 </style>

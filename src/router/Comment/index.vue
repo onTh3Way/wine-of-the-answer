@@ -1,6 +1,6 @@
 <template>
-  <div :class="$style.wrapper">
-    <div :class="$style.main">
+  <div class="wrapper">
+    <div class="main">
       <comment-panel
         v-if="comment"
         v-bind="comment"
@@ -11,15 +11,15 @@
         }"
       />
     </div>
-    <div :class="$style.replies">
+    <div class="replies">
       <list :onLoading="loadData">
         <template slot="tip">全部回复 {{ total }}</template>
         <template>
           <div>
             <reply
-              v-for="(item, index) of replies"
+              v-for="item in replies"
               v-bind="item"
-              :key="index"
+              :key="item.id"
               :onReplySucceed="handleReleaseSucceed"
             />
           </div>
@@ -70,7 +70,6 @@
           })
       },
       handleReleaseSucceed (data) {
-        message.success('回复成功')
         this.replies.unshift(data)
       },
       handleReleaseFailed () {
@@ -80,7 +79,7 @@
   }
 </script>
 
-<style lang="less" module>
+<style lang="less" scoped>
   .wrapper {
     display: flex;
     width: 100%;

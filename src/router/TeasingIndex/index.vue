@@ -1,17 +1,17 @@
 <template>
-  <div :class="$style.wrapper">
-    <div :class="$style.top_wrapper">
-      <div :class="$style.top" />
+  <div class="wrapper">
+    <div class="top_wrapper">
+      <div class="top" />
     </div>
 
-    <div :class="$style.word_wrapper">
-      <router-link :class="$style.word" to="/add-question">
+    <div class="word_wrapper">
+      <router-link class="word" to="/add-question">
         开始定制专属吐槽
       </router-link>
     </div>
 
-    <div :class="$style.bottom_wrapper">
-      <div :class="$style.bottom" />
+    <div class="bottom_wrapper">
+      <div class="bottom" />
     </div>
   </div>
 </template> 
@@ -22,7 +22,7 @@
   }
 </script>
 
-<style lang="less" module>
+<style lang="less" scoped>
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -47,7 +47,7 @@
   position: absolute;
   width: 55%;
   height: 100%;
-  background: url(assets/bottle1-test.png) no-repeat 0 104% / cover;
+  background: url(~assets/bottle1-test.png) no-repeat 0 104% / cover;
 }
 
 .word_wrapper {
@@ -76,7 +76,7 @@
   position: absolute;
   width: 55%;
   height: 100%;
-  background: url(assets/bottle2-test.png) no-repeat 0 0 / cover;
+  background: url(~assets/bottle2-test.png) no-repeat 0 0 / cover;
   // flex: 6.2;
   // position: absolute;
   // bottom: 0;

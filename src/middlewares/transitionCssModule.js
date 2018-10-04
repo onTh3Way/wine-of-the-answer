@@ -4,18 +4,17 @@ function connect (connector, ...args) {
 
 export default function transitionCssModule (Vue) {
   Vue.prototype.$transitionCssModule = function (key, options = {}) {
-    const style = this.$style
     const {connector = '_', ...attach} = options
     return {
-      enterClass: style[connect(connector, key, 'enter')],
-      enterActiveClass: style[connect(connector, key, 'enter', 'active')],
-      enterToClass: style[connect(connector, key, 'enter', 'to')],
-      leaveClass: style[connect(connector, key, 'leave')],
-      leaveActiveClass: style[connect(connector, key, 'leave', 'active')],
-      leaveToClass: style[connect(connector, key, 'leave', 'to')],
-      appearClass: style[connect(connector, key, 'appear')],
-      appearActiveClass: style[connect(connector, key, 'appear', 'active')],
-      appearToClass: style[connect(connector, key, 'appear', 'to')],
+      enterClass: connect(connector, key, 'enter'),
+      enterActiveClass: connect(connector, key, 'enter', 'active'),
+      enterToClass: connect(connector, key, 'enter', 'to'),
+      leaveClass: connect(connector, key, 'leave'),
+      leaveActiveClass: connect(connector, key, 'leave', 'active'),
+      leaveToClass: connect(connector, key, 'leave', 'to'),
+      appearClass: connect(connector, key, 'appear'),
+      appearActiveClass: connect(connector, key, 'appear', 'active'),
+      appearToClass: connect(connector, key, 'appear', 'to'),
       ...attach
     }
   }

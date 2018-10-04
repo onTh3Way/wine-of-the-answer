@@ -1,25 +1,25 @@
 <template>
-  <div :class="$style.wrapper">
-    <div :class="$style.list">
-      <p :class="$style.tip">
+  <div class="panel-list-wrapper">
+    <div class="panel-list">
+      <p class="panel-list-tip">
         <slot name="tip" />
       </p>
       <slot>
         <slot name="no-data">
-          <p :class="$style.text">暂时还没有数据</p>
+          <p class="panel-list-text">暂时还没有数据</p>
         </slot>
       </slot>
-      <p v-if="isFetching" :class="$style.text">
+      <p v-if="isFetching" class="panel-list-text">
         <slot name="loading">
           加载中...
         </slot>
       </p>
-      <p v-if="hasError" :class="$style.text">
+      <p v-if="hasError" class="panel-list-text">
         <slot name="error">
           哦豁,网络出错了
         </slot>
       </p>
-      <p v-if="loadedAll && $slots.default" :class="$style.text">
+      <p v-if="loadedAll && $slots.default" class="panel-list-text">
         <slot name="no-more">没有更多数据了</slot>
       </p>
     </div>
@@ -92,23 +92,23 @@
   }
 </script>
 
-<style lang="less" module>
-  .wrapper {
+<style lang="less" scoped>
+  .panel-list-wrapper {
     padding-top: 0.1rem;
   }
   
-  .list {
+  .panel-list {
     padding: 0 0.5rem;
   }
   
-  .tip, .text {
+  .panel-list-tip, .panel-list-text {
     padding: 0.5rem 0;
     font-size: 0.6rem;
     font-weight: 900;
     color: @pink;
   }
   
-  .text {
+  .panel-list-text {
     text-align: center;
   }
 </style>

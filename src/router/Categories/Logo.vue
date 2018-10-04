@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.logo">
+  <div class="logo">
     <img src="~assets/lips.png">
   </div>
 </template>
@@ -10,7 +10,7 @@
   }
 </script>
 
-<style lang="less" module>
+<style lang="less" scoped>
   @rem: 30rem;
   
   .logo {
