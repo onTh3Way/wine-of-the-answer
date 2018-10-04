@@ -11,8 +11,8 @@
 <style lang="less" module>
   .link {
     position: absolute;
+    z-index: 9999;
     width: 90%;
     height: 65%;
-    z-index: 9999;
   }
 </style>

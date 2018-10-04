@@ -160,13 +160,13 @@
 <style lang="less" module>
   .right {
     position: absolute;
+    transform: translateY(-50%);
     top: 50%;
     right: 0;
-    transform: translateY(-50%);
   }
   
   .time {
-    opacity: 0.7;
     margin-left: 0.4rem;
+    opacity: 0.7;
   }
 </style>

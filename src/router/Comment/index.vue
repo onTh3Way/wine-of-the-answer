@@ -83,11 +83,11 @@
 <style lang="less" module>
   .wrapper {
     display: flex;
-    flex-direction: column;
-    padding-top: 0.5rem;
     width: 100%;
     min-height: 100%;
+    padding-top: 0.5rem;
     background-color: @black;
+    flex-direction: column;
     
     > div {
       min-height: 0;

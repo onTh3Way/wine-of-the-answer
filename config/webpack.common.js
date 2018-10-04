@@ -48,6 +48,14 @@ module.exports = {
   module: {
     // 解析器
     rules: [
+      {
+        resourceQuery: /blockType=i18n/,
+        loader: '@kazupon/vue-i18n-loader'
+      },
+      {
+        resourceQuery: /blockType=i18n/,
+        loader: 'yaml-loader'
+      },
       // vue解析
       {
         test: /\.vue$/,

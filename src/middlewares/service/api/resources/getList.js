@@ -2,14 +2,15 @@ import { request } from '../../utils'
 
 function baseFetch ({
   url,
-  params = {},
+  offset = 0,
+  limit = 10,
+  // no every data list can be sort
+  sort,
   config
 }) {
-  const {offset = 0, limit = 10, sort = 'hot'} = params
-
   return request.get(url, {
     ...config,
-    params: {offset, limit, sort}
+    params: { offset, limit, sort }
   })
 }
 
@@ -28,11 +29,9 @@ export function getPosts ({
 }) {
   return baseFetch({
     url: prefixUrl(category ? `/${category}/posts` : '/posts', onlySelf),
-    params: {
-      offset,
-      limit,
-      sort
-    },
+    offset,
+    limit,
+    sort,
     config
   })
 }
@@ -47,11 +46,9 @@ export function getComments ({
 }) {
   return baseFetch({
     url: prefixUrl(postId ? `/posts/${postId}/comments` : '/comments', onlySelf),
-    params: {
-      offset,
-      limit,
-      sort
-    },
+    offset,
+    limit,
+    sort,
     config
   })
 }
@@ -65,11 +62,42 @@ export function getReplies ({
 }) {
   return baseFetch({
     url: prefixUrl(commentId ? `/comments/${commentId}/replies` : '/replies'),
-    params: {
-      offset,
-      limit,
-      sort
-    },
+    offset,
+    limit,
+    sort,
+    config
+  })
+}
+
+export function getTeasings ({
+  sort,
+  offset,
+  limit,
+  config
+}) {
+  return baseFetch({
+    url: '/teasings',
+    offset,
+    limit,
+    sort,
+    config
+  })
+}
+
+export function getReports ({
+  target,
+  targetId,
+  offset,
+  limit,
+  config
+}) {
+  let url = '/reports'
+  if (target) url = targetId ? `/${target}/${targetId}` + url : `/${target}` + url
+
+  return baseFetch({
+    url,
+    offset,
+    limit,
     config
   })
 }

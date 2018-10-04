@@ -6,11 +6,11 @@
 
 <script>
   export default {
-    name: 'app',
+    name: 'app', 
     data: () => ({
       loginComplete: true
     }),
-    beforeCreate () {
+    beforeCreate () { 
       // if (location.href.indexOf('code=') === -1) {
       //   location.href =
       //     'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfc3404099806c7e5&redirect_uri=' +
@@ -18,41 +18,38 @@
       //     '&response_type=code&scope=snsapi_userinfo#wechat_redirect'
       // } else {
       const params = new URLSearchParams(location.href)
-      this
-        .$service
-        .login(params.get('code'))
-        .allOk(({id}) => {
-          localStorage.setItem('userId', id)
-          this.loginComplete = true
-        })
-        // }
+      this.$service.login(params.get('code')).allOk(user => {
+        localStorage.setItem('userInfo', JSON.stringify(user))
+        this.loginComplete = true
+      })
+    // }
     }
   }
 </script>
 
 <style lang="less" module>
-  .app {
-    z-index: 1;
-  }
-  
-  .route_enter_active,
-  .route_leave_active {
-    transition: transform 0.5s;
-  }
-  
-  .route_enter {
-    transform: translateX(100%);
-  }
-  
-  .route_enter_to {
-    transform: translateX(0);
-  }
-  
-  .route_leave {
-    transform: translateX(0);
-  }
-  
-  .route_leave_to {
-    transform: translateX(-100%);
-  }
+.app {
+  z-index: 1;
+}
+
+.route_enter_active,
+.route_leave_active {
+  transition: transform 0.5s;
+}
+
+.route_enter {
+  transform: translateX(100%);
+}
+
+.route_enter_to {
+  transform: translateX(0);
+}
+
+.route_leave {
+  transform: translateX(0);
+}
+
+.route_leave_to {
+  transform: translateX(-100%);
+}
 </style>

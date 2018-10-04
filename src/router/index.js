@@ -4,6 +4,38 @@ Vue.use(VueRouter)
 
 // 配置你自己的路由
 const routes = [
+  // 吐槽模块路由
+  {
+    path: '/teasing-index',
+    name: 'teasingIndex',
+    component: () => import('./TeasingIndex')
+  },
+  {
+    path: '/teasing-protocol',
+    name: 'teaingsProtocol',
+    component: () => import('./TeasingProtocol')
+  },
+  {
+    path: '/teasings',
+    name: 'teasings',
+    component: () => import('./Teasings')
+  },
+  {
+    path: '/add-question',
+    name: 'addQuestion',
+    component: () => import('./AddQuestion')
+  },
+  {
+    path: '/platform',
+    name: 'platform',
+    component: () => import('./Platform')
+  },
+  // 论坛路由
+  {
+    path: '/',
+    name: 'index',
+    component: () => import('./Index/index')
+  },
   {
     path: '/welcome',
     name: 'welcome',
@@ -14,6 +46,7 @@ const routes = [
     name: 'protocol',
     component: () => import('./Protocol')
   },
+  // 论坛分类选择
   {
     path: '/categories',
     name: 'categories',
@@ -34,8 +67,8 @@ const routes = [
       }
     ]
   },
-  {path: '/posts/:id', component: () => import('./Post')},
-  {path: '/comments/:id', component: () => import('./Comment')}
+  { path: '/posts/:id', component: () => import('./Post') },
+  { path: '/comments/:id', component: () => import('./Comment') }
 ]
 
 export default new VueRouter({

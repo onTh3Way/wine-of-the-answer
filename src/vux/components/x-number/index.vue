@@ -3,7 +3,7 @@
     <div>
       <p v-html="$t(title)" :style="{width: $parent.labelWidth, textAlign: $parent.labelAlign, marginRight: $parent.labelMarginRight}" :class="labelClass"></p>
     </div>
-    <div class="weui-cell__ft vux-cell-primary" :class="{'vux-number-round': buttonStyle === 'round'}" v-show="!readonly" style="font-size:0
+    <div class="weui-cell__ft vux-cell-primary" :class="{'vux-number-round': buttonStyle === 'round'}" v-show="!readonly" style="font-size:0;
 ">
       <div :style="{float:align}">
         <a @click="sub" class="vux-number-selector vux-number-selector-sub":class="{'vux-number-disabled':disabledMin}">
@@ -131,12 +131,12 @@ export default {
 }
 
 .vux-number-input {
-  float:left;
-  height:20px;
-  padding:3px 0;
-  border:1px solid #ececec;
-  font-size:20px;
-  text-align:center;
+  float: left;
+  height: 20px;
+  padding: 3px 0;
+  border: 1px solid #ececec;
+  font-size: 20px;
+  text-align: center;
   color: @number-input-font-color;
   appearance: none;
   border-radius: 1px;
@@ -147,12 +147,12 @@ export default {
 }
 
 .vux-number-selector {
-  float:left;
-  height:20px;
-  border:1px solid @number-square-button-enabled-border-color;
-  font-size:25px;
-  line-height:18px;
-  color:@number-button-font-color;
+  float: left;
+  height: 20px;
+  border: 1px solid @number-square-button-enabled-border-color;
+  font-size: 25px;
+  line-height: 18px;
+  color: @number-button-font-color;
 }
 
 .vux-number-round .vux-number-selector {
@@ -177,16 +177,16 @@ export default {
 }
 
 .vux-number-selector-sub {
-  padding:4px 8px 2px 8px;
-  border-right:none;
-  border-radius:2px 0 0 2px;
+  padding: 4px 8px 2px 8px;
+  border-right: none;
+  border-radius: 2px 0 0 2px;
 }
 
 .vux-number-selector-plus {
   margin-right: 5px;
-  padding:3px 8px;
-  border-left:none;
-  border-radius:0 2px 2px 0;
+  padding: 3px 8px;
+  border-left: none;
+  border-radius: 0 2px 2px 0;
 }
 
 .vux-number-round .vux-number-selector-sub svg {

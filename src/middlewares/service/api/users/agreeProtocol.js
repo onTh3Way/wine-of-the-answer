@@ -1,10 +1,15 @@
 import { request } from '../../utils'
 
-/**
- * 同意协议
- * @param {string} id - 用户id,默认为自身id
- * @return {httpEventCollector}
- */
-export default function agreeProtocol (id = localStorage.getItem('userId')) {
-  return request.put(`/users/${id}/protocol`)
+export function agreeBBSProtocol ({
+  config
+} = {}) {
+  const id = JSON.parse(localStorage.getItem('userInfo')).id
+  return request.put(`/users/${id}/protocol/BBS`, config)
+}
+
+export function agreeTeasingProtocol ({
+  config
+} = {}) {
+  const id = JSON.parse(localStorage.getItem('userInfo')).id
+  return request.put(`/users/${id}/protocol/teasing`, config)
 }

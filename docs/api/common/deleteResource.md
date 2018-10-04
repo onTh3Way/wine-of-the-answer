@@ -5,10 +5,11 @@
 
 #### 接口
 
-> DELETE /api/v1/{posts || comments || replies}/{id}
+> DELETE /api/v1/{posts || comments || replies || teasings}/{id}
 
 #### 响应
 ##### 删除成功：204
+##### 参数不合法: 400
 ##### 未登录: 401
 ##### 权限不足: 403
 ##### 资源不存在: 404

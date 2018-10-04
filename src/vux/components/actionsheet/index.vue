@@ -199,6 +199,6 @@ export default {
 .vux-actionsheet-mask-enter-active,
 .vux-android-actionsheet-leave-active,
 .vux-android-actionsheet-enter-active {
-  transition: opacity 300ms!important;
+  transition: opacity 300ms !important;
 }
 </style>

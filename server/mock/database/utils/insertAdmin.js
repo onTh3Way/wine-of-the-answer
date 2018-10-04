@@ -6,8 +6,8 @@ module.exports = function (data) {
     avatar = faker.image.dataUri(),
     username = faker.internet.userName(),
     password = faker.internet.password()
-  } =  data
-  db.admins.push({
+  } = data
+  db.admins.unshift({
     id: faker.random.uuid(),
     createDate: Date.now(),
     nickname,

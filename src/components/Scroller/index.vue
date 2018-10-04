@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.wrapper">
-    <div id="t" ref="el" :class="$style.container" style="transform: translate(0, 0)">
+    <div id="t" ref="el" :class="$style.container" style="transform: translate(0, 0);">
       <div :class="$style.refresh">
         下拉刷新
       </div>
@@ -87,16 +87,16 @@
   .refresh,
   .loading {
     width: 100%;
-    text-align: center;
     font-size: 0.7rem;
+    text-align: center;
     color: @pink;
   }
   
   .refresh {
     position: absolute;
+    transform: translateY(-100%);
     top: 0;
     left: 0;
-    transform: translateY(-100%);
   }
   
   .loading {

@@ -2,7 +2,7 @@
   <div :class="$style.wrapper">
     <div
       v-for="(item, index) in items"
-      :key="index"
+      :key="item.index"
       :class="$style.post"
     >
       <post v-bind="item" />

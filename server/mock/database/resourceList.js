@@ -2,8 +2,8 @@ function firstUppercase (str) {
   return str[0].toUpperCase() + str.slice(1)
 }
 
-const resource = ['post', 'comment', 'reply']
-const resources = ['posts', 'comments', 'replies']
+const resource = ['post', 'comment', 'reply', 'teasing']
+const resources = ['posts', 'comments', 'replies', 'teasings']
 const allResource = ['user', 'admin', ...resource]
 const allResources = ['users', 'admins', ...resources]
 

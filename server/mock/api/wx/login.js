@@ -11,7 +11,7 @@ module.exports = function (router) {
       maxAge: 1000 * 60 * 60 * 24 * 1000,
       path: '/'
     })
-    res.end(JSON.stringify({id: user.id}))
+    res.json(user)
     next()
   })
 

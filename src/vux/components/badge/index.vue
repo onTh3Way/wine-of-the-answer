@@ -35,6 +35,6 @@ export default {
 
 .vux-badge-dot {
   height: auto;
-  padding: 5px
+  padding: 5px;
 }
 </style>

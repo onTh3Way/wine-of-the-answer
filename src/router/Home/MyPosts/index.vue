@@ -54,10 +54,11 @@
   
   .no_data {
     .all-center(absolute);
-    white-space: nowrap;
+
+    font-size: 0.7rem;
     font-weight: 900;
     text-align: center;
-    font-size: 0.7rem;
+    white-space: nowrap;
     color: @pink;
   }
 </style>

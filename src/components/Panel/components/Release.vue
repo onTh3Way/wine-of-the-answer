@@ -91,6 +91,6 @@
     transform: scale(0.9);
     font-size: 0.5rem;
     font-weight: 700;
-    color: #B3A8AA;
+    color: #b3a8aa;
   }
 </style>

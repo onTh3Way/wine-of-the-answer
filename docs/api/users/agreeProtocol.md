@@ -6,7 +6,7 @@
 
 #### URL
 
-> PUT /api/v1/users/{id}/protocol
+> PUT /api/v1/users/{id}/protocol/{BBS || teasings}
 
 #### 响应：
 ##### 成功：204

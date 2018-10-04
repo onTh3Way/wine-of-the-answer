@@ -542,15 +542,15 @@ export default {
 }
 
 .calendar-enter, .calendar-leave-active {
-  transform: translate3d(0,-10px, 0);
+  transform: translate3d(0, -10px, 0);
   opacity: 0;
 }
 
 .calendar::before {
   position: absolute;
   top: -10px;
-  left:30px;
-  border:5px solid rgba(0, 0, 0, 0);
+  left: 30px;
+  border: 5px solid rgba(0, 0, 0, 0);
   border-bottom-color: #dedede;
   content: '';
 }
@@ -558,8 +558,8 @@ export default {
 .calendar::after {
   position: absolute;
   top: -9px;
-  left:30px;
-  border:5px solid rgba(0, 0, 0, 0);
+  left: 30px;
+  border: 5px solid rgba(0, 0, 0, 0);
   border-bottom-color: #fff;
   content: '';
 }
@@ -573,14 +573,14 @@ export default {
 
 .inline-calendar td {
   position: relative;
-  padding:5px 0;
+  padding: 5px 0;
   font-size: @calendar-date-item-font-size;
   text-align: center;
   vertical-align: middle;
 }
 
-.inline-calendar td.week{
-  pointer-events:none !important;
+.inline-calendar td.week {
+  pointer-events: none !important;
   cursor: default !important;
 }
 
@@ -601,7 +601,7 @@ export default {
 }
 
 .inline-calendar td.current > span.vux-calendar-each-date {
-  color: #fff!important;
+  color: #fff !important;
   background-color: @calendar-selected-bg-color;
 }
 

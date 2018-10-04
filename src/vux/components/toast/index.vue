@@ -126,12 +126,12 @@ export default {
 }
 
 .vux-slide-from-top-enter, .vux-slide-from-top-leave-active {
-  transform: translateX(-50%) translateY(-100%)!important;
+  transform: translateX(-50%) translateY(-100%) !important;
   opacity: 0;
 }
 
 .vux-slide-from-bottom-enter, .vux-slide-from-bottom-leave-active {
-  transform: translateX(-50%) translateY(100%)!important;
+  transform: translateX(-50%) translateY(100%) !important;
   opacity: 0;
 }
 
@@ -139,12 +139,12 @@ export default {
 .vux-slide-from-top-leave-active,
 .vux-slide-from-bottom-enter-active,
 .vux-slide-from-bottom-leave-active {
-  transition: all 400ms cubic-bezier(0.36,0.66,0.04,1);
+  transition: all 400ms cubic-bezier(0.36, 0.66, 0.04, 1);
 }
 
 .weui-toast {
   transform: translateX(-50%);
-  margin-left: 0!important;
+  margin-left: 0 !important;
 }
 
 .weui-toast.weui-toast_forbidden {
@@ -155,7 +155,7 @@ export default {
   margin-top: 10px;
 }
 
-.weui-toast.weui-toast_text{
+.weui-toast.weui-toast_text {
   min-height: 0;
 }
 

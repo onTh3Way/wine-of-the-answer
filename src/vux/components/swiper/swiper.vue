@@ -252,13 +252,12 @@ export default {
       > .@{pre}-icon-dot.active {
         background-color: @swiper-indicator-active-color;
       }
-
     }
   }
 
   > .@{pre}-indicator-center {
     transform: translateX(50%);
-    right: 50%
+    right: 50%;
   }
 
   > .@{pre}-indicator-left {
@@ -307,7 +306,6 @@ export default {
           text-overflow: ellipsis;
           word-wrap: normal;
         }
-
       }
     }
   }

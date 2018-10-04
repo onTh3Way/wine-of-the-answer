@@ -12,10 +12,10 @@
 
 <style lang="less" module>
   .text {
-    white-space: nowrap;
     font-size: 1rem;
     font-weight: 900;
     text-align: center;
+    white-space: nowrap;
     color: pink;
   }
 </style>

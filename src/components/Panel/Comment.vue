@@ -134,8 +134,8 @@
 <style lang="less" module>
   .right {
     position: absolute;
+    transform: translateY(-50%);
     top: 50%;
     right: 0;
-    transform: translateY(-50%);
   }
 </style>

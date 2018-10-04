@@ -4,5 +4,6 @@ module.exports = (req, res, next) => {
   if (req.user) {
     req.user.isFrozen = req.user.freezeTime > Date.now()
   }
+  
   next()
 }

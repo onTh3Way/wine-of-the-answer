@@ -39,12 +39,12 @@
 <style lang="less" module>
   .wrapper {
     display: flex;
-    flex-direction: column;
-    padding: 0 0.7rem;
     width: 100%;
     min-height: 100vh;
-    background-color: black;
     overflow: auto;
+    padding: 0 0.7rem;
+    background-color: black;
+    flex-direction: column;
   }
   
   .header {
@@ -58,9 +58,9 @@
   
   .title {
     display: inline-block;
-    vertical-align: middle;
-    padding-left: 1rem;
     width: 50%;
+    padding-left: 1rem;
+    vertical-align: middle;
   }
   
   .question {
@@ -72,10 +72,10 @@
   
   .items {
     display: flex;
+    overflow: hidden;
+    margin-top: -7%;
     flex-direction: column;
     flex: 1;
     flex-basis: auto;
-    margin-top: -7%;
-    overflow: hidden;
   }
 </style>

@@ -43,11 +43,11 @@
 <style lang="less" module>
   .wrapper {
     display: flex;
-    flex-direction: column;
     width: 100%;
     height: 100%;
-    background: black;
     overflow: hidden;
+    background: black;
+    flex-direction: column;
   }
   
   .footer {
@@ -55,7 +55,9 @@
   }
   
   .tab {
+
     :global {
+
       .vux-button-group-current {
         color: pink !important;
         background: rgb(25, 25, 25) !important;
@@ -63,13 +65,13 @@
       
       .vux-button-tab-item {
         height: 1.8rem;
-        line-height: 1.8rem;
         font-size: 0.8rem;
-        border-radius: 0 !important;
-        color: #AC9E9E;
+        line-height: 1.8rem;
+        color: #ac9e9e;
         background: transparent;
+        border-radius: 0 !important;
         
-        &:after {
+        &::after {
           display: none;
         }
       }

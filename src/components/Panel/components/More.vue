@@ -18,15 +18,15 @@
   
   .wrapper {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     opacity: 0.8;
   }
   
   .round {
-    margin: @round-margin;
     width: @round-size;
     height: @round-size;
+    margin: @round-margin;
     background-color: @pink;
     border-radius: 50%;
   }

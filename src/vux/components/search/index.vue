@@ -242,7 +242,7 @@ export default {
   position: fixed;
   width: 100%;
   max-height: 100%;
-  margin-top: 0!important;
+  margin-top: 0 !important;
   overflow-y: auto;
 
   .weui-cell:last-child {

@@ -1,6 +1,6 @@
 <template>
   <div class="vux-rater">
-    <input v-model="currentValue" style="display:none
+    <input v-model="currentValue" style="display:none;
 ">
     <a class="vux-rater-box" v-for="i in max" @click="handleClick(i-1)" :class="{'is-active':currentValue > i-1}" :style="{color: colors && colors[i-1] ? colors[i-1] : '#ccc',marginRight:margin+'px',fontSize: fontSize + 'px', width: fontSize + 'px', height: fontSize + 'px', lineHeight: fontSize + 'px'}">
       <span class="vux-rater-inner"><span v-html="star"></span><span class="vux-rater-outer" :style="{color: activeColor, width: cutPercent + '%'}" v-if="cutPercent > 0 && cutIndex === i-1" v-html="star"></span></span>
@@ -114,8 +114,8 @@ export default {
 }
 
 .vux-rater a:last-child {
-  margin-right: 0px!important;
-  padding-right: 2px!important;
+  margin-right: 0 !important;
+  padding-right: 2px !important;
 }
 
 .vux-rater a:hover {

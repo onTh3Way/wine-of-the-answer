@@ -17,11 +17,11 @@
       </div>
     </transition>
     <x-mask
+      ref="mask"
       :class="maskClass"
       :style="maskStyle"
       :transition="maskTransition"
-      :closable="maskClosable"
-      v-model="active"
+      @click.native="maskClosable && hide()"
     >
       <slot name="mask" />
     </x-mask>
@@ -107,6 +107,7 @@
     methods: {
       show () {
         this.active = true
+        this.$refs.mask.show()
         this.$nextTick(() => {
           this.$refs.el.querySelectorAll('[data-role=cancel]').forEach(el => {
             el.addEventListener('click', this.hide, false)
@@ -119,6 +120,7 @@
           el.removeEventListener('click', this.hide, false)
         })
         this.active = false
+        this.$refs.mask.hide()
         this.onHide()
       }
     }

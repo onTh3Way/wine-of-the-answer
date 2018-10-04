@@ -40,10 +40,10 @@
   
   .line_group {
     display: inline-block;
-    vertical-align: middle;
-    margin-right: 5px;
     width: 30px;
     height: 1rem;
+    margin-right: 5px;
+    vertical-align: middle;
     
     .line:nth-child(1) {
       top: 2px;

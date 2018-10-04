@@ -7,6 +7,7 @@ module.exports = {
   insertPost: require('./insertPost'),
   insertComment: require('./insertComment'),
   insertReply: require('./insertReply'),
+  insertTeasing: require('./insertTeasing'),
   attachResourcesInfo: require('./attachResourcesInfo'),
   sortResources: require('./sortResources')
 }

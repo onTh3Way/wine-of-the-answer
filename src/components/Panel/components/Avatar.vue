@@ -19,11 +19,11 @@
 <style lang="less" module>
   .avatar {
     position: absolute;
+    transform: translate(-120%, -20%);
     top: 0;
     left: 0;
     width: 1.9rem;
     height: 1.9rem;
-    transform: translate(-120%, -20%);
     
     img {
       border-radius: 50%;

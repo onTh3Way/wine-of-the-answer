@@ -82,7 +82,7 @@ export default {
   display: inline-block;
   position: relative;
   text-align: center;
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 .vux-color-checked.weui-icon-success-no-circle::before {
@@ -105,11 +105,11 @@ export default {
   color: #ccc;
 }
 
-.vux-color-picker-small .vux-color-checked::before{
+.vux-color-picker-small .vux-color-checked::before {
   font-size: 10px;
 }
 
-.vux-color-picker-middle .vux-color-checked::before{
+.vux-color-picker-middle .vux-color-checked::before {
   font-size: 18px;
 }
 </style>

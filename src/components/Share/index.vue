@@ -1,34 +1,34 @@
 <template>
-  <svg width="100%" height="100%">
-    <line
-      x1="390"
-      y1="20"
-      x2="100"
-      y2="300"
-      style="
-        stroke: white;
-        stroke-width: 2;
-      "
-    />
-    <polygon
-      v-bind="arrow"
-      style="
-        fill: white;
-        stroke: white;
-        stroke-width: 1;
-      "
-    />
-  </svg>
+  <div @click="click">
+    <slot />
+    <x-mask ref="mask" :class="$style.wrapper" @click.native="$refs.mask.hide()">
+      <p :class="$style.text">点击右上角即可分享哦~</p>
+    </x-mask>
+  </div>
 </template>
 
 <script>
-  let wxShareX = (window.innerWidth || document.body.clientWidth) - 50
+  import { XMask } from 'components'
   export default {
     name: 'share',
-    data: () => ({
-      arrow: {
-        points: `${wxShareX} 10 ${wxShareX - 10} 20 ${wxShareX + 10} 20`
+    components: { XMask },
+    methods: {
+      click () {
+        this.$refs.mask.show()
       }
-    })
+    }
   }
 </script>
+
+<style lang="less" module>
+.wrapper {
+  z-index: 9999;
+}
+
+.text {
+  .all-center(absolute);
+  white-space: nowrap;
+  font-size: 1.2rem;
+  color: white;
+}
+</style>

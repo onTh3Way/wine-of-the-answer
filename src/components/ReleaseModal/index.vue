@@ -13,13 +13,13 @@
       <button
         @click="onReleaseClick($refs.textarea.getContent(), true) === true && hide()"
       >
-        匿名发布
+        <slot name="left-btn">匿名发布</slot>
       </button>
       <button
         :class="$style.release"
         @click="onReleaseClick($refs.textarea.getContent(), false) === true && hide()"
       >
-        发布
+        <slot name="right-btn">发布</slot>
       </button>
     </template>
   </modal>

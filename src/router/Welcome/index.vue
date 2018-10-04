@@ -6,7 +6,7 @@
     >
       <div
         :class="$style.header"
-        style="transform: translateY(-100%)"
+        style="transform: translateY(-100%);"
       >
         <h1 :class="$style.title">Welcome</h1>
         <change-img-color
@@ -37,7 +37,7 @@
   import { ChangeImgColor } from 'components'
 
   export default {
-    name: 'home',
+    name: 'welcome',
     components: {ChangeImgColor}
   }
 </script>
@@ -51,15 +51,15 @@
   }
   
   .title {
-    text-align: center;
     font-size: 2rem;
     font-weight: 900;
+    text-align: center;
   }
   
   .logo {
-    margin-left: 0.3rem;
     width: 100%;
     height: 6rem;
+    margin-left: 0.3rem;
   }
   
   .text_group {
@@ -67,14 +67,14 @@
   }
   
   .text {
-    text-align: center;
     font-size: 0.7rem;
     font-weight: 900;
+    text-align: center;
   }
   
   .header {
-    padding-top: 20px;
     transform: translateY(0) !important;
+    padding-top: 20px;
   }
   
   .header_appear_active,
@@ -101,9 +101,9 @@
   
   .bottle_wrapper {
     position: absolute;
-    left: 50%;
-    bottom: 0;
     transform: translateX(-50%);
+    bottom: 0;
+    left: 50%;
     width: 72%;
     height: 52%;
   }
@@ -113,6 +113,6 @@
     top: 6%;
     width: 100%;
     height: 100%;
-    background: url("assets/bottle.png") no-repeat center / contain;
+    background: url('assets/bottle.png') no-repeat center / contain;
   }
 </style>

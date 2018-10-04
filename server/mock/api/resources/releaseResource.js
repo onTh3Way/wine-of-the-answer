@@ -1,7 +1,7 @@
 module.exports = function (router) {
   router.post('/:category/posts', (req, res, next) => {
-    const {category} = req.params
-    const {content, anonymous} = req.body
+    const { category } = req.params
+    const { content, anonymous } = req.body
 
     if (!content) {
       res.statusCode = 400
@@ -15,7 +15,7 @@ module.exports = function (router) {
         content,
         anonymous
       })
-      res.end(JSON.stringify(db.posts[db.posts.length - 1]))
+      res.json(db.posts[0])
     }
 
     next()
@@ -23,7 +23,7 @@ module.exports = function (router) {
 
   router.post('/posts/:id/comments', (req, res, next) => {
     const id = +req.params.id
-    const {content, anonymous = false} = req.body
+    const { content, anonymous = false } = req.body
 
     if (!content) {
       res.statusCode = 400
@@ -41,7 +41,7 @@ module.exports = function (router) {
         content,
         anonymous
       })
-      res.end(JSON.stringify(db.comments[db.comments.length - 1]))
+      res.json(db.comments[0])
     }
 
     next()
@@ -49,28 +49,28 @@ module.exports = function (router) {
 
   router.post('/comments/:id/replies', (req, res, next) => {
     const id = +req.params.id
-    const {content, receiverReplyId, anonymous = false} = req.body
+    const { content, receiverReplyId, anonymous = false } = req.body
 
     if (!content) {
       res.statusCode = 400
-      res.end(JSON.stringify({
+      res.json({
         code: 0,
         msg: 'no null content'
-      }))
+      })
     } else if (!dbUtils.findComment(id)) {
       res.statusCode = 404
     } else if (receiverReplyId && !dbUtils.findReply(receiverReplyId)) {
       res.statusCode = 400
-      res.end(JSON.stringify({
+      res.json({
         code: 1,
         msg: 'receiver is not exist'
-      }))
+      })
     } else if (receiverReplyId && dbUtils.findReply(receiverReplyId).author.id === req.user.id) {
       res.statusCode = 400
-      res.end(JSON.stringify({
+      res.json({
         code: 2,
         msg: 'cannot reply self'
-      }))
+      })
     } else {
       res.statusCode = 200
       dbUtils.insertReply({
@@ -80,7 +80,26 @@ module.exports = function (router) {
         content,
         anonymous
       })
-      res.end(JSON.stringify(db.replies[db.replies.length - 1]))
+      res.json(db.replies[0])
+    }
+
+    next()
+  })
+
+  router.post('/teasings', (req, res, next) => {
+    const { content, anonymous = false } = req.body
+
+    if (!content || typeof anonymous !== 'boolean') {
+      res.statusCode = 400
+      res.end()
+    } else {
+      res.statusCode = 200
+      dbUtils.insertTeasing({
+        userId: req.user.id,
+        content,
+        anonymous,
+      })
+      res.json(db.teasings[0])
     }
 
     next()

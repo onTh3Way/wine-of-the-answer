@@ -114,7 +114,7 @@ export default {
   visibility: hidden;
   position: absolute;
   top: 0;
-  height:100%;
+  height: 100%;
   overflow: hidden;
   background-color: #fff;
   pointer-events: none;

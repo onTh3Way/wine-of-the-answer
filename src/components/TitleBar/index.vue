@@ -36,8 +36,8 @@
   
   .wrapper {
     display: flex;
-    padding: @wrapper-padding;
     width: 100%;
+    padding: @wrapper-padding;
     color: @theme-color;
     
     > div {
@@ -53,8 +53,8 @@
   
   .arrow {
     position: absolute;
-    top: 50%;
     transform: translate(-50%, -50%);
+    top: 50%;
     width: 0;
     height: 0;
     border: @title-text-size / 2 solid @theme-color;
@@ -70,8 +70,8 @@
   
   .title {
     width: 100%;
-    text-align: center;
     font-size: @title-text-size;
     font-weight: 900;
+    text-align: center;
   }
 </style>

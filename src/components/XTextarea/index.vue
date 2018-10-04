@@ -65,11 +65,11 @@
   .mirror {
     display: block;
     visibility: hidden;
+    width: 100%;
     margin: 0;
     padding: 0;
-    width: 100%;
-    outline: 0;
     border: 0;
+    outline: 0;
   }
   
   .input {

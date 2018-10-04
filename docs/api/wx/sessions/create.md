@@ -13,7 +13,9 @@
 JSON
 ```js
 {
-  "id": "uid"
+  "id": "uid",
+  "nickname": "名字",
+  "avatar": "avatar.png"
 }
 ```
 ##### 用户不存在: 404
