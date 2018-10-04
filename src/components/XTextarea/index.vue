@@ -1,16 +1,16 @@
 <template>
-  <div :class="$style.wrapper">
+  <div class="xt-wrapper">
     <pre
       ref="mirror"
-      :class="$style.mirror"
       :style="{fontSize, fontWeight}"
+      class="xt-mirror"
     >占位</pre>
     <textarea
       ref="input"
-      :class="$style.input"
       :style="{fontSize, fontWeight}"
       :maxlength="maxlength"
       :placeholder="placeholder"
+      class="xt-input"
       @input="syncMirror"
     />
   </div>
@@ -52,17 +52,17 @@
   }
 </script>
 
-<style lang="less" module>
-  .wrapper {
+<style lang="less" scoped>
+  .xt-wrapper {
     position: relative;
   }
   
-  .mirror, .input {
+  .xt-mirror, .xt-input {
     white-space: pre-wrap;
     word-break: break-word;
   }
   
-  .mirror {
+  .xt-mirror {
     display: block;
     visibility: hidden;
     width: 100%;
@@ -72,7 +72,7 @@
     outline: 0;
   }
   
-  .input {
+  .xt-input {
     position: absolute;
     top: 0;
     left: 0;

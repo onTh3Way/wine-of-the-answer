@@ -1,13 +1,13 @@
 <template>
-  <div :class="$style.wrapper">
-    <div id="t" ref="el" :class="$style.container" style="transform: translate(0, 0);">
-      <div :class="$style.refresh">
+  <div class="wrapper">
+    <div id="t" ref="el" class="container" style="transform: translate(0, 0);">
+      <div class="refresh">
         下拉刷新
       </div>
       <div>
         <slot />
       </div>
-      <!--<div :class="$style.loading">加载中...</div>-->
+      <!--<div class="loading">加载中...</div>-->
     </div>
   </div>
 </template>
@@ -73,7 +73,7 @@
   }
 </script>
 
-<style lang="less" module>
+<style lang="less" scoped>
   .wrapper,
   .container {
     width: 100%;

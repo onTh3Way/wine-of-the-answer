@@ -1,6 +1,6 @@
 <template>
-  <div :class="$style.wrapper">
-    <div :class="$style.lds_spinner">
+  <div class="wrapper">
+    <div class="lds_spinner">
       <div />
       <div />
       <div />
@@ -27,7 +27,7 @@
   }
 </script>
 
-<style lang="less" module>
+<style lang="less" scoped>
   @keyframes lds_spinner {
 
     0% {

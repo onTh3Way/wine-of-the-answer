@@ -1,6 +1,6 @@
 <template>
   <icon
-    :class="[$style.icon, active ? $style.active : '']"
+    :class="['pcd-con', active ? 'pcd-active' : '']"
     :type="active ? 'disagree-fill' : 'disagree'"
     @click.native="disagree"
   />
@@ -55,11 +55,11 @@
   }
 </script>
 
-<style lang="less" module>
-  .icon {
+<style lang="less" scoped>
+  .pcd-con {
     opacity: 0.6;
     
-    &.active {
+    &.pcd-active {
       opacity: 1;
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <router-link class="$style.wrapper" to="/welcome">
+  <router-link class="wrapper" to="/welcome">
     <img src="~assets/loading.jpg">
   </router-link>
 </template>
@@ -10,7 +10,7 @@
   }
 </script>
  
-<style lang="less" module>
+<style lang="less" scoped>
 .wrapper {
   width: 100%;
 }

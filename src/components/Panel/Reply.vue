@@ -3,14 +3,14 @@
     <avatar :url="author.avatar" />
     <x-h1>
       <span>{{ author.nickname }}</span>
-      <more :class="$style.right" @click.native="$refs.bottomDialog.show()" />
+      <more class="panel-reply-right" @click.native="$refs.bottomDialog.show()" />
     </x-h1>
     <x-h6 v-if="replyToAuthor">{{ '回复 @' + replyToAuthor.nickname }}</x-h6>
     <x-h3>{{ content }}</x-h3>
     <tools>
       <agree :num="agreeNum" :defaultActive="isAgree" />
-      <x-h6 :class="$style.time" color="pink">{{ date }}</x-h6>
-      <disagree :num="disagreeNum" :defaultActive="isDisagree" :class="$style.right" />
+      <x-h6 class="panel-reply-time" color="pink">{{ date }}</x-h6>
+      <disagree :num="disagreeNum" :defaultActive="isDisagree" class="panel-reply-right" />
     </tools>
     <bottom-dialog ref="bottomDialog">
       <template slot="title">更多操作</template>
@@ -157,15 +157,15 @@
   }
 </script>
 
-<style lang="less" module>
-  .right {
+<style lang="less" scoped>
+  .panel-reply-right {
     position: absolute;
     transform: translateY(-50%);
     top: 50%;
     right: 0;
   }
   
-  .time {
+  .panel-reply-time {
     margin-left: 0.4rem;
     opacity: 0.7;
   }

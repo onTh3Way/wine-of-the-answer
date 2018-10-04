@@ -1,15 +1,15 @@
 <template>
-  <div :class="$style.wrapper">
-    <div :class="$style.header">
-      <logo :class="$style.logo" />
-      <div :class="$style.title">
+  <div class="wrapper">
+    <div class="header">
+      <logo class="logo" />
+      <div class="title">
         <x-text>GlobalForum</x-text>
         <x-text>答案之酒烦恼</x-text>
         <x-text>全球论坛</x-text>
       </div>
-      <x-text :class="$style.question">你的烦恼是什么?</x-text>
+      <x-text class="question">你的烦恼是什么?</x-text>
     </div>
-    <div :class="$style.items">
+    <div class="items">
       <item to="/home/categories/married">婚姻 Married</item>
       <item to="/home/categories/work" mode="black">工作 Work</item>
       <item to="/home/categories/money">金钱 Money</item>
@@ -36,7 +36,7 @@
   }
 </script>
 
-<style lang="less" module>
+<style lang="less" scoped>
   .wrapper {
     display: flex;
     width: 100%;

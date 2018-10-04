@@ -1,8 +1,8 @@
 <template>
-  <div :class="$style.wrapper">
+  <div class="home-wrapper">
     <router-view />
-    <div :class="$style.footer">
-      <button-tab :class="$style.tab">
+    <div class="home-footer">
+      <button-tab class="home-tab">
         <button-tab-item selected>
           <router-link :to="'/home/categories/' + category" tag="div">论坛</router-link>
         </button-tab-item>
@@ -40,8 +40,8 @@
   }
 </script>
 
-<style lang="less" module>
-  .wrapper {
+<style lang="less" scoped>
+  .home-wrapper {
     display: flex;
     width: 100%;
     height: 100%;
@@ -50,30 +50,26 @@
     flex-direction: column;
   }
   
-  .footer {
+  .home-footer {
     flex-basis: auto;
   }
   
-  .tab {
-
-    :global {
-
-      .vux-button-group-current {
-        color: pink !important;
-        background: rgb(25, 25, 25) !important;
-      }
+  .home-tab {
+    /deep/ .vux-button-group-current {
+      color: pink !important;
+      background: rgb(25, 25, 25) !important;
+    }
+    
+    /deep/ .vux-button-tab-item {
+      height: 1.8rem;
+      font-size: 0.8rem;
+      line-height: 1.8rem;
+      color: #ac9e9e;
+      background: transparent;
+      border-radius: 0 !important;
       
-      .vux-button-tab-item {
-        height: 1.8rem;
-        font-size: 0.8rem;
-        line-height: 1.8rem;
-        color: #ac9e9e;
-        background: transparent;
-        border-radius: 0 !important;
-        
-        &::after {
-          display: none;
-        }
+      &::after {
+        display: none;
       }
     }
   }

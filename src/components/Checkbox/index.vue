@@ -1,5 +1,5 @@
 <template>
-  <label :class="$style.checkbox">
+  <label class="cb-checkbox">
     <slot />
     <input
       ref="checkbox"
@@ -8,7 +8,7 @@
       type="checkbox"
       @change="checked = $event.target.checked"
     >
-    <span :class="$style.checkmark" />
+    <span class="cb-checkmark" />
   </label>
 </template>
 
@@ -44,12 +44,12 @@
   }
 </script>
 
-<style lang="less" module>
+<style lang="less" scoped>
 @size: 0.8rem;
 @checked-color: white;
 @checked-size: 3px;
 
-.checkbox {
+.cb-checkbox {
   display: block;
   position: relative;
   margin-bottom: 0.55rem;
@@ -68,7 +68,7 @@
     cursor: pointer;
   }
 
-  input:checked ~ .checkmark {
+  input:checked ~ .cb-checkmark {
     background-color: #2196f3;
 
     &::after {
@@ -77,7 +77,7 @@
   }
 }
 
-.checkmark {
+.cb-checkmark {
   position: absolute;
   top: 0;
   left: 0;

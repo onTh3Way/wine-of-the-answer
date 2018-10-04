@@ -1,13 +1,13 @@
 <template>
-  <div :class="$style.wrapper">
+  <div class="ts-wrapper">
     <x-header :release="{onReleaseSucceed}" />
     <tabs :onTabClick="handleTabChange" />
-    <div :class="$style.list">
+    <div class="ts-list">
       <scroller ref="scroller" :onInfinite="load" :onRefresh="refresh">
         <div
           v-for="item in data"
           :key="item.id"
-          :class="$style.item"
+          class="ts-item"
         >
           <item v-bind="item" /> 
         </div>
@@ -20,7 +20,7 @@
   import XHeader from './XHeader'
   import Tabs from './Tabs'
   import Item from './Item'
-  import { HOTTEASING, HOTCOMMENT, HOTSHARE, HOTTODAY } from './constants'
+  import { HOT_TEASING } from './constants'
 
   export default {
     name: 'index',
@@ -30,7 +30,7 @@
       Item
     },
     data: () => ({
-      mode: HOTTEASING,
+      mode: HOT_TEASING,
       data: [],
       request: null,
       isFetching: false
@@ -86,19 +86,19 @@
   }
 </script>
 
-<style lang="less" module>
-.wrapper {
+<style lang="less" scoped>
+.ts-wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.list {
+.ts-list {
   flex: 1;
   width: 100%;
 }
 
-.item {
+.ts-item {
   padding: 0.2rem;
 }
 </style>

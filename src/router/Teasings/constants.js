@@ -1,4 +1,4 @@
-export const HOTTEASING = 'hot-teasing'
-export const HOTCOMMENT = 'hot-comment'
-export const HOTSHARE = 'hot-share'
-export const HOTTODAY = 'hot-today'
+export const HOT_TEASING = 'hot-teasing'
+export const HOT_COMMENT = 'hot-comment'
+export const HOT_SHARE = 'hot-share'
+export const HOT_TODAY = 'hot-today'

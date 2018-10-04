@@ -1,4 +1,4 @@
-import styles from './styles.less'
+import './styles.less'
 
 function createElement (msg, type) {
   const el = document.createElement('div')
@@ -15,10 +15,10 @@ function createElement (msg, type) {
     symbol = 'x'
     break
   }
-  el.className = styles.wrapper
+  el.className = 'utils-msg-wrapper'
   el.innerHTML = `
-      <span class="${styles.icon} ${styles[type]}">${symbol}</span>
-      <span class="${styles.text}">${msg}</span>
+      <span class="icon ${type}">${symbol}</span>
+      <span class="text">${msg}</span>
     `
   return el
 }

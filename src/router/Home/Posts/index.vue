@@ -1,8 +1,8 @@
 <template>
-  <div :class="$style.wrapper">
-    <div :class="$style.header">
+  <div class="home-posts-wrapper">
+    <div class="home-posts-header">
       <tab
-        :class="$style.header_tab"
+        class="home-posts-header-tab"
         customBarWidth="2rem"
         defaultColor="#A48E8E"
         activeColor="pink"
@@ -12,7 +12,7 @@
       </tab>
     </div>
     
-    <div :class="$style.content">
+    <div class="home-posts-content">
       <scroller
         ref="scroller"
         :onInfinite="loadData"
@@ -25,9 +25,9 @@
       </scroller>
     </div>
     <release
-      :class="$style.release"
       :onReleaseFailed="handleReleaseFailed"
       :onReleaseSucceed="handleReleaseSucceed"
+      class="home-posts-release"
     />
   </div>
 </template>
@@ -100,7 +100,7 @@
             this.$refs.scroller.finishPullToRefresh()
           })
       },
-      handleReleaseFailed (e) {
+      handleReleaseFailed () {
         message.error('发布失败')
       },
       handleReleaseSucceed (data) {
@@ -111,71 +111,39 @@
   }
 </script>
 
-<style lang="less" module>
-  .wrapper {
+<style lang="less" scoped>
+  .home-posts-wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
   }
   
-  .header {
+  .home-header {
     background-color: rgb(16, 16, 16);
   }
   
-  .header, .footer {
+  .home-posts-header, .home-posts-footer {
     flex-basis: auto;
   }
   
-  .header_tab {
-
-    :global {
-
-      .vux-tab {
-        background-color: transparent;
-      }
-      
-      .vux-tab-item {
-        font-size: 0.6rem;
-        font-weight: 900;
-      }
+  .home-posts-header-tab {
+    /deep/ .vux-tab {
+      background-color: transparent !important;
+    }
+    
+   /deep/ .vux-tab-item {
+      font-size: 0.6rem;
+      font-weight: 900;
     }
   }
   
-  .footer_tab {
-
-    :global {
-
-      .vux-button-group-current {
-        color: pink !important;
-        background: rgb(25, 25, 25) !important;
-      }
-      
-      .vux-button-tab-item {
-        height: 1.5rem;
-        font-size: 0.8rem;
-        line-height: 1.5rem;
-        color: #ac9e9e;
-        background: transparent;
-        border-radius: 0 !important;
-        
-        &::after {
-          display: none;
-        }
-      }
-    }
-  }
-  
-  .content {
+  .home-posts-content {
     flex: 1;
     overflow: auto;
   }
   
-  .post {
-    margin: 0.5rem;
-  }
-  
-  .release {
+  .home-posts-release {
     position: fixed;
     right: 20px;
     bottom: 4rem;

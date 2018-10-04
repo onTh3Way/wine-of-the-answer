@@ -1,6 +1,6 @@
 <template>
-  <div :class="$style.wrapper" @click="$refs.modal.show()">
-    <icon :class="$style.icon" type="release" />
+  <div class="release-wrapper" @click="$refs.modal.show()">
+    <icon class="icon" type="release" />
     <release-modal
       ref="modal"
       :onReleaseClick="release"
@@ -52,8 +52,8 @@
   }
 </script>
 
-<style lang="less" module>
-  .wrapper {
+<style lang="less" scoped>
+  .release-wrapper {
     width: 1.4rem;
     height: 1.4rem;
     overflow: hidden;
@@ -63,7 +63,6 @@
   
   .icon {
     .all-center;
-
     transform: translate(-55%, -50%) rotate(-8deg);
     width: 1rem;
     height: 1rem;

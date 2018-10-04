@@ -1,5 +1,5 @@
 <template>
-  <h3 :class="$style.text">
+  <h3 class="pcx3-text">
     <slot />
   </h3>
 </template>
@@ -10,8 +10,8 @@
   }
 </script>
 
-<style lang="less" module>
-  .text {
+<style lang="less" scoped>
+  .pcx3-text {
     font-size: 0.7rem;
     font-weight: 700;
     color: #b3a8aa;

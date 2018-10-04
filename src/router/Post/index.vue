@@ -1,10 +1,10 @@
 <template>
-  <div :class="$style.wrapper">
-    <div :class="$style.main">
-      <div :class="$style.status_bar">
-        <b :class="$style.category">{{ category }}</b>
+  <div class="post-wrapper">
+    <div class="post-main">
+      <div class="post-status-bar">
+        <b class="post-category">{{ category }}</b>
         <!--<b>520关注</b>-->
-        <!--<b :class="$style.attention">+关注烦恼</b>-->
+        <!--<b class="attention">+关注烦恼</b>-->
       </div>
       <post-panel
         v-if="post"
@@ -16,7 +16,7 @@
         }"
       />
     </div>
-    <div :class="$style.comments">
+    <div class="post-comments">
       <list v-if="hotComments.length">
         <template slot="tip">热门评论</template>
         <template>
@@ -31,9 +31,9 @@
         <template slot="tip">最新评论</template>
         <template>
           <comment
-            v-for="(item, index) of latestComments"
+            v-for="item in latestComments"
             v-bind="item"
-            :key="index"
+            :key="item.id"
           />
         </template>
       </list>
@@ -104,8 +104,8 @@
   }
 </script>
 
-<style lang="less" module>
-  .wrapper {
+<style lang="less" scoped>
+  .post-wrapper {
     display: flex;
     width: 100%;
     min-height: 100%;
@@ -118,27 +118,27 @@
     }
   }
   
-  .main {
+  .post-main {
     padding: 0 0.5rem;
   }
   
-  .status_bar {
+  .post-status-bar {
     margin-bottom: 1rem;
     font-size: 0.6rem;
     color: @pink;
   }
   
-  .category {
+  .post-category {
     margin: 0 0.5rem;
     font-weight: 900;
   }
   
-  .attention {
+  .post-attention {
     position: absolute;
     right: 0;
   }
   
-  .comments {
+  .post-comments {
     flex: 1 1 auto;
     background-color: #101010;
   }

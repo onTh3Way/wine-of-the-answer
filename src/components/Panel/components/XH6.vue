@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.text">
+  <div class="pcx6-text">
     <svg width="100%" height="100%">
       <text
         :fill="color"
@@ -25,8 +25,8 @@
   }
 </script>
 
-<style lang="less" module>
-  .text {
+<style lang="less" scoped>
+  .pcx6-text {
     height: 0.7rem;
   }
 </style>

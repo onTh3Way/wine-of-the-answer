@@ -1,9 +1,9 @@
 <template>
-  <div :class="$style.wrapper">
+  <div class="home-my-posts-wrapper">
     <scroller v-if="data.length" ref="scroller" :onInfinite="loadData">
       <list :items="data" />
     </scroller>
-    <p v-else :class="$style.no_data">暂时没看到你有什么烦恼呢</p>
+    <p v-else class="home-my-posts-no-data">暂时没看到你有什么烦恼呢</p>
   </div>
 </template>
 
@@ -40,19 +40,19 @@
   }
 </script>
 
-<style lang="less" module>
-  .wrapper {
+<style lang="less" scoped>
+  .home-my-posts-wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
   }
   
-  .header {
+  .home-my-posts-header {
     background-color: #101010;
   }
   
-  .no_data {
+  .home-my-posts-no-data {
     .all-center(absolute);
 
     font-size: 0.7rem;

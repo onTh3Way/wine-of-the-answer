@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="$style.app">
+  <div id="app" class="app">
     <router-view />
   </div>
 </template>
@@ -27,7 +27,7 @@
   }
 </script>
 
-<style lang="less" module>
+<style lang="less" scoped>
 .app {
   z-index: 1;
 }

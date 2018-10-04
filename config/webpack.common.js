@@ -60,7 +60,6 @@ module.exports = {
       {
         test: /\.vue$/,
         use: [
-          'cache-loader',
           {
             loader: 'vue-loader',
             options: {
@@ -117,11 +116,10 @@ module.exports = {
           }
         ]
       },
-      // vux-less解析
+      // less解析
       {
-        test: (p) => path.extname(p) === '.less' && p.includes('vux'),
+        test: /\.less$/,
         use: [
-          'cache-loader',
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
@@ -129,41 +127,6 @@ module.exports = {
               importLoaders: 2,
               sourceMap: true,
               modules: false
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => {
-                const plugins = []
-                if (!devMode) {
-                  plugins.push(require('autoprefixer'))
-                }
-                return plugins
-              },
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'less-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      },
-      // less解析
-      {
-        test: (p) => path.extname(p) === '.less' && !p.includes('vux'),
-        use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 3,
-              sourceMap: true,
-              // 外部库关闭cssModule
-              modules: true
             }
           },
           {
@@ -196,14 +159,12 @@ module.exports = {
           }
         ]
       },
-      // eslint检查
       {
         test: /\.(js|vue)$/,
         include: path.join(process.cwd(), 'src'),
         exclude: /(node_modules|vux)/,
         enforce: 'pre',
         use: [
-          'cache-loader',
           {
             loader: 'eslint-loader',
             options: {
@@ -217,7 +178,6 @@ module.exports = {
       {
         test: /\.js$/,
         use: [
-          'cache-loader',
           {
             loader: 'babel-loader',
             options: {
@@ -263,7 +223,6 @@ module.exports = {
       template: path.join(srcPath, 'index.html'),
       favicon: path.join(srcPath, './assets/favicon.ico'),
       minify: !devMode,
-      cache: devMode,
       title: 'Web App'
     })
   ]

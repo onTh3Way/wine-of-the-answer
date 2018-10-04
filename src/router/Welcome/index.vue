@@ -1,33 +1,33 @@
 <template>
-  <div :class="$style.wrapper">
+  <div class="wrapper">
     <transition
       v-bind="$transitionCssModule('header')"
       appear
     >
       <div
-        :class="$style.header"
+        class="header"
         style="transform: translateY(-100%);"
       >
-        <h1 :class="$style.title">Welcome</h1>
+        <h1 class="title">Welcome</h1>
         <change-img-color
           ref="logo"
-          :class="$style.logo"
           :src="require('assets/logo-title.svg')"
+          class="logo"
           color="black"
         />
-        <div :class="$style.text_group">
-          <h6 :class="$style.text">点击瓶子</h6>
-          <h6 :class="$style.text">把你的烦恼</h6>
-          <h6 :class="$style.text">匿名告诉全世界</h6>
+        <div class="text_group">
+          <h6 class="text">点击瓶子</h6>
+          <h6 class="text">把你的烦恼</h6>
+          <h6 class="text">匿名告诉全世界</h6>
         </div>
       </div>
     </transition>
-    <div :class="$style.bottle_wrapper">
+    <div class="bottle_wrapper">
       <transition
         v-bind="$transitionCssModule('bottle')"
         appear
       >
-        <router-link :class="$style.bottle" to="/protocol" />
+        <router-link class="bottle" to="/protocol" />
       </transition>
     </div>
   </div>
@@ -42,7 +42,7 @@
   }
 </script>
 
-<style lang="less" module>
+<style lang="less" scoped>
   .wrapper {
     width: 100%;
     height: 100%;
@@ -113,6 +113,6 @@
     top: 6%;
     width: 100%;
     height: 100%;
-    background: url('assets/bottle.png') no-repeat center / contain;
+    background: url('~assets/bottle.png') no-repeat center / contain;
   }
 </style>

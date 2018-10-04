@@ -1,6 +1,6 @@
 <template>
-  <div :class="$style.wrapper">
-    <div :class="$style.container">
+  <div class="pcw-wrapper">
+    <div class="pcw-container">
       <slot />
     </div>
   </div>
@@ -12,14 +12,14 @@
   }
 </script>
 
-<style lang="less" module>
-  .wrapper {
+<style lang="less" scoped>
+  .pcw-wrapper {
     width: 100%;
     padding: 0.5rem 0 0.5rem 2.5rem;
     border-radius: 3px;
   }
   
-  .container {
+  .pcw-container {
     width: 100%;
   }
 </style>

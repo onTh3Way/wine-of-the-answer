@@ -1,43 +1,44 @@
 <template>
-  
-  <div :class="$style.bg">
-    <div :class="$style.title">
-      <img src="~assets/logo-title.svg">
+  <div class="platform-wrapper">
+    <div class="platform-title">
+      <!--<img src="~assets/logo-title.svg">-->
     </div>
-
-    <div :class="$style.list">
-      <div :class="$style.item">
-        <div :class="$style.label">出生日期</div>
+    
+    <div class="platform-list">
+      <div class="platform-item">
+        <div class="platform-label">出生日期</div>
         <calendar
-          :class="$style.input" 
-          v-model="date" 
+          v-model="date"
+          class="platform-input"
           title=""
           disableFuture
-        />  
+        />
       </div>
-
-      <div :class="$style.item">
-        <div :class="$style.label">
-          Age/年龄:</div> 
-        <input :class="$style.input" v-model="ages" type="number" maxlength="3" pattern="\d*">
+      
+      <div class="platform-item">
+        <div class="platform-label">
+          Age/年龄:
+        </div>
+        <input v-model="ages" class="platform-input" type="number">
       </div>
-
-      <div :class="$style.item"> 
-        <div :class="$style.label">
-          Tel/电话:</div> 
-        <input :class="$style.input" v-model="phone" type="text" maxlength="11" pattern="\d{11}">
+      
+      <div class="platform-item">
+        <div class="platform-label">
+          Tel/电话:
+        </div>
+        <input v-model="phone" class="platform-input" type="number">
       </div>
     </div>
-
-    <div :class="$style.bottom" @click="next">
-      NEXT   下一步
+    
+    <div class="platform-bottom" @click="next">
+      NEXT 下一步
     </div>
   </div>
-
 </template>
 
 <script>
   import Calendar from 'vux/components/calendar'
+
   export default {
     name: 'index',
     components: {
@@ -54,7 +55,7 @@
         this.$service
           .completeUserInfo({
             birthday: new Date(this.date).getTime(),
-            ages: this.ages,
+            ages: +this.ages,
             phone: this.phone
           })
           .allOk(() => {
@@ -65,68 +66,52 @@
   }
 </script>
 
-<style lang="less" module>
-@pink: #f9bac5;
-@greey: #101010;
-@font: Arial;
-
-.bg {
-  width: 100%;
-  min-height: 100%;
-  background: #eaeaea;
-  overflow: hidden;
-
-  .title {
-    float: left;
+<style lang="less" scoped>
+  .platform-wrapper {
     width: 100%;
-    height: 4rem;
-    margin-top: 10px;
-
-    img {
-      width: 12rem;
-      height: 6rem;
-      .horizon-center;
-    }
+    min-height: 100%;
+    background: #eaeaea;
+    overflow: hidden;
   }
-
-  .list {
-    display: inline-block;
+  
+  .platform-title {
     width: 100%;
-    margin-top: 75px;
+    height: 8rem;
+    background: url(~assets/logo-title.svg) no-repeat 0 0 / contain;
+  }
+  
+  .platform-list {
+    width: 100%;
     font-size: 0.8rem;
-
-    .item {
-      margin-bottom: 25px;
-      padding: 0 1rem;
-    }
-
-    .input {
-      margin-top: 10px;
-      width: 100%;
-      min-height: 1.8rem;
-      line-height: 1.8rem;
-      font-size: 1rem;
-
-      background: #dcdcdc;
-
-      :global {
-        .vux-cell-primary {
-          text-align: left;
-          color: black;
-        }
-      }
+  }
+  
+  .platform-item {
+    margin-bottom: 25px;
+    padding: 0 1rem;
+  }
+  
+  .platform-input {
+    margin-top: 10px;
+    width: 100%;
+    min-height: 1.8rem;
+    line-height: 1.8rem;
+    font-size: 1rem;
+    background: #dcdcdc;
+    
+    /deep/ .vux-cell-primary {
+      text-align: left;
+      color: black;
     }
   }
-
-  .bottom {
-    width: 70%;
-    height: 50px;
-    margin-bottom: 2rem;
-    line-height: 50px;
-    text-align: center;
-    color: #777;
-    background: #f9bac5;
+  
+  .platform-bottom {
     .horizon-center;
+    width: 70%;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #777;
+    background-color: #f9bac5;
   }
-}
 </style>

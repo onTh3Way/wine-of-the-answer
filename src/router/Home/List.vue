@@ -1,9 +1,9 @@
 <template>
-  <div :class="$style.wrapper">
+  <div class="home-list-wrapper">
     <div
-      v-for="(item, index) in items"
-      :key="item.index"
-      :class="$style.post"
+      v-for="item in items"
+      :key="item.id"
+      class="home-list-post"
     >
       <post v-bind="item" />
     </div>
@@ -25,12 +25,12 @@
   }
 </script>
 
-<style lang="less" module>
-  .wrapper {
+<style lang="less" scoped>
+  .home-list-wrapper {
     background-color: @black;
   }
   
-  .post {
+  .home-list-post {
     margin: 0.5rem;
     background-color: #101010;
   }

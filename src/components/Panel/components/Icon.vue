@@ -1,7 +1,7 @@
 <template>
-  <div :class="[$style.wrapper, $style[mode]]">
-    <x-icon :class="$style.icon" :type="type" />
-    <div v-if="$slots.text" :class="$style.text">
+  <div :class="['pci-wrapper', mode]">
+    <x-icon :type="type" class="pci-icon" />
+    <div v-if="$slots.text" class="pci-text">
       <slot name="text" />
     </div>
     <slot />
@@ -27,8 +27,8 @@
   }
 </script>
 
-<style lang="less" module>
-  .wrapper {
+<style lang="less" scoped>
+  .pci-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,11 +38,11 @@
     }
   }
   
-  .icon {
+  .pci-icon {
     margin-right: 0.1rem;
   }
   
-  .text {
+  .pci-text {
     display: inline-block;
     transform: scale(0.7);
     font-size: 1rem;

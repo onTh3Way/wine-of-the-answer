@@ -1,5 +1,5 @@
 <template>
-  <h1 :class="$style.text">
+  <h1 class="pcx1-text">
     <slot />
   </h1>
 </template>
@@ -10,8 +10,8 @@
   }
 </script>
 
-<style lang="less" module>
-  .text {
+<style lang="less" scoped>
+  .pcx1-text {
     font-size: 0.8rem;
     font-weight: 900;
     color: #ccc5c6;

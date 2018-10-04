@@ -1,10 +1,10 @@
 <template>
   <transition
     v-if="value"
-    v-bind="transition || $transitionCssModule('mask')"
+    v-bind="transition || {name: 'fade'}"
     appear
   >
-    <div :class="$style.mask">
+    <div class="xm-mask">
       <slot />
     </div>
   </transition>
@@ -42,8 +42,8 @@
   }
 </script>
 
-<style lang="less" module>
-.mask {
+<style lang="less" scoped>
+.xm-mask {
   position: fixed;
   top: 0;
   left: 0;
@@ -53,21 +53,4 @@
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.mask_appear,
-.mask_enter,
-.mask_leave_to {
-  opacity: 0;
-}
-
-.mask_appear_active,
-.mask_enter_active,
-.mask_leave_active {
-  transition: opacity 0.3s;
-}
-
-.mask_appear_to,
-.mask_enter_to,
-.mask_leave {
-  opacity: 1;
-}
 </style>
